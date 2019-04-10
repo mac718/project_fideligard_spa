@@ -12,3 +12,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#Header {
+  height: 100px;
+  background-color: #def;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#DateWidget {
+  margin-top: 50px;
+}
+
+#DateWidget-container {
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+}
+
+#DateWidget input {
+  width: 100%;
+}
+
+#end-date {
+  float: right;
+}

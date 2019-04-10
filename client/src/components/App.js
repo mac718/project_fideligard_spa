@@ -6,11 +6,16 @@ import {
   NavLinks,
 } from 'react-router-dom'
 import DateWidgetContainer from '../containers/DateWidgetContainer'
+import Header from './Header';
 
 const App = () => {
   return (
-    <div className="App">
-      <DateWidgetContainer />
+    <div className="App container-fluid">
+      <Header />
+      <div className='row'>
+        <div className='col-4'></div>
+        <DateWidgetContainer />
+      </div>
     </div>
   );
 }
