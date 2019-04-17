@@ -38,3 +38,8 @@ code {
 #end-date {
   float: right;
 }
+
+.Stocks {
+  border: 1px solid;
+  margin-top: 62px;
+}

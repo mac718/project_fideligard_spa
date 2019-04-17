@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {onDateWidgetChange} from '../actions'
+import {onDateWidgetChange, getHistoricalStockData} from '../actions'
 import DateWidget from '../components/DateWidget';
 
 class DateWidgetContainer extends Component {
+  componentDidMount() {
+    this.props.getHistoricalStockData()
+  }
   render() {
     const {date, onChange} = this.props
     console.log(date)
@@ -23,6 +26,10 @@ const mapDispatchToProps = dispatch => {
       let date = parseInt(e.target.value)
 
       dispatch(onDateWidgetChange(date));
+    }, 
+
+    getHistoricalStockData: () => {
+      dispatch(getHistoricalStockData())
     }
   }
 }
