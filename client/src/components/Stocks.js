@@ -16,8 +16,8 @@ const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
 
   const stockDivs = data.map(entry => (
     <tr>
-      <td>{stockData.dataset.dataset_code}</td>
-      <td>{entry[1]}</td>
+      <td></td>
+      <td>{entry[0][1]}</td>
     </tr>
   ))
   return (
