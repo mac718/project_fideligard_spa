@@ -33,7 +33,7 @@ export function onDateWidgetChange(date) {
 
 export function getHistoricalStockData() {
   return dispatch => {
-    getDataRequest()
+    dispatch(getDataRequest())
 
     fetch('/api/historical')
       .then(response => {

@@ -15,12 +15,24 @@ const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
   console.log(data)
 
   const stockDivs = data.map(entry => (
-    <div>{entry[0]}</div>
+    <tr>
+      <td>{stockData.dataset.dataset_code}</td>
+      <td>{entry[1]}</td>
+    </tr>
   ))
   return (
     <div className='Stocks col-4'>
       <h1>Stocks</h1>
-      {isFetchingHistoricalData ? <p>loading...</p> : stockDivs}
+      <table>
+        <tr>
+          <th>Symbol</th>
+          <th>td</th>
+          <th>7 day</th>
+          <th>30 day</th>
+          <th>Trade</th>
+        </tr>
+        {isFetchingHistoricalData ? <p>loading...</p> : stockDivs}
+      </table>
     </div>
   )
 }
