@@ -6,7 +6,7 @@ const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
     return stock.dataset_data.data.filter(entry => {
       let entryDate = new Date(entry[0].split('-').join(','))
       entryDate = `${entryDate.getFullYear()}-${entryDate.getDate()}-${entryDate.getMonth()}`
-      let dateString = `${date.getFullYear()}-${date.getDate()}-${date.getMonth()}`
+      let dateString = `${date.getFullYear()}-${date.getDate()}-${date.getMonth() + 1}`
       console.log(entryDate)
       console.log(dateString)
       return entryDate == dateString
@@ -14,16 +14,29 @@ const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
   })
   console.log(data)
 
-  const stockDivs = data.map(entry => (
-    <tr>
-      <td></td>
-      <td>{entry[0][1]}</td>
-    </tr>
-  ))
+  const stockDivs = data.map(entry => {
+    if (entry[0]) { 
+      return <tr>
+        <td></td>
+        <td>{'$' + entry[0][1].toFixed(2)}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    } else {
+      return <tr>
+        <td></td>
+        <td>N/A</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    }
+  })
   return (
     <div className='Stocks col-4'>
       <h1>Stocks</h1>
-      <table>
+      <table className='table table-striped'>
         <tr>
           <th>Symbol</th>
           <th>td</th>

@@ -1,7 +1,7 @@
 import * as Actions from './actions';
 
 const initialState = {
-  date: new Date(1519689600000),
+  date: new Date(1483315200000),
   historicalStockData: [],
   isFetchingHistoricalData: false,
   error: null
@@ -10,9 +10,10 @@ const initialState = {
 export function fideligard (state = initialState, action) {
   switch (action.type){
     case Actions.ON_DATE_WIDGET_CHANGE:
+      console.log(action.date.toDateString())
       return {
         ...state,
-        date: new Date(action.date)
+        date: action.date
       }
     case Actions.GET_DATA_REQUEST:
       return {

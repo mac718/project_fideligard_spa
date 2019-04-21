@@ -23,7 +23,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onChange: e => {
-      let date = parseInt(e.target.value)
+      let date = new Date(parseInt(e.target.value))
+      let dateYear = date.getFullYear();
+      let dateMonth = date.getMonth();
+      let dateDay = date.getDate();
+      date = new Date(dateYear, dateMonth, dateDay);
 
       dispatch(onDateWidgetChange(date));
     }, 
