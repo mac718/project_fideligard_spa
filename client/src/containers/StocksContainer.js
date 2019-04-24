@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Stocks from '../components/Stocks';
+import {cleanUp} from '../Helpers/ApiCleanup';
+
 
 class StocksContainer extends Component {
   render() {
     const {stockData, date, isFetchingHistoricalData} = this.props
+    //console.log(stockData[0][0].dataset_data)
     return <Stocks stockData={stockData} date={date} isFetchingHistoricalData={isFetchingHistoricalData}/>
   }
 }

@@ -1,18 +1,20 @@
 import React from 'react';
+import {cleanUp} from '../Helpers/ApiCleanup';
 
 const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
 
   const data = stockData.map(stock => {
+    
+    let cleanData = cleanUp(stock.dataset_data.data)
+
+    console.log(cleanData)
     return stock.dataset_data.data.filter(entry => {
       let entryDate = new Date(entry[0].split('-').join(','))
-      entryDate = `${entryDate.getFullYear()}-${entryDate.getDate()}-${entryDate.getMonth()}`
+      entryDate = `${entryDate.getFullYear()}-${entryDate.getDate()}-${entryDate.getMonth() + 1}`
       let dateString = `${date.getFullYear()}-${date.getDate()}-${date.getMonth() + 1}`
-      console.log(entryDate)
-      console.log(dateString)
       return entryDate == dateString
     })
   })
-  console.log(data)
 
   const stockDivs = data.map(entry => {
     if (entry[0]) { 
@@ -37,14 +39,18 @@ const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
     <div className='Stocks col-4'>
       <h1>Stocks</h1>
       <table className='table table-striped'>
-        <tr>
-          <th>Symbol</th>
-          <th>td</th>
-          <th>7 day</th>
-          <th>30 day</th>
-          <th>Trade</th>
-        </tr>
-        {isFetchingHistoricalData ? <p>loading...</p> : stockDivs}
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>td</th>
+            <th>7 day</th>
+            <th>30 day</th>
+            <th>Trade</th>
+          </tr>
+        </thead>
+        <tbody>
+          {isFetchingHistoricalData ? <tr><td>loading...</td></tr> : stockDivs}
+        </tbody>
       </table>
     </div>
   )
