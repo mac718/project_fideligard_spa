@@ -3,7 +3,7 @@ import {startDate, endDate, dayLength} from '../dateMillisecondValues';
 
 
 const DateWidget = ({onChange, date}) => {
-  console.log(date)
+  //console.log(date)
   return (
     <div id='DateWidget' className='col-7'>
       <span id='start-date'>1/1/2017</span>

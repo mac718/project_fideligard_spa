@@ -20,7 +20,9 @@ export function cleanUp(results) {
 
   let resultsIndex = 0;
 
-  let cleanedUpResults = results
+  let cleanedUpResults = results//results.map(result => { return [result[0], result[1]]})
+
+  console.log(cleanedUpResults)
 
   dates.forEach((date, i) => {
     if (!resultsDates.includes(date)) {
@@ -28,6 +30,10 @@ export function cleanUp(results) {
     } else {
       resultsIndex++;
     }
+  })
+
+  cleanedUpResults = cleanedUpResults.sort((a, b) => {
+    return new Date(a[0])-new Date(b[0])
   })
 
   return cleanedUpResults;

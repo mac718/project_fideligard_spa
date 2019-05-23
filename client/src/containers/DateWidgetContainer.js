@@ -9,7 +9,7 @@ class DateWidgetContainer extends Component {
   }
   render() {
     const {date, onChange} = this.props
-    console.log(date)
+    //console.log(date)
     return <DateWidget onChange={onChange} date={date} />
   }
 }

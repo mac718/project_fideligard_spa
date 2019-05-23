@@ -7,8 +7,12 @@ import {cleanUp} from '../Helpers/ApiCleanup';
 class StocksContainer extends Component {
   render() {
     const {stockData, date, isFetchingHistoricalData} = this.props
+    let cleanStockData = stockData.map(stock => {
+      //console.log(stock.dataset_data.data)
+      return cleanUp(stock.dataset_data.data)
+    })
     //console.log(stockData[0][0].dataset_data)
-    return <Stocks stockData={stockData} date={date} isFetchingHistoricalData={isFetchingHistoricalData}/>
+    return <Stocks stockData={cleanStockData} date={date} isFetchingHistoricalData={isFetchingHistoricalData}/>
   }
 }
 
