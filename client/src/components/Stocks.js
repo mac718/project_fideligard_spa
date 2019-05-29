@@ -3,7 +3,7 @@ import {cleanUp} from '../Helpers/ApiCleanup';
 
 const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
 
-  let cleanData;
+  //let cleanData;
 
   const data = stockData.map(stock => {
     
@@ -15,17 +15,19 @@ const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
       let dateString = `${date.getFullYear()}-${date.getDate()}-${date.getMonth() + 1}`
       currentDateIndex = i;
       return entryDate == dateString
-    })
+    }) //return index insteaed of full entry
 
-    currentDateEntry = stock[currentDateIndex]
+    //currentDateEntry = stock[currentDateIndex]
+    console.log('currentDateIndex = ' + currentDateIndex)
+
 
     let lastWeekEntry = stock[currentDateIndex - 7];
 
     let lastMonthEntry = stock[currentDateIndex - 30];
 
-    console.log([currentDateEntry[1], lastWeekEntry[1], lastMonthEntry[1]])
+    console.log([currentDateEntry, lastWeekEntry[1], lastMonthEntry[1]])
 
-    return [currentDateEntry[1], lastWeekEntry[1], lastMonthEntry[1]]
+    return [currentDateEntry[0][1], lastWeekEntry[1], lastMonthEntry[1]]
   })
 
   const stockDivs = data.map((entry, i) => {

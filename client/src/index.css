@@ -44,6 +44,7 @@ code {
 .Stocks {
   border: 1px solid;
   margin-top: 62px;
+  display: inline-block;
 }
 
 .Trade, .ControlPanel {

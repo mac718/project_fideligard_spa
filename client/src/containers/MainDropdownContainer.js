@@ -9,7 +9,7 @@ class MainDropdown extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     onChange: () => {
-      dispatch(setPath());
+      setPath();
     }
   }
 }
