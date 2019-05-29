@@ -7,9 +7,6 @@ const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
 
   const data = stockData.map(stock => {
     
-    //cleanData = cleanUp(stock.dataset_data.data)
-
-    //console.log(cleanData)
     let currentDateIndex = 0;
 
     let currentDateEntry = stock.filter((entry, i) => {
@@ -32,18 +29,6 @@ const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
   })
 
   const stockDivs = data.map((entry, i) => {
-    //console.log(stockData[i])
-    // let index = stockData[i].findIndex(stockEntry => {
-    //   return stockEntry[0] == entry[0]
-    // })
-
-    //console.log(index)
-    //console.log(data)
-    // let currentPrice = entry[0][1].toFixed(2);
-    // let lastWeek = stockData.filter(stock => {
-    //   return stock[0][0] == entry[0][0]
-    // })
-    //console.log(lastWeek)
 
     if (entry[0]) { 
       return <tr>

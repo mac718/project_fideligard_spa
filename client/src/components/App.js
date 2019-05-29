@@ -8,6 +8,8 @@ import {
 import DateWidgetContainer from '../containers/DateWidgetContainer'
 import Header from './Header';
 import StocksContainer from '../containers/StocksContainer';
+import Trade from './Trade';
+import ControlPanel from './ControlPanel'
 
 const App = () => {
   return (
@@ -15,8 +17,12 @@ const App = () => {
       <Header />
       <div className='row'>
         <StocksContainer />
-        <div className='col-1'></div>
+        <div className='buffer col-1'></div>
         <DateWidgetContainer />
+        <div className='buffer col-5'></div>
+        <ControlPanel>
+          <Trade />
+        </ControlPanel>
       </div>
     </div>
   );
