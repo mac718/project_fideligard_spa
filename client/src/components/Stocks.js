@@ -1,33 +1,53 @@
 import React from 'react';
 import {cleanUp} from '../Helpers/ApiCleanup';
 
+const getIndex = ((arr, date) => {
+  let index;
+
+  arr.forEach((entry, i) => {
+    let entryDate = new Date(entry[0].split('-').join(','))
+    entryDate = `${entryDate.getFullYear()}-${entryDate.getDate()}-${entryDate.getMonth() + 1}`
+    let dateString = `${date.getFullYear()}-${date.getDate()}-${date.getMonth() + 1}`
+    if (entryDate == dateString) {
+      index = i;
+    }
+  })
+
+  return index;
+})
+
 const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
 
   //let cleanData;
 
   const data = stockData.map(stock => {
     
-    let currentDateIndex = 0;
+    let currentDateIndex = getIndex(stock, date);
 
-    let currentDateEntry = stock.filter((entry, i) => {
-      let entryDate = new Date(entry[0].split('-').join(','))
-      entryDate = `${entryDate.getFullYear()}-${entryDate.getDate()}-${entryDate.getMonth() + 1}`
-      let dateString = `${date.getFullYear()}-${date.getDate()}-${date.getMonth() + 1}`
-      currentDateIndex = i;
-      return entryDate == dateString
-    }) //return index insteaed of full entry
+    // currentDateIndex = stock.map((entry, i) => {
+    //   let entryDate = new Date(entry[0].split('-').join(','))
+    //   entryDate = `${entryDate.getFullYear()}-${entryDate.getDate()}-${entryDate.getMonth() + 1}`
+    //   let dateString = `${date.getFullYear()}-${date.getDate()}-${date.getMonth() + 1}`
+    //   if (entryDate == dateString) {
+    //     return i
+    //   }
 
-    //currentDateEntry = stock[currentDateIndex]
+    //   return
+    //   //currentDateIndex = i;
+    //   //return entryDate == dateString
+    // }) //return index insteaed of full entry
+
+    let currentDateEntry = stock[currentDateIndex]
     console.log('currentDateIndex = ' + currentDateIndex)
 
 
     let lastWeekEntry = stock[currentDateIndex - 7];
 
-    let lastMonthEntry = stock[currentDateIndex - 30];
+    let lastMonthEntry = stock[currentDateIndex - 29];
 
-    console.log([currentDateEntry, lastWeekEntry[1], lastMonthEntry[1]])
+    //console.log([currentDateEntry[1], lastWeekEntry[1], lastMonthEntry[1]])
 
-    return [currentDateEntry[0][1], lastWeekEntry[1], lastMonthEntry[1]]
+    return [currentDateEntry[1], lastWeekEntry[1], lastMonthEntry[1]]
   })
 
   const stockDivs = data.map((entry, i) => {
