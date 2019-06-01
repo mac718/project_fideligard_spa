@@ -47,12 +47,19 @@ code {
   display: inline-block;
 }
 
-.Trade, .ControlPanel {
+.ControlPanel {
   width: 500px;
   height: 500px;
   border: 1px solid;
   display: inline-block;
   float: right;
+}
+
+.Trade {
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+  float: right
 }
 
 .row {

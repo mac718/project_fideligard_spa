@@ -1,51 +1,19 @@
 import React from 'react';
 import {cleanUp} from '../Helpers/ApiCleanup';
-
-const getIndex = ((arr, date) => {
-  let index;
-
-  arr.forEach((entry, i) => {
-    let entryDate = new Date(entry[0].split('-').join(','))
-    entryDate = `${entryDate.getFullYear()}-${entryDate.getDate()}-${entryDate.getMonth() + 1}`
-    let dateString = `${date.getFullYear()}-${date.getDate()}-${date.getMonth() + 1}`
-    if (entryDate == dateString) {
-      index = i;
-    }
-  })
-
-  return index;
-})
+import {getCurrentDateEntryIndex} from '../Helpers/getCurrentDateEntryIndex';
 
 const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
 
-  //let cleanData;
-
   const data = stockData.map(stock => {
     
-    let currentDateIndex = getIndex(stock, date);
+    let currentDateEntryIndex = getCurrentDateEntryIndex(stock, date);
 
-    // currentDateIndex = stock.map((entry, i) => {
-    //   let entryDate = new Date(entry[0].split('-').join(','))
-    //   entryDate = `${entryDate.getFullYear()}-${entryDate.getDate()}-${entryDate.getMonth() + 1}`
-    //   let dateString = `${date.getFullYear()}-${date.getDate()}-${date.getMonth() + 1}`
-    //   if (entryDate == dateString) {
-    //     return i
-    //   }
+    let currentDateEntry = stock[currentDateEntryIndex]
+    console.log('currentDateEntryIndex = ' + currentDateEntryIndex)
 
-    //   return
-    //   //currentDateIndex = i;
-    //   //return entryDate == dateString
-    // }) //return index insteaed of full entry
+    let lastWeekEntry = stock[currentDateEntryIndex - 7];
 
-    let currentDateEntry = stock[currentDateIndex]
-    console.log('currentDateIndex = ' + currentDateIndex)
-
-
-    let lastWeekEntry = stock[currentDateIndex - 7];
-
-    let lastMonthEntry = stock[currentDateIndex - 29];
-
-    //console.log([currentDateEntry[1], lastWeekEntry[1], lastMonthEntry[1]])
+    let lastMonthEntry = stock[currentDateEntryIndex - 29];
 
     return [currentDateEntry[1], lastWeekEntry[1], lastMonthEntry[1]]
   })
