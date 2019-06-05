@@ -1,8 +1,9 @@
 import React from 'react';
-import {cleanUp} from '../Helpers/ApiCleanup';
+import {retrievedStocks} from '../retrievedStocks'
 import {getCurrentDateEntryIndex} from '../Helpers/getCurrentDateEntryIndex';
+import {Link} from 'react-router-dom'
 
-const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
+const Stocks = ({stockData, date, isFetchingHistoricalData, onClick}) => {
 
   const data = stockData.map(stock => {
     
@@ -21,15 +22,15 @@ const Stocks = ({stockData, date, isFetchingHistoricalData}) => {
   const stockDivs = data.map((entry, i) => {
 
     if (entry[0]) { 
-      return <tr>
-        <td></td>
+      return <tr key={i}>
+        <td>{retrievedStocks[i]}</td>
         <td>{'$' + entry[0].toFixed(2)}</td>
         <td>{'$' + entry[1].toFixed(2)}</td>
         <td>{'$' + entry[2].toFixed(2)}</td>
-        <td>trade</td>
+        <td><Link to='/Trade' onClick={onClick}>trade</Link></td>
       </tr>
     } else {
-      return <tr>
+      return <tr key={i}>
         <td></td>
         <td>N/A</td>
         <td></td>

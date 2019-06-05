@@ -3,6 +3,7 @@ export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
 export const GET_DATA_FAILURE = 'GET_DATA_FAILURE';
 
 export const ON_DATE_WIDGET_CHANGE = 'ON_DATE_WIDGET_CHANGE';
+export const ON_TRADE_CLICK = 'ON_TRADE_CLICK';
 
 export function getDataRequest() {
   return {
@@ -28,6 +29,13 @@ export function onDateWidgetChange(date) {
   return {
     type: ON_DATE_WIDGET_CHANGE,
     date
+  }
+}
+
+export function onTradeClick(selectedStock) {
+  return {
+    type: ON_TRADE_CLICK,
+    selectedStock
   }
 }
 

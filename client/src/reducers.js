@@ -3,6 +3,7 @@ import * as Actions from './actions';
 const initialState = {
   date: new Date(1483315200000),
   historicalStockData: [],
+  selectedStock: {},
   isFetchingHistoricalData: false,
   error: null
 }
@@ -14,6 +15,11 @@ export function fideligard (state = initialState, action) {
       return {
         ...state,
         date: action.date
+      }
+    case Actions.ON_TRADE_CLICK:
+      return {
+        ...state,
+        selectedStock: action.selectedStock
       }
     case Actions.GET_DATA_REQUEST:
       return {

@@ -2,21 +2,22 @@ import React from 'react';
 import InputGroup from './elements/InputGroup'
 import TradeDropdown from './TradeDropdown'
 
-const Trade = () => {
+const Trade = ({date, selectedStock}) => {
+  console.log('selectedStock ' + JSON.stringify(selectedStock))
   return (
     <div className='Trade col-7'>
       <h2>Trade</h2>
       <form id='buySell'>
         <InputGroup>
-          <label for='Symbol'>Symbol:</label>
-          <input type='text' name='Symbol' />
+          <label htmlFor='Symbol'>Symbol:</label>
+          <input type='text' name='Symbol' value={selectedStock.symbol} />
         </InputGroup>
         <InputGroup>
-          <label for='Buy/Sell'>Buy/Sell:</label>
+          <label htmlFor='Buy/Sell'>Buy/Sell: $</label>
           <TradeDropdown />
         </InputGroup>
         <InputGroup>
-          <label for='Quantity'>Quantity:</label>
+          <label htmlFor='Quantity'>Quantity:</label>
           <input type='text' name='Quantity' />
         </InputGroup>
       </form>

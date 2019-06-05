@@ -1,4 +1,4 @@
-import {dataStartDate, widgetStartDate, endDate, dayLength} from '../dateMillisecondValues';
+import {dataStartDate, endDate, dayLength} from '../dateMillisecondValues';
 
 export function cleanUp(results) {
   let dates = []
@@ -22,7 +22,7 @@ export function cleanUp(results) {
 
   let cleanedUpResults = results//results.map(result => { return [result[0], result[1]]})
 
-  console.log(cleanedUpResults)
+  
 
   dates.forEach((date, i) => {
     if (!resultsDates.includes(date)) {
@@ -35,6 +35,8 @@ export function cleanUp(results) {
   cleanedUpResults = cleanedUpResults.sort((a, b) => {
     return new Date(a[0])-new Date(b[0])
   })
+
+  console.log(cleanedUpResults)
 
   return cleanedUpResults;
 
