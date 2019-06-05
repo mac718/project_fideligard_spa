@@ -4,6 +4,7 @@ export const GET_DATA_FAILURE = 'GET_DATA_FAILURE';
 
 export const ON_DATE_WIDGET_CHANGE = 'ON_DATE_WIDGET_CHANGE';
 export const ON_TRADE_CLICK = 'ON_TRADE_CLICK';
+export const UPDATE_COST = 'UPDATE_COST';
 
 export function getDataRequest() {
   return {
@@ -36,6 +37,13 @@ export function onTradeClick(selectedStock) {
   return {
     type: ON_TRADE_CLICK,
     selectedStock
+  }
+}
+
+export function updateCost(quantity) {
+  return {
+    type: UPDATE_COST,
+    quantity
   }
 }
 

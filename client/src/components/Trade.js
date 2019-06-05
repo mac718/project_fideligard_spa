@@ -2,7 +2,7 @@ import React from 'react';
 import InputGroup from './elements/InputGroup'
 import TradeDropdown from './TradeDropdown'
 
-const Trade = ({date, selectedStock}) => {
+const Trade = ({date, selectedStock, onKeyPress, cost}) => {
   console.log('selectedStock ' + JSON.stringify(selectedStock))
   return (
     <div className='Trade col-7'>
@@ -13,14 +13,16 @@ const Trade = ({date, selectedStock}) => {
           <input type='text' name='Symbol' value={selectedStock.symbol} />
         </InputGroup>
         <InputGroup>
-          <label htmlFor='Buy/Sell'>Buy/Sell: $</label>
+          <label htmlFor='Buy/Sell'>Buy/Sell:</label>
           <TradeDropdown />
         </InputGroup>
         <InputGroup>
           <label htmlFor='Quantity'>Quantity:</label>
-          <input type='text' name='Quantity' />
+          <input type='text' name='Quantity' onKeyPress={onKeyPress}/>
         </InputGroup>
       </form>
+      <p>Price: ${selectedStock.stockPrice}</p>
+      <p>Cost: ${cost}</p>
     </div>
   )
 }
