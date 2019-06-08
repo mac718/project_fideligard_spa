@@ -5,6 +5,7 @@ export const GET_DATA_FAILURE = 'GET_DATA_FAILURE';
 export const ON_DATE_WIDGET_CHANGE = 'ON_DATE_WIDGET_CHANGE';
 export const ON_TRADE_CLICK = 'ON_TRADE_CLICK';
 export const UPDATE_COST = 'UPDATE_COST';
+export const ON_USER_INPUT ='ON_USER_INPUT';
 
 export function getDataRequest() {
   return {
@@ -46,6 +47,13 @@ export function updateCost(quantity) {
     quantity
   }
 }
+
+export function onUserInput(symbol) {
+  return {
+    type: ON_USER_INPUT,
+    symbol
+  }
+} 
 
 export function getHistoricalStockData() {
   return dispatch => {

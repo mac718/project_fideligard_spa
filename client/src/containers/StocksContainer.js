@@ -10,10 +10,8 @@ class StocksContainer extends Component {
   render() {
     const {stockData, date, isFetchingHistoricalData, onClick} = this.props
     let cleanStockData = stockData.map(stock => {
-      //console.log(stock.dataset_data.data)
       return cleanUp(stock.dataset_data.data)
     })
-    //console.log(stockData[0][0].dataset_data)
     return <Stocks 
               stockData={cleanStockData} 
               date={date} 
@@ -37,9 +35,8 @@ const mapDispatchToProps = dispatch => {
       let tradeInfo = {}
 
       tradeInfo.symbol = e.target.parentNode.parentNode.firstChild.innerHTML
-      tradeInfo.stockPrice = parseFloat(e.target.parentNode.parentNode.children[1].innerHTML.slice(1)).toFixed(2)
-
-      console.log('tradeInfo' + tradeInfo)
+      tradeInfo.stockPrice = parseFloat(e.target.parentNode.parentNode. 
+                              children[1].innerHTML.slice(1)).toFixed(2)
 
       dispatch(onTradeClick(tradeInfo))
     }

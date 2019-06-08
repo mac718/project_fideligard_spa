@@ -10,11 +10,10 @@ const Stocks = ({stockData, date, isFetchingHistoricalData, onClick}) => {
     let currentDateEntryIndex = getCurrentDateEntryIndex(stock, date);
 
     let currentDateEntry = stock[currentDateEntryIndex]
-    console.log('currentDateEntryIndex = ' + currentDateEntryIndex)
 
     let lastWeekEntry = stock[currentDateEntryIndex - 7];
 
-    let lastMonthEntry = stock[currentDateEntryIndex - 29];
+    let lastMonthEntry = stock[currentDateEntryIndex - 30];
 
     return [currentDateEntry[1], lastWeekEntry[1], lastMonthEntry[1]]
   })
