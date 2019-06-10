@@ -2,7 +2,8 @@ import React from 'react';
 import InputGroup from './elements/InputGroup'
 import TradeDropdown from './TradeDropdown'
 
-const Trade = ({date, selectedStock, onKeyPress, onKeyUp, cost}) => {
+const Trade = ({date, selectedStock, onKeyPress, onChange, cost, validSymbol}) => {
+  console.log('validSymbol' + validSymbol)
   console.log('selectedStock ' + JSON.stringify(selectedStock))
   return (
     <div className='Trade col-7'>
@@ -10,12 +11,12 @@ const Trade = ({date, selectedStock, onKeyPress, onKeyUp, cost}) => {
       <form id='buySell'>
         <InputGroup>
           <label htmlFor='Symbol'>Symbol:</label>
-          <input 
+          <input className={validSymbol ? 'normal' : 'warning'}
             type='text' 
             name='Symbol' 
             value={selectedStock.symbol} 
-            onKeyUp={onKeyUp}
-          /> //add handler for user input
+            onChange={onChange}
+          /> {validSymbol ?  '' : <p id='warning-message'>Invalid Symbol</p>}
         </InputGroup>
         <InputGroup>
           <label htmlFor='Buy/Sell'>Buy/Sell:</label>

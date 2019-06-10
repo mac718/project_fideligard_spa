@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Stocks from '../components/Stocks';
 import {cleanUp} from '../Helpers/ApiCleanup';
-import {onTradeClick} from '../actions';
+import {onTradeClick, onValidInput} from '../actions';
 
 
 class StocksContainer extends Component {
@@ -39,6 +39,7 @@ const mapDispatchToProps = dispatch => {
                               children[1].innerHTML.slice(1)).toFixed(2)
 
       dispatch(onTradeClick(tradeInfo))
+      dispatch(onValidInput(tradeInfo.symbol))
     }
   }
 }

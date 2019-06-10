@@ -6,6 +6,7 @@ const initialState = {
   selectedStock: {},
   currentTradeCost: 0,
   currentTradeSymbol: '',
+  validSymbol: false,
   isFetchingHistoricalData: false,
   error: null
 }
@@ -21,17 +22,25 @@ export function fideligard (state = initialState, action) {
     case Actions.ON_TRADE_CLICK:
       return {
         ...state,
-        selectedStock: action.selectedStock
+        selectedStock: action.selectedStock,
+        currentTradeSymbol: action.selectedStock.symbol
       }
     case Actions.UPDATE_COST:
       return {
         ...state,
         currentTradeCost: state.selectedStock.stockPrice * action.quantity
       }
-    case Actions.ON_USER_INPUT:
+    case Actions.ON_VALID_INPUT:
       return {
         ...state,
+        validSymbol: true,
         currentTradeSymbol: action.symbol
+      }
+    case Actions.ON_INVALID_INPUT:
+      return {
+        ...state,
+        validSymbol: false,
+        currentTradeSymbol: ''
       }
     case Actions.GET_DATA_REQUEST:
       return {
