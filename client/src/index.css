@@ -79,3 +79,7 @@ code {
 .MainDropdown {
   float: right;
 }
+
+#Price, #Cost {
+  border: none;
+}

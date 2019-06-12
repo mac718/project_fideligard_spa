@@ -6,7 +6,7 @@ const initialState = {
   selectedStock: {},
   currentTradeCost: 0,
   currentTradeSymbol: '',
-  validSymbol: false,
+  validSymbol: true,
   isFetchingHistoricalData: false,
   error: null
 }

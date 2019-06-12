@@ -26,9 +26,17 @@ const Trade = ({date, selectedStock, onKeyPress, onChange, cost, validSymbol}) =
           <label htmlFor='Quantity'>Quantity:</label>
           <input type='text' name='Quantity' onKeyPress={onKeyPress}/>
         </InputGroup>
+        <InputGroup>
+          <label htmlFor='Price'>Price:</label>
+          <input type='text' name='Price' value={selectedStock.stockPrice} id='Price' readOnly='true' />
+        </InputGroup>
+        <InputGroup>
+          <label htmlFor='Price'>Cost:</label>
+          <input type='text' name='Cost' value={cost} id='Cost' readOnly='true' />
+        </InputGroup>
+        <input type='submit' />
       </form>
-      <p>Price: ${selectedStock.stockPrice}</p>
-      <p>Cost: ${cost}</p>
+      
     </div>
   )
 }
