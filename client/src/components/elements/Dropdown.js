@@ -1,13 +1,13 @@
 import React from 'react'
 
-const Dropdown = ({options, onChange}) => {
+const Dropdown = ({options, className, onChange}) => {
   
   let dropdownOptions = options.map((option, i) => {
     return <option key={i} name={option} value={`/${option}`}>{option}</option>
   })
   
   return (
-    <select className='Dropdown' onChange={onChange}>
+    <select className={`Dropdown ${className}`}  onChange={onChange}>
       {dropdownOptions}
     </select>
   )
