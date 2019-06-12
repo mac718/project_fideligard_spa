@@ -7,6 +7,7 @@ export const ON_TRADE_CLICK = 'ON_TRADE_CLICK';
 export const UPDATE_COST = 'UPDATE_COST';
 export const ON_VALID_INPUT ='ON_VALID_INPUT';
 export const ON_INVALID_INPUT ='ON_INVALID_INPUT'
+export const RESET_SYMBOL = 'RESET_SYMBOL'
 
 export function getDataRequest() {
   return {
@@ -61,6 +62,12 @@ export function onInvalidInput() {
     type: ON_INVALID_INPUT,
   }
 } 
+
+export function resetSymbol() {
+  return{
+    type: RESET_SYMBOL
+  }
+}
 
 export function getHistoricalStockData() {
   return dispatch => {

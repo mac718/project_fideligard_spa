@@ -1,6 +1,7 @@
 import React from 'react';
+import {Router} from 'react-router'
 import {
-  BrowserRouter as Router,
+  //BrowserRouter as Router,
   Route,
   Switch,
   NavLinks,
@@ -14,12 +15,13 @@ import Transactions from './Transactions'
 import ControlPanel from './ControlPanel'
 import Portfolio from './Portfolio';
 import MainDropdownContainer from '../containers/MainDropdownContainer'
+import history from "../history";
 
 const Menu = withRouter(MainDropdownContainer)
 
 const App = () => {
   return (
-    <Router>
+    <Router history={history}>
       <div className="App container-fluid">
         <Header />
         <div className='row'>

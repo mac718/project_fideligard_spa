@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {fideligard} from './reducers';
 
+
 const store = createStore(fideligard, applyMiddleware(thunk));
 
 ReactDOM.render(

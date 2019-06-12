@@ -42,6 +42,11 @@ export function fideligard (state = initialState, action) {
         validSymbol: false,
         currentTradeSymbol: ''
       }
+    case Actions.RESET_SYMBOL: 
+      return {
+        ...state,
+        selectedStock: {} 
+      }
     case Actions.GET_DATA_REQUEST:
       return {
         ...state,
