@@ -1,14 +1,19 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Trade from '../components/Trade'
-import {updateCost} from '../actions'
-import {onValidInput, onInvalidInput} from '../actions'
+import {
+        onValidInput, 
+        onInvalidInput, 
+        updateCost, 
+        updateCashAvailable
+      } from '../actions'
 import {retrievedStocks} from '../retrievedStocks'
+import serialize from 'form-serialize'
 
 class TradeContainer extends Component {
 
   render(){
-    const {date, selectedStock, cost, handleKeyPress, handleKeyUp, validSymbol} = this.props 
+    const {date, selectedStock, cost, handleKeyPress, handleKeyUp, validSymbol, onSubmit} = this.props 
     return <Trade 
               date={date} 
               selectedStock={selectedStock} 
@@ -16,6 +21,7 @@ class TradeContainer extends Component {
               onChange={handleKeyUp}
               cost={cost} 
               validSymbol={validSymbol}
+              onSubmit={onSubmit}
             />
   }
 }
@@ -52,6 +58,21 @@ const mapDispatchToProps = dispatch => {
         console.log('nope') //add class to input using state
       }
       
+    },
+
+    onSubmit: (e) => {
+      e.preventDefault();
+
+      let form = e.target
+      let data = serialize(form, { hash: true })
+
+      if (data['Buy/Sell'] === '/Buy') {
+        data.cost = data.cost * -1
+      }
+
+      console.log(data)
+
+      dispatch(updateCashAvailable(data))
     }
   }
 }

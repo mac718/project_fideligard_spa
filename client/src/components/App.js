@@ -31,9 +31,12 @@ const App = () => {
           <div className='buffer col-5'></div>
           <ControlPanel>
             <Menu options={['Trade', 'Transactions', 'Portfolio']} />
-            <Route path='/Trade' component={TradeContainer} />
-            <Route exact path='/Transactions' component={Transactions} />
-            <Route exact path='/Portfolio' component={Portfolio} />
+            <Switch>
+              <Route exact path='/' component={TradeContainer} />
+              <Route exact path='/Trade' component={TradeContainer} />
+              <Route exact path='/Transactions' component={Transactions} />
+              <Route exact path='/Portfolio' component={Portfolio} />
+            </Switch>
           </ControlPanel>
         </div>
       </div>

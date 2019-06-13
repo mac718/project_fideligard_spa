@@ -8,6 +8,9 @@ export const UPDATE_COST = 'UPDATE_COST';
 export const ON_VALID_INPUT ='ON_VALID_INPUT';
 export const ON_INVALID_INPUT ='ON_INVALID_INPUT'
 export const RESET_SYMBOL = 'RESET_SYMBOL'
+export const UPDATE_CASH_AVAILABLE = 'UPDATE_CASH_AVAILABLE'
+export const UPDATE_PORTFOLIO = 'UPDATE_PORTFOLIO'
+export const UPDATE_TRANSACTIONS ='UPDATE_TRANSACTIONS'
 
 export function getDataRequest() {
   return {
@@ -66,6 +69,27 @@ export function onInvalidInput() {
 export function resetSymbol() {
   return{
     type: RESET_SYMBOL
+  }
+}
+
+export function updateCashAvailable(trade) {
+  return {
+    type: UPDATE_CASH_AVAILABLE,
+    trade
+  }
+}
+
+export function updatePortfolio(trade) {
+  return {
+    type: UPDATE_PORTFOLIO,
+    trade
+  }
+}
+
+export function updateTansactions(trade) {
+  return {
+    type: UPDATE_TRANSACTIONS,
+    trade
   }
 }
 

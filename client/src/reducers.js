@@ -7,6 +7,9 @@ const initialState = {
   currentTradeCost: 0,
   currentTradeSymbol: '',
   validSymbol: true,
+  cashAvailable: 1000.00,
+  transactions:[],
+  portfolio: {},
   isFetchingHistoricalData: false,
   error: null
 }
@@ -46,6 +49,11 @@ export function fideligard (state = initialState, action) {
       return {
         ...state,
         selectedStock: {} 
+      }
+    case Actions.UPDATE_CASH_AVAILABLE:
+      return {
+        ...state,
+        cashAvailable: state.cashAvailable + action.trade.cost
       }
     case Actions.GET_DATA_REQUEST:
       return {
