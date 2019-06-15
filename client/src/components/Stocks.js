@@ -1,11 +1,11 @@
 import React from 'react';
-import {retrievedStocks} from '../retrievedStocks'
-import {getCurrentDateEntryIndex} from '../Helpers/getCurrentDateEntryIndex';
-import {Link} from 'react-router-dom'
+import { retrievedStocks } from '../retrievedStocks'
+import { getCurrentDateEntryIndex } from '../Helpers/dateHelpers';
+import { Link } from 'react-router-dom'
 
-const Stocks = ({stockData, date, isFetchingHistoricalData, onClick}) => {
+const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
 
-  const data = stockData.map(stock => {
+  const data = stockData.map( stock => {
     
     let currentDateEntryIndex = getCurrentDateEntryIndex(stock, date);
 
@@ -18,18 +18,18 @@ const Stocks = ({stockData, date, isFetchingHistoricalData, onClick}) => {
     return [currentDateEntry[1], lastWeekEntry[1], lastMonthEntry[1]]
   })
 
-  const stockDivs = data.map((entry, i) => {
+  const stockDivs = data.map(( entry, i ) => {
 
-    if (entry[0]) { 
+    if ( entry[0] ) { 
       return <tr key={i}>
-        <td>{retrievedStocks[i]}</td>
-        <td>{'$' + entry[0].toFixed(2)}</td>
-        <td>{'$' + entry[1].toFixed(2)}</td>
-        <td>{'$' + entry[2].toFixed(2)}</td>
-        <td><Link to='/Trade' onClick={onClick}>trade</Link></td>
+        <td>{ retrievedStocks[i] }</td>
+        <td>{ '$' + entry[0].toFixed(2) }</td>
+        <td>{ '$' + entry[1].toFixed(2) }</td>
+        <td>{ '$' + entry[2].toFixed(2) }</td>
+        <td><Link to='/Trade' onClick={ onClick }>trade</Link></td>
       </tr>
     } else {
-      return <tr key={i}>
+      return <tr key={ i }>
         <td></td>
         <td>N/A</td>
         <td></td>
@@ -52,7 +52,7 @@ const Stocks = ({stockData, date, isFetchingHistoricalData, onClick}) => {
           </tr>
         </thead>
         <tbody>
-          {isFetchingHistoricalData ? <tr><td>loading...</td></tr> : stockDivs}
+          { isFetchingHistoricalData ? <tr><td>loading...</td></tr> : stockDivs }
         </tbody>
       </table>
     </div>

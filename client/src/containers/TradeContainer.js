@@ -66,8 +66,8 @@ const mapDispatchToProps = dispatch => {
       let form = e.target
       let data = serialize(form, { hash: true })
 
-      if (data['Buy/Sell'] === '/Buy') {
-        data.cost = data.cost * -1
+      if (data.TradeDropdown === '/Buy') {
+        data.Cost = data.Cost * -1
       }
 
       console.log(data)

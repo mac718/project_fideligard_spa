@@ -1,22 +1,24 @@
 import React from 'react';
 import InputGroup from './elements/InputGroup'
 import TradeDropdown from './TradeDropdown'
+import { makeDateString } from '../Helpers/dateHelpers'
 
-const Trade = ({date, selectedStock, onKeyPress, onChange, cost, validSymbol, onSubmit}) => {
+const Trade = ( { date, selectedStock, onKeyPress, onChange, cost, validSymbol, onSubmit } ) => {
   console.log('validSymbol' + validSymbol)
   console.log('selectedStock ' + JSON.stringify(selectedStock))
+  console.log('dateString' + makeDateString(date))
   return (
     <div className='Trade col-7'>
       <h2>Trade</h2>
-      <form id='buySell' onSubmit={onSubmit}>
+      <form id='buySell' onSubmit={ onSubmit }>
         <InputGroup>
           <label htmlFor='Symbol'>Symbol:</label>
-          <input className={validSymbol ? 'normal' : 'warning'}
+          <input className={ validSymbol ? 'normal' : 'warning' }
             type='text' 
             name='Symbol' 
-            value={selectedStock.symbol} 
-            onChange={onChange}
-          /> {validSymbol ?  '' : <p id='warning-message'>Invalid Symbol</p>}
+            value={ selectedStock.symbol } 
+            onChange={ onChange }
+          /> { validSymbol ?  '' : <p id='warning-message'>Invalid Symbol</p> }
         </InputGroup>
         <InputGroup>
           <label htmlFor='Buy/Sell'>Buy/Sell:</label>
@@ -24,25 +26,25 @@ const Trade = ({date, selectedStock, onKeyPress, onChange, cost, validSymbol, on
         </InputGroup>
         <InputGroup>
           <label htmlFor='Quantity'>Quantity:</label>
-          <input type='text' name='Quantity' onKeyPress={onKeyPress}/>
+          <input type='text' name='Quantity' onKeyPress={ onKeyPress }/>
         </InputGroup>
         <InputGroup>
           <label htmlFor='Date'>Date:</label>
-          <input type='date' name='Date' />
+          <input type='date' name='Date' min='2017-01-01' max='2017-12-31' value='2017-01-01' />
         </InputGroup>
         <InputGroup>
           <label htmlFor='Price'>Price: $</label>
           <input 
             type='text' 
             name='Price' 
-            value={selectedStock.stockPrice} 
+            value={ selectedStock.stockPrice } 
             id='Price' 
-            readOnly={true} 
+            readOnly={ true } 
           />
         </InputGroup>
         <InputGroup>
           <label htmlFor='Price'>Cost: $</label>
-          <input type='text' name='Cost' value={cost} id='Cost' readOnly={true} />
+          <input type='text' name='Cost' value={ cost } id='Cost' readOnly={true} />
         </InputGroup>
         <input type='submit' />
       </form>
