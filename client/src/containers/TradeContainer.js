@@ -13,7 +13,7 @@ import serialize from 'form-serialize'
 class TradeContainer extends Component {
 
   render(){
-    const {date, selectedStock, cost, handleKeyPress, handleKeyUp, validSymbol, onSubmit} = this.props 
+    const {date, selectedStock, cost, handleKeyPress, handleKeyUp, validSymbol, onSubmit, cashAvailable, dateString} = this.props 
     return <Trade 
               date={date} 
               selectedStock={selectedStock} 
@@ -22,6 +22,8 @@ class TradeContainer extends Component {
               cost={cost} 
               validSymbol={validSymbol}
               onSubmit={onSubmit}
+              cashAvailable={cashAvailable}
+              dateString={ dateString }
             />
   }
 }
@@ -31,7 +33,9 @@ const mapStateToProps = state => {
     date: state.date,
     selectedStock: state.selectedStock,
     cost: state.currentTradeCost,
-    validSymbol: state.validSymbol
+    validSymbol: state.validSymbol,
+    cashAvailable: state.cashAvailable,
+    dateString: state.dateString
   }
 }
 

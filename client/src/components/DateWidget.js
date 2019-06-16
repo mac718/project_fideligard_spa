@@ -4,7 +4,7 @@ import {widgetStartDate, endDate, dayLength} from '../dateMillisecondValues';
 
 const DateWidget = ({onChange, date}) => {
   return (
-    <div id='DateWidget' className='col-7'>
+    <div id='DateWidget' className='col-sm'>
       <span id='start-date'>1/1/2017</span>
       <span id='end-date'>12/31/2017</span>
       <div id='DateWidget-container'>

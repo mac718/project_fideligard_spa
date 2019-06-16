@@ -45,18 +45,16 @@ code {
   border: 1px solid;
   margin-top: 62px;
   display: inline-block;
+  height: max-content;
 }
 
 .ControlPanel {
-  width: 500px;
-  height: 500px;
   border: 1px solid;
-  display: inline-block;
-  float: right;
+  margin-top: 20px;
 }
 
 .Trade {
-  width: 500px;
+  width: 100%;
   height: 500px;
   display: inline-block;
 }
@@ -83,3 +81,17 @@ code {
 #Price, #Cost {
   border: none;
 }
+
+#butt {
+  display: flex;
+}
+
+#butt h2 {
+  height: 40px;
+  display: inline;
+}
+
+.Trade, .cash {
+  margin-top: 60px;
+}
+

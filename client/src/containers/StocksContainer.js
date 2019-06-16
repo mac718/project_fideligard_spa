@@ -25,7 +25,7 @@ const mapStateToProps = state => {
   return {
     stockData: state.historicalStockData,
     date: state.date,
-    isFetchingHistoricalData: state.isFetchingHistoricalData
+    isFetchingHistoricalData: state.isFetchingHistoricalData,
   }
 }
 

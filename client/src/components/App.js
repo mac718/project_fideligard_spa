@@ -27,6 +27,7 @@ const App = () => {
         <div className='row'>
           <StocksContainer />
           <div className='buffer col-1'></div>
+          <div className='col-sm'>
           <DateWidgetContainer />
           <div className='buffer col-5'></div>
           <ControlPanel>
@@ -38,6 +39,7 @@ const App = () => {
               <Route exact path='/Portfolio' component={Portfolio} />
             </Switch>
           </ControlPanel>
+          </div>
         </div>
       </div>
     </Router>

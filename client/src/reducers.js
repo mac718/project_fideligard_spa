@@ -1,7 +1,9 @@
 import * as Actions from './actions';
+import { makeDateString } from './Helpers/dateHelpers'
 
 const initialState = {
   date: new Date(1483315200000),
+  dateString: '2017-07-01',
   historicalStockData: [],
   selectedStock: {},
   currentTradeCost: 0,
@@ -26,7 +28,8 @@ export function fideligard (state = initialState, action) {
       return {
         ...state,
         selectedStock: action.selectedStock,
-        currentTradeSymbol: action.selectedStock.symbol
+        currentTradeSymbol: action.selectedStock.symbol,
+        dateString: makeDateString(state.date)
       }
     case Actions.UPDATE_COST:
       return {

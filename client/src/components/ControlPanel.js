@@ -3,7 +3,7 @@ import MainDropdownContainer from '../containers/MainDropdownContainer'
 
 const ControlPanel = ({children, onChange}) => {
   return (
-    <div className='ControlPanel col-7'>
+    <div className='ControlPanel col-sm'>
       {children}
     </div>
   )

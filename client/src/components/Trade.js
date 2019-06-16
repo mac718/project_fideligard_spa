@@ -3,13 +3,16 @@ import InputGroup from './elements/InputGroup'
 import TradeDropdown from './TradeDropdown'
 import { makeDateString } from '../Helpers/dateHelpers'
 
-const Trade = ( { date, selectedStock, onKeyPress, onChange, cost, validSymbol, onSubmit } ) => {
+const Trade = ( { date, selectedStock, onKeyPress, onChange, cost, validSymbol, onSubmit, cashAvailable, dateString } ) => {
   console.log('validSymbol' + validSymbol)
   console.log('selectedStock ' + JSON.stringify(selectedStock))
-  console.log('dateString' + makeDateString(date))
+  console.log('date' + date)
+  console.log('dateString' + dateString)
   return (
-    <div className='Trade col-7'>
-      <h2>Trade</h2>
+    <div id='butt'>
+    <h2>Trade</h2>
+    <div className='Trade col-8'>
+      
       <form id='buySell' onSubmit={ onSubmit }>
         <InputGroup>
           <label htmlFor='Symbol'>Symbol:</label>
@@ -30,7 +33,7 @@ const Trade = ( { date, selectedStock, onKeyPress, onChange, cost, validSymbol, 
         </InputGroup>
         <InputGroup>
           <label htmlFor='Date'>Date:</label>
-          <input type='date' name='Date' min='2017-01-01' max='2017-12-31' value='2017-01-01' />
+          <input type='date' name='Date' min='2017-01-01' max='2017-12-31' value={ dateString } />
         </InputGroup>
         <InputGroup>
           <label htmlFor='Price'>Price: $</label>
@@ -48,7 +51,11 @@ const Trade = ( { date, selectedStock, onKeyPress, onChange, cost, validSymbol, 
         </InputGroup>
         <input type='submit' />
       </form>
-      
+    </div>
+    <div className='cash col-4'>
+        <h5>Cash Available:</h5>
+        <p>${ cashAvailable }</p>
+      </div>
     </div>
   )
 }
