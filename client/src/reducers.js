@@ -56,7 +56,7 @@ export function fideligard (state = initialState, action) {
     case Actions.UPDATE_CASH_AVAILABLE:
       return {
         ...state,
-        cashAvailable: state.cashAvailable + action.trade.cost
+        cashAvailable: state.cashAvailable + parseFloat(action.trade.Cost)
       }
     case Actions.GET_DATA_REQUEST:
       return {

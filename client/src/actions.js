@@ -113,3 +113,21 @@ export function getHistoricalStockData() {
       })
   }
 }
+
+export function tradeValidations(tradeInfo) {
+  return (dispatch, getState) => {
+    let state = getState();
+    let symbol = tradeInfo.symbol
+
+    if ( tradeInfo.Quantity > state.portfolio.symbol.shares ) {
+      //dispatch(error)
+    }
+
+    if ( tradeInfo.Cost > state.cashAvailable ) {
+      //dispatch(error)
+    }
+
+    dispatch(updateCashAvailable(tradeInfo))
+
+  }
+}

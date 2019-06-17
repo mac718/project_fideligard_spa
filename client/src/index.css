@@ -53,10 +53,9 @@ code {
   margin-top: 20px;
 }
 
-.Trade {
+.TradeForm {
   width: 100%;
   height: 500px;
-  display: inline-block;
 }
 
 .row {
@@ -82,16 +81,11 @@ code {
   border: none;
 }
 
-#butt {
+#Trade {
   display: flex;
 }
 
-#butt h2 {
-  height: 40px;
-  display: inline;
-}
-
-.Trade, .cash {
+.TradeForm, .cash {
   margin-top: 60px;
 }
 

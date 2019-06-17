@@ -11,11 +11,11 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
 
     let currentDateEntry = stock[currentDateEntryIndex]
 
-    let lastWeekEntry = stock[currentDateEntryIndex - 7];
+    let lastWeekEntry = currentDateEntry[1]-stock[currentDateEntryIndex - 7][1];
 
-    let lastMonthEntry = stock[currentDateEntryIndex - 30];
+    let lastMonthEntry = currentDateEntry[1]-stock[currentDateEntryIndex - 30][1];
 
-    return [currentDateEntry[1], lastWeekEntry[1], lastMonthEntry[1]]
+    return [currentDateEntry[1], lastWeekEntry, lastMonthEntry]
   })
 
   const stockDivs = data.map(( entry, i ) => {

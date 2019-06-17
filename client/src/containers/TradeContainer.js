@@ -17,7 +17,7 @@ class TradeContainer extends Component {
     return <Trade 
               date={date} 
               selectedStock={selectedStock} 
-              onKeyPress={handleKeyPress} 
+              onBlur={handleKeyPress} 
               onChange={handleKeyUp}
               cost={cost} 
               validSymbol={validSymbol}
@@ -43,10 +43,11 @@ const mapDispatchToProps = dispatch => {
   return {
     handleKeyPress: (e) => {
       let quantity;
-      console.log(e)
-      if (e.key == 'Enter' || e.key == 'Tab') {
-        quantity = e.target.value
-      }
+      // console.log(e)
+      // if (e.key == 'Enter' || e.key == 'Tab') {
+      //   quantity = e.target.value
+      // }
+      quantity = e.target.value
       dispatch(updateCost(quantity))
     },
 
@@ -68,15 +69,15 @@ const mapDispatchToProps = dispatch => {
       e.preventDefault();
 
       let form = e.target
-      let data = serialize(form, { hash: true })
+      let tradeInfo = serialize(form, { hash: true })
 
-      if (data.TradeDropdown === '/Buy') {
-        data.Cost = data.Cost * -1
+      if (tradeInfo.TradeDropdown === '/Buy') {
+        tradeInfo.Cost = tradeInfo.Cost * -1
       }
 
-      console.log(data)
+      console.log(tradeInfo)
 
-      dispatch(updateCashAvailable(data))
+      dispatch(updateCashAvailable(tradeInfo))
     }
   }
 }
