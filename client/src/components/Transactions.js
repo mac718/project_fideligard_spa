@@ -1,7 +1,17 @@
 import React from 'react'
 
 const Transactions = ({transactions}) => {
-  console.log('transactions ' + transactions)
+  const transactionRows = transactions.map(transaction => {
+    return (
+      <tr className='transaction-row'>
+        <td>{ transaction.Date }</td>
+        <td>{ transaction.Symbol }</td>
+        <td>{ transaction.TradeDropdown }</td>
+        <td>{ transaction.Quantity }</td>
+        <td>{ transaction.Price }</td>
+      </tr>
+    )
+  })
   return (
     <div className='Transactions col-8'>
       <h1>Transactions</h1>
@@ -16,9 +26,7 @@ const Transactions = ({transactions}) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{JSON.stringify(transactions)}</td>
-          </tr>
+          { transactionRows }
         </tbody>
       </table>
     </div>
