@@ -63,7 +63,7 @@ export function fideligard (state = initialState, action) {
     case Actions.UPDATE_TRANSACTIONS:
       return {
         ...state,
-        transactions: action.trade
+        transactions: [...state.transactions, action.trade]
       }
     case Actions.GET_DATA_REQUEST:
       return {
