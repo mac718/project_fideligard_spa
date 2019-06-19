@@ -53,10 +53,10 @@ export function updateCost(quantity) {
   }
 }
 
-export function onValidInput(symbol) {
+export function onValidInput(tradeInfo) {
   return {
     type: ON_VALID_INPUT,
-    symbol
+    tradeInfo
   }
 } 
 

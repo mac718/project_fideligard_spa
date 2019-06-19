@@ -25,6 +25,7 @@ class TradeContainer extends Component {
               cashAvailable={cashAvailable}
               dateString={ dateString }
               stockData={stockData}
+              price={price}
             />
   }
 }
@@ -59,18 +60,18 @@ const mapDispatchToProps = dispatch => {
 
       console.log('e' + e.target.value)
 
-      if (retrievedStocks.includes(symbol.toUpperCase()) || symbol == '') {
+      if (retrievedStocks.includes(symbol.toUpperCase())) {
+        
         let price = parseFloat(document.getElementById(`${symbol}-td`).innerHTML.slice(1))
-        console.log('price' + price)
-        let tradeInfo = {symbol: symbol, price: price}
-        // let stockIndex = retrievedStocks.indexOf(symbol.toUpperCase())
-        // let stock = stockData[stockIndex].filter(entry => {
-
-        // })
+        let tradeInfo = { symbol: symbol, price: price }
+    
+        dispatch(onValidInput(tradeInfo))
+      } else if ( symbol == '' ) {
+        let tradeInfo = { symbol: symbol, price: '' }
         dispatch(onValidInput(tradeInfo))
       } else {
         dispatch(onInvalidInput())
-        console.log('nope') //add class to input using state
+        console.log('nope')
       }
       
     },

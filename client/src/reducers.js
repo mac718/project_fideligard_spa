@@ -35,7 +35,7 @@ export function fideligard (state = initialState, action) {
     case Actions.UPDATE_COST:
       return {
         ...state,
-        currentTradeCost: state.selectedStock.stockPrice * action.quantity
+        currentTradeCost: state.currentTradePrice * action.quantity
       }
     case Actions.ON_VALID_INPUT:
       return {

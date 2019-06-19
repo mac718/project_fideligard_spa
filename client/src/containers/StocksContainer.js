@@ -35,11 +35,11 @@ const mapDispatchToProps = dispatch => {
       let tradeInfo = {}
 
       tradeInfo.symbol = e.target.parentNode.parentNode.firstChild.innerHTML
-      tradeInfo.stockPrice = parseFloat(e.target.parentNode.parentNode. 
+      tradeInfo.price = parseFloat(e.target.parentNode.parentNode. 
                               children[1].innerHTML.slice(1)).toFixed(2)
 
       dispatch(onTradeClick(tradeInfo))
-      dispatch(onValidInput(tradeInfo.symbol))
+      dispatch(onValidInput(tradeInfo))
     }
   }
 }

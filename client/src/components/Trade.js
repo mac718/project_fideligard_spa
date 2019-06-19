@@ -9,6 +9,7 @@ const Trade =
   console.log('selectedStock ' + JSON.stringify(selectedStock))
   console.log('date' + date)
   console.log('dateString' + dateString)
+  console.log('price ' + price )
   return (
     <div id='Trade'>
       <h2>Trade</h2>
@@ -41,7 +42,7 @@ const Trade =
             <input 
               type='text' 
               name='Price' 
-              value={ selectedStock.stockPrice } 
+              value={ selectedStock.stockPrice ? selectedStock.stockPrice : price} 
               id='Price' 
               readOnly={ true } 
             />
