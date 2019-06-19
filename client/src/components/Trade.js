@@ -4,7 +4,7 @@ import TradeDropdown from './TradeDropdown'
 import { makeDateString } from '../Helpers/dateHelpers'
 
 const Trade = 
-  ( { date, selectedStock, onBlur, onChange, cost, validSymbol, onSubmit, cashAvailable, dateString } ) => {
+  ( { date, selectedStock, onBlur, onChange, cost, validSymbol, onSubmit, cashAvailable, dateString, stockData, price } ) => {
   console.log('validSymbol' + validSymbol)
   console.log('selectedStock ' + JSON.stringify(selectedStock))
   console.log('date' + date)

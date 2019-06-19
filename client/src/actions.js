@@ -86,7 +86,7 @@ export function updatePortfolio(trade) {
   }
 }
 
-export function updateTansactions(trade) {
+export function updateTransactions(trade) {
   return {
     type: UPDATE_TRANSACTIONS,
     trade
@@ -128,6 +128,7 @@ export function tradeValidations(tradeInfo) {
     }
 
     dispatch(updateCashAvailable(tradeInfo))
-
+    dispatch(updateTransactions(tradeInfo))
+    dispatch(updatePortfolio(tradeInfo))
   }
 }

@@ -8,6 +8,7 @@ const initialState = {
   selectedStock: {},
   currentTradeCost: 0,
   currentTradeSymbol: '',
+  currentTradePrice: 0,
   validSymbol: true,
   cashAvailable: 1000.00,
   transactions:[],
@@ -40,7 +41,8 @@ export function fideligard (state = initialState, action) {
       return {
         ...state,
         validSymbol: true,
-        currentTradeSymbol: action.symbol
+        currentTradeSymbol: action.tradeInfo.symbol,
+        currentTradePrice: action.tradeInfo.price
       }
     case Actions.ON_INVALID_INPUT:
       return {

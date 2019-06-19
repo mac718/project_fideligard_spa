@@ -13,17 +13,18 @@ import serialize from 'form-serialize'
 class TradeContainer extends Component {
 
   render(){
-    const {date, selectedStock, cost, handleKeyPress, handleKeyUp, validSymbol, onSubmit, cashAvailable, dateString} = this.props 
+    const {date, selectedStock, cost, handleBlur, handleKeyUp, validSymbol, onSubmit, cashAvailable, dateString, stockData, price} = this.props 
     return <Trade 
               date={date} 
               selectedStock={selectedStock} 
-              onBlur={handleKeyPress} 
+              onBlur={handleBlur} 
               onChange={handleKeyUp}
               cost={cost} 
               validSymbol={validSymbol}
               onSubmit={onSubmit}
               cashAvailable={cashAvailable}
               dateString={ dateString }
+              stockData={stockData}
             />
   }
 }
@@ -35,13 +36,15 @@ const mapStateToProps = state => {
     cost: state.currentTradeCost,
     validSymbol: state.validSymbol,
     cashAvailable: state.cashAvailable,
-    dateString: state.dateString
+    dateString: state.dateString,
+    stockData: state.historicalStockData,
+    price: state.currentTradePrice
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleKeyPress: (e) => {
+    handleBlur: (e) => {
       let quantity;
       // console.log(e)
       // if (e.key == 'Enter' || e.key == 'Tab') {
@@ -57,7 +60,14 @@ const mapDispatchToProps = dispatch => {
       console.log('e' + e.target.value)
 
       if (retrievedStocks.includes(symbol.toUpperCase()) || symbol == '') {
-        dispatch(onValidInput(symbol))
+        let price = parseFloat(document.getElementById(`${symbol}-td`).innerHTML.slice(1))
+        console.log('price' + price)
+        let tradeInfo = {symbol: symbol, price: price}
+        // let stockIndex = retrievedStocks.indexOf(symbol.toUpperCase())
+        // let stock = stockData[stockIndex].filter(entry => {
+
+        // })
+        dispatch(onValidInput(tradeInfo))
       } else {
         dispatch(onInvalidInput())
         console.log('nope') //add class to input using state
