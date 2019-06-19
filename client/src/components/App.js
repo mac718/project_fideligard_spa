@@ -11,17 +11,17 @@ import DateWidgetContainer from '../containers/DateWidgetContainer'
 import Header from './Header';
 import StocksContainer from '../containers/StocksContainer';
 import TradeContainer from '../containers/TradeContainer';
-import Transactions from './Transactions'
+import TransactionsContainer from '../containers/TransactionsContainer'
 import ControlPanel from './ControlPanel'
 import Portfolio from './Portfolio';
 import MainDropdownContainer from '../containers/MainDropdownContainer'
 import history from "../history";
 
-const Menu = withRouter(MainDropdownContainer)
+const Menu = withRouter( MainDropdownContainer )
 
 const App = () => {
   return (
-    <Router history={history}>
+    <Router history={ history }>
       <div className="App container-fluid">
         <Header />
         <div className='row'>
@@ -31,12 +31,12 @@ const App = () => {
           <DateWidgetContainer />
           <div className='buffer col-5'></div>
           <ControlPanel>
-            <Menu options={['Trade', 'Transactions', 'Portfolio']} />
+            <Menu options={ ['Trade', 'Transactions', 'Portfolio'] } />
             <Switch>
-              <Route exact path='/' component={TradeContainer} />
-              <Route exact path='/Trade' component={TradeContainer} />
-              <Route exact path='/Transactions' component={Transactions} />
-              <Route exact path='/Portfolio' component={Portfolio} />
+              <Route exact path='/' component={ TradeContainer } />
+              <Route exact path='/Trade' component={ TradeContainer } />
+              <Route exact path='/Transactions' component={ TransactionsContainer } />
+              <Route exact path='/Portfolio' component={ Portfolio } />
             </Switch>
           </ControlPanel>
           </div>

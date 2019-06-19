@@ -119,13 +119,15 @@ export function tradeValidations(tradeInfo) {
     let state = getState();
     let symbol = tradeInfo.symbol
 
-    if ( tradeInfo.Quantity > state.portfolio.symbol.shares ) {
-      //dispatch(error)
-    }
+    console.log('trade ' + JSON.stringify(tradeInfo))
 
-    if ( tradeInfo.Cost > state.cashAvailable ) {
-      //dispatch(error)
-    }
+    // if ( tradeInfo.Quantity > state.portfolio.symbol.shares ) {
+    //   //dispatch(error)
+    // }
+
+    // if ( tradeInfo.Cost > state.cashAvailable ) {
+    //   //dispatch(error)
+    // }
 
     dispatch(updateCashAvailable(tradeInfo))
     dispatch(updateTransactions(tradeInfo))

@@ -5,7 +5,8 @@ import {
         onValidInput, 
         onInvalidInput, 
         updateCost, 
-        updateCashAvailable
+        updateCashAvailable,
+        tradeValidations
       } from '../actions'
 import {retrievedStocks} from '../retrievedStocks'
 import serialize from 'form-serialize'
@@ -88,7 +89,7 @@ const mapDispatchToProps = dispatch => {
 
       console.log(tradeInfo)
 
-      dispatch(updateCashAvailable(tradeInfo))
+      dispatch(tradeValidations(tradeInfo))
     }
   }
 }
