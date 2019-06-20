@@ -1,32 +1,35 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Trade from '../components/Trade'
 import {
         onValidInput, 
         onInvalidInput, 
         updateCost, 
         updateCashAvailable,
-        tradeValidations
+        tradeValidations,
+        setHasFormData
       } from '../actions'
-import {retrievedStocks} from '../retrievedStocks'
+import { retrievedStocks } from '../retrievedStocks'
 import serialize from 'form-serialize'
 
 class TradeContainer extends Component {
 
   render(){
-    const {date, selectedStock, cost, handleBlur, handleKeyUp, validSymbol, onSubmit, cashAvailable, dateString, stockData, price} = this.props 
+    const { date, selectedStock, cost, handleBlur, handleKeyUp, validSymbol, 
+           onSubmit, cashAvailable, dateString, stockData, price, hasFormData } = this.props 
     return <Trade 
-              date={date} 
-              selectedStock={selectedStock} 
-              onBlur={handleBlur} 
-              onChange={handleKeyUp}
-              cost={cost} 
-              validSymbol={validSymbol}
-              onSubmit={onSubmit}
-              cashAvailable={cashAvailable}
+              date={ date } 
+              selectedStock={ selectedStock } 
+              onBlur={ handleBlur } 
+              onChange={ handleKeyUp }
+              cost={ cost } 
+              validSymbol={ validSymbol }
+              onSubmit={ onSubmit }
+              cashAvailable={ cashAvailable }
               dateString={ dateString }
-              stockData={stockData}
-              price={price}
+              stockData={ stockData }
+              price={ price }
+              hasFormData={hasFormData}
             />
   }
 }
@@ -40,7 +43,8 @@ const mapStateToProps = state => {
     cashAvailable: state.cashAvailable,
     dateString: state.dateString,
     stockData: state.historicalStockData,
-    price: state.currentTradePrice
+    price: state.currentTradePrice,
+    hasFormData: state.hasFormData
   }
 }
 
@@ -67,9 +71,13 @@ const mapDispatchToProps = dispatch => {
         let tradeInfo = { symbol: symbol, price: price }
     
         dispatch(onValidInput(tradeInfo))
+        dispatch(setHasFormData())
       } else if ( symbol == '' ) {
+        
         let tradeInfo = { symbol: symbol, price: '' }
         dispatch(onValidInput(tradeInfo))
+        dispatch(setHasFormData())
+      
       } else {
         dispatch(onInvalidInput())
         console.log('nope')
@@ -87,10 +95,10 @@ const mapDispatchToProps = dispatch => {
         tradeInfo.Cost = tradeInfo.Cost * -1
       }
 
-      console.log(tradeInfo)
+      //console.log(tradeInfo)
 
       dispatch(tradeValidations(tradeInfo))
-    }
+    },
   }
 }
 

@@ -11,6 +11,7 @@ export const RESET_SYMBOL = 'RESET_SYMBOL'
 export const UPDATE_CASH_AVAILABLE = 'UPDATE_CASH_AVAILABLE'
 export const UPDATE_PORTFOLIO = 'UPDATE_PORTFOLIO'
 export const UPDATE_TRANSACTIONS ='UPDATE_TRANSACTIONS'
+export const SET_HAS_FORM_DATA = 'SET_HAS_FORM_DATA'
 
 export function getDataRequest() {
   return {
@@ -90,6 +91,12 @@ export function updateTransactions(trade) {
   return {
     type: UPDATE_TRANSACTIONS,
     trade
+  }
+}
+
+export function setHasFormData() {
+  return {
+    type: SET_HAS_FORM_DATA,
   }
 }
 

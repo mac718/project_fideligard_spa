@@ -14,6 +14,7 @@ const initialState = {
   transactions:[],
   portfolio: {},
   isFetchingHistoricalData: false,
+  hasFormData: false,
   error: null
 }
 
@@ -64,6 +65,11 @@ export function fideligard (state = initialState, action) {
       return {
         ...state,
         transactions: [...state.transactions, action.trade]
+      }
+    case Actions.SET_HAS_FORM_DATA: 
+      return {
+        ...state,
+        hasFormData: true
       }
     case Actions.GET_DATA_REQUEST:
       return {

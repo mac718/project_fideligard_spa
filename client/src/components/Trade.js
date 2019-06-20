@@ -2,9 +2,11 @@ import React from 'react';
 import InputGroup from './elements/InputGroup'
 import TradeDropdown from './TradeDropdown'
 import { makeDateString } from '../Helpers/dateHelpers'
+import { Prompt } from 'react-router-dom'
 
 const Trade = 
-  ( { date, selectedStock, onBlur, onChange, cost, validSymbol, onSubmit, cashAvailable, dateString, stockData, price } ) => {
+  ( { date, selectedStock, onBlur, onChange, cost, validSymbol, onSubmit, 
+      cashAvailable, dateString, stockData, price, hasFormData } ) => {
   console.log('validSymbol' + validSymbol)
   console.log('selectedStock ' + JSON.stringify(selectedStock))
   console.log('date' + date)
@@ -52,7 +54,12 @@ const Trade =
             <input type='text' name='Cost' value={ cost } id='Cost' readOnly={true} />
           </InputGroup>
           <input type='submit' />
+          <Prompt
+          when={hasFormData}
+          message='Your form contains unsubmitted data. Are you sure you want to leave?'
+        />
         </form>
+        
       </div>
       <div className='cash col-4'>
         <h5>Cash Available:</h5>
