@@ -7,7 +7,7 @@ export const ON_TRADE_CLICK = 'ON_TRADE_CLICK';
 export const UPDATE_COST = 'UPDATE_COST';
 export const ON_VALID_INPUT ='ON_VALID_INPUT';
 export const ON_INVALID_INPUT ='ON_INVALID_INPUT'
-export const RESET_SYMBOL = 'RESET_SYMBOL'
+export const RESET_FORM_VALUES = 'RESET_FORM_VALUES'
 export const UPDATE_CASH_AVAILABLE = 'UPDATE_CASH_AVAILABLE'
 export const UPDATE_PORTFOLIO = 'UPDATE_PORTFOLIO'
 export const UPDATE_TRANSACTIONS ='UPDATE_TRANSACTIONS'
@@ -67,9 +67,9 @@ export function onInvalidInput() {
   }
 } 
 
-export function resetSymbol() {
+export function resetFormValues() {
   return{
-    type: RESET_SYMBOL
+    type: RESET_FORM_VALUES
   }
 }
 

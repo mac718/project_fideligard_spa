@@ -51,10 +51,13 @@ export function fideligard (state = initialState, action) {
         validSymbol: false,
         currentTradeSymbol: ''
       }
-    case Actions.RESET_SYMBOL: 
+    case Actions.RESET_FORM_VALUES: 
       return {
         ...state,
-        selectedStock: {} 
+        selectedStock: {},
+        currentTradeSymbol: '',
+        currentTradePrice: '',
+        currentTradeCost: 0 
       }
     case Actions.UPDATE_CASH_AVAILABLE:
       return {

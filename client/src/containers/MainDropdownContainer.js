@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import MainDropdown from '../components/MainDropdown'
 import history from '../history'
-import {resetSymbol} from '../actions'
+import {resetFormValues} from '../actions'
 
 class MainDropdownContainer extends Component {
   
@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
       console.log(e.target.value)
       console.log(history)
       history.push(`${e.target.value}`)
-      dispatch(resetSymbol())
+      dispatch(resetFormValues())
     }
   }
 }
