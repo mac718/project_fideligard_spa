@@ -1,21 +1,32 @@
 import React from 'react'
 
-const Portfolio = () => {
+const Portfolio = ({transactions, dateSting, historicalStockData}) => {
+  let costs = transactions.map(transaction => {
+    return transaction.Cost
+  })
+
+  let reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+  let costBasis = costs.reduce(reducer)
+
   return (
-    <div className='Portfolio col-8'>
+    <div className='Portfolio'>
       <h1>Portfolio</h1>
-      <table className='table table-striped'>
+      <table className='Portfolio-summary table table-striped'>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Symbol</th>
-            <th>Type</th>
-            <th>Quantity</th>  
-            <th>Price</th>
+            <th>Cost Basis</th>
+            <th>Current Value</th>
+            <th>Profit/Loss</th>
+            <th>td</th>  
+            <th>7d</th>
+            <th>30d</th>
           </tr>
         </thead>
         <tbody>
-          { transactionRows }
+          <tr>
+            <td>{ costBasis }</td>
+          </tr>
         </tbody>
       </table>
     </div>

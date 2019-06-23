@@ -13,7 +13,7 @@ import StocksContainer from '../containers/StocksContainer';
 import TradeContainer from '../containers/TradeContainer';
 import TransactionsContainer from '../containers/TransactionsContainer'
 import ControlPanel from './ControlPanel'
-import Portfolio from './Portfolio';
+import PortfolioContainer from '../containers/PortfolioContainer';
 import MainDropdownContainer from '../containers/MainDropdownContainer'
 import history from "../history";
 
@@ -36,7 +36,7 @@ const App = () => {
               <Route exact path='/' component={ TradeContainer } />
               <Route exact path='/Trade' component={ TradeContainer } />
               <Route exact path='/Transactions' component={ TransactionsContainer } />
-              <Route exact path='/Portfolio' component={ Portfolio } />
+              <Route exact path='/Portfolio' component={ PortfolioContainer } />
             </Switch>
           </ControlPanel>
           </div>
