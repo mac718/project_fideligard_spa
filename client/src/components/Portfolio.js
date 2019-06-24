@@ -1,13 +1,24 @@
 import React from 'react'
+import { calculateCurrentShareValue } from '../Helpers/calculateCurrentShareValue'
+import { retrievedStocks } from '../retrievedStocks'
 
 const Portfolio = ({transactions, dateSting, historicalStockData}) => {
   let costs = transactions.map(transaction => {
-    return transaction.Cost
+    return -transaction.Cost
   })
 
   let reducer = (accumulator, currentValue) => accumulator + currentValue;
 
   let costBasis = costs.reduce(reducer)
+
+  let currentStockValues = retrievedStocks.map( symbol => {
+    console.log('transactions ' + JSON.stringify(transactions))
+    return calculateCurrentShareValue( symbol, transactions )
+  })
+
+  console.log( 'currentStockValues ' + currentStockValues)
+  
+  
 
   return (
     <div className='Portfolio'>
@@ -26,6 +37,7 @@ const Portfolio = ({transactions, dateSting, historicalStockData}) => {
         <tbody>
           <tr>
             <td>{ costBasis }</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
