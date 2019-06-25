@@ -19,6 +19,5 @@ export function calculateCurrentShareValue( symbol, transactions ) {
 
     let currentPrice = parseFloat(document.getElementById(`${symbol}-td`).innerHTML.slice(1))
 
-    return numberOfShares * currentPrice
-
+    return (numberOfShares * currentPrice).toFixed(2)
   }
