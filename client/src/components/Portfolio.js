@@ -14,12 +14,12 @@ const Portfolio = ({transactions, dateSting, historicalStockData}) => {
   let currentStockValues = retrievedStocks.map( symbol => {
     console.log('transactions ' + JSON.stringify(transactions))
     return calculateCurrentShareValue( symbol, transactions )
-  })
+  }).filter(value => { return value != null })
+
+  let reducedValues = currentStockValues.reduce(reducer)
 
   console.log( 'currentStockValues ' + currentStockValues)
   
-  
-
   return (
     <div className='Portfolio'>
       <h1>Portfolio</h1>
@@ -37,7 +37,7 @@ const Portfolio = ({transactions, dateSting, historicalStockData}) => {
         <tbody>
           <tr>
             <td>{ costBasis }</td>
-            <td></td>
+            <td>{ reducedValues }</td>
           </tr>
         </tbody>
       </table>

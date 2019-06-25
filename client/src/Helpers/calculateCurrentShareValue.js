@@ -8,7 +8,7 @@ export function calculateCurrentShareValue( symbol, transactions ) {
     }
 
     let transactionQuantities = stockTransactions.map( transaction => {
-      return transaction.Quantity
+      return parseFloat(transaction.Quantity)
     })
 
     let reducer = (accumulator, currentValue) => accumulator + currentValue;
