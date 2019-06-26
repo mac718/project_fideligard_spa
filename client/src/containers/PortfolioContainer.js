@@ -6,7 +6,11 @@ class PortfolioContainer extends Component {
   render() {
     const { transactions, historicalStockData, dateString } = this.props
     return (
-      <Portfolio transactions={ transactions } historicalStockData={ historicalStockData } dateString={ dateString }/>
+      <Portfolio 
+        transactions={ transactions } 
+        historicalStockData={ historicalStockData } 
+        dateString={ dateString }
+      />
     )
   }
 }

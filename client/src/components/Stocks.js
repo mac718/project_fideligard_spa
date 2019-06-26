@@ -25,9 +25,9 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
         <td id={retrievedStocks[i]}>{ retrievedStocks[i] }</td>
         <td id={`${retrievedStocks[i]}-td`}>{ '$' + entry[0].toFixed(2) }</td>
         <td id={`${retrievedStocks[i]}-7d`}>{ entry[1].toFixed(2) > 0 ? 
-                                              '+$' + entry[1].toFixed(2) : entry[1].toFixed(2) }</td>
+                                              '+$' + entry[1].toFixed(2) : '-$' + -entry[1].toFixed(2) }</td>
         <td id={`${retrievedStocks[i]}-30d`}>{ entry[2].toFixed(2) > 0 ? 
-                                               '+$' + entry[2].toFixed(2) : entry[2].toFixed(2) }</td>
+                                               '+$' + entry[2].toFixed(2) : '-$' + -entry[2].toFixed(2) }</td>
         <td><Link to='/Trade' onClick={ onClick }>trade</Link></td>
       </tr>
     } else {

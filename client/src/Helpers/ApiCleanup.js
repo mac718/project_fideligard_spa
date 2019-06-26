@@ -36,7 +36,7 @@ export function cleanUp(results) {
     return new Date(a[0])-new Date(b[0])
   })
 
-  console.log(cleanedUpResults)
+  //console.log(cleanedUpResults)
 
   return cleanedUpResults;
 

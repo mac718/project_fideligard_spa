@@ -2,21 +2,28 @@ import React from 'react'
 import { calculateCurrentShareValue } from '../Helpers/calculateCurrentShareValue'
 import { retrievedStocks } from '../retrievedStocks'
 
-const Portfolio = ({transactions, dateSting, historicalStockData}) => {
+const Portfolio = ({transactions, dateString, historicalStockData}) => {
+
   let costs = transactions.map(transaction => {
     return -transaction.Cost
   })
 
-  let reducer = (accumulator, currentValue) => accumulator + currentValue;
+  let reducer = (accumulator, currentValue) => parseFloat(accumulator) + parseFloat(currentValue);
 
-  let costBasis = costs.reduce(reducer)
+  let costBasis = 0;
+  let currentStockValues = 0;
+  let reducedValues = 0;
 
-  let currentStockValues = retrievedStocks.map( symbol => {
-    console.log('transactions ' + JSON.stringify(transactions))
-    return calculateCurrentShareValue( symbol, transactions )
-  }).filter(value => { return value != null })
+  if ( costs.length > 0 ) {
+    costBasis = costs.reduce(reducer)
 
-  let reducedValues = currentStockValues.reduce(reducer)
+    currentStockValues = retrievedStocks.map( symbol => {
+      console.log('transactions ' + JSON.stringify(transactions))
+      return calculateCurrentShareValue( symbol, transactions )
+    }).filter(value => { return value != null })
+
+    reducedValues = currentStockValues.reduce(reducer)
+  }
 
   console.log( 'currentStockValues ' + currentStockValues)
   
@@ -36,8 +43,9 @@ const Portfolio = ({transactions, dateSting, historicalStockData}) => {
         </thead>
         <tbody>
           <tr>
-            <td>{ costBasis }</td>
-            <td>{ reducedValues }</td>
+            <td>${ costBasis.toFixed(2) }</td>
+            <td>${ reducedValues.toFixed(2) }</td>
+            <td>${ (reducedValues - costBasis).toFixed(2) }</td>
           </tr>
         </tbody>
       </table>

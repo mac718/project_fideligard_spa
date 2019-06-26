@@ -7,7 +7,7 @@ const Dropdown = ({options, className, onChange, name}) => {
   })
   
   return (
-    <select className={`Dropdown ${className}`}  onChange={onChange} name={name}>
+    <select className={`Dropdown ${className}`}  onChange={onChange} name={name} >
       {dropdownOptions}
     </select>
   )

@@ -55,9 +55,9 @@ const Trade =
           </InputGroup>
           <input type='submit' />
           <Prompt
-          when={hasFormData}
-          message='Your form contains unsubmitted data. Are you sure you want to leave?'
-        />
+            when={hasFormData}
+            message='Your form contains unsubmitted data. Are you sure you want to leave?'
+          />
         </form>
         
       </div>
