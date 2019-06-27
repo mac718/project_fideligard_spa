@@ -4,12 +4,13 @@ import Portfolio from '../components/Portfolio'
 
 class PortfolioContainer extends Component {
   render() {
-    const { transactions, historicalStockData, dateString } = this.props
+    const { transactions, historicalStockData, dateString, date } = this.props
     return (
       <Portfolio 
         transactions={ transactions } 
         historicalStockData={ historicalStockData } 
         dateString={ dateString }
+        date={ date }
       />
     )
   }
@@ -20,6 +21,7 @@ const mapStateToProps = state => {
     transactions: state.transactions,
     historicalStockData: state.historicalStockData,
     dateString: state.dateString,
+    date: state.date
   }
 }
 

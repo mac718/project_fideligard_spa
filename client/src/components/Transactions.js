@@ -6,7 +6,7 @@ const Transactions = ({transactions}) => {
       <tr className='transaction-row'>
         <td>{ transaction.Date }</td>
         <td>{ transaction.Symbol }</td>
-        <td>{ transaction.TradeDropdown }</td>
+        <td>{ transaction.TradeDropdown.slice(1) }</td>
         <td>{ transaction.Quantity }</td>
         <td>{ transaction.Price }</td>
       </tr>
