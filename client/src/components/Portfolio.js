@@ -54,7 +54,7 @@ const Portfolio = ({transactions, dateString, historicalStockData, date}) => {
         <tbody>
           <tr>
             <td>${ costBasis.toFixed(2) }</td>
-            <td>${ reducedValues }</td>
+            <td>${ reducedValues.toFixed(2) }</td>
             <td>${ (reducedValues - costBasis).toFixed(2) }</td>
           </tr>
         </tbody>

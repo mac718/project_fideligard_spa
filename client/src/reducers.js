@@ -15,6 +15,7 @@ const initialState = {
   portfolio: {},
   isFetchingHistoricalData: false,
   hasFormData: false,
+  readOnly: false,
   error: null
 }
 
@@ -31,7 +32,8 @@ export function fideligard (state = initialState, action) {
         ...state,
         selectedStock: action.selectedStock,
         currentTradeSymbol: action.selectedStock.symbol,
-        dateString: makeDateString(state.date)
+        dateString: makeDateString(state.date),
+        readOnly: true
       }
     case Actions.UPDATE_COST:
       return {

@@ -5,8 +5,8 @@ import { makeDateString } from '../Helpers/dateHelpers'
 import { Prompt } from 'react-router-dom'
 
 const Trade = 
-  ( { date, selectedStock, onBlur, onChange, cost, validSymbol, onSubmit, 
-      cashAvailable, dateString, stockData, price, hasFormData } ) => {
+  ( { date, selectedStock, onBlur, handleSymbolChange, cost, validSymbol, onSubmit, 
+      cashAvailable, dateString, stockData, price, hasFormData, readOnly } ) => {
   console.log('validSymbol' + validSymbol)
   console.log('selectedStock ' + JSON.stringify(selectedStock))
   console.log('date' + date)
@@ -24,7 +24,8 @@ const Trade =
               type='text' 
               name='Symbol' 
               value={ selectedStock.symbol } 
-              onChange={ onChange }
+              onChange={ handleSymbolChange }
+              readOnly={ readOnly }
             /> { validSymbol ?  '' : <p id='warning-message'>Invalid Symbol</p> }
           </InputGroup>
           <InputGroup>
@@ -37,7 +38,7 @@ const Trade =
           </InputGroup>
           <InputGroup>
             <label htmlFor='Date'>Date:</label>
-            <input type='date' name='Date' min='2017-01-01' max='2017-12-31' value={ dateString } />
+            <input type='date' name='Date' min='2017-01-01' max='2017-12-31' value={ dateString } readOnly={true} />
           </InputGroup>
           <InputGroup>
             <label htmlFor='Price'>Price: $</label>

@@ -15,13 +15,13 @@ import serialize from 'form-serialize'
 class TradeContainer extends Component {
 
   render(){
-    const { date, selectedStock, cost, handleBlur, handleKeyUp, validSymbol, 
-           onSubmit, cashAvailable, dateString, stockData, price, hasFormData } = this.props 
+    const { date, selectedStock, cost, handleBlur, handleSymbolChange, validSymbol, 
+           onSubmit, cashAvailable, dateString, stockData, price, hasFormData, readOnly } = this.props 
     return <Trade 
               date={ date } 
               selectedStock={ selectedStock } 
               onBlur={ handleBlur } 
-              onChange={ handleKeyUp }
+              handleSymbolChange={ handleSymbolChange }
               cost={ cost } 
               validSymbol={ validSymbol }
               onSubmit={ onSubmit }
@@ -30,6 +30,7 @@ class TradeContainer extends Component {
               stockData={ stockData }
               price={ price }
               hasFormData={hasFormData}
+              readOnly={ readOnly }
             />
   }
 }
@@ -44,7 +45,8 @@ const mapStateToProps = state => {
     dateString: state.dateString,
     stockData: state.historicalStockData,
     price: state.currentTradePrice,
-    hasFormData: state.hasFormData
+    hasFormData: state.hasFormData,
+    readOnly: state.readOnly
   }
 }
 
@@ -60,7 +62,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateCost(quantity))
     },
 
-    handleKeyUp: (e) => {
+    handleSymbolChange: (e) => {
       let symbol = e.target.value
 
       console.log('e' + e.target.value)
