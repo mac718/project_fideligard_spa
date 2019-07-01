@@ -33,6 +33,7 @@ const Portfolio = ({transactions, dateString, historicalStockData, date}) => {
     }).filter(value => { return value != null })
 
     reducedValues = currentStockValues.reduce(reducer)
+    console.log('reducedValues ' + reducedValues)
   }
 
   console.log( 'currentStockValues ' + currentStockValues)
@@ -54,7 +55,7 @@ const Portfolio = ({transactions, dateString, historicalStockData, date}) => {
         <tbody>
           <tr>
             <td>${ costBasis.toFixed(2) }</td>
-            <td>${ reducedValues.toFixed(2) }</td>
+            <td>${ parseFloat(reducedValues).toFixed(2) }</td>
             <td>${ (reducedValues - costBasis).toFixed(2) }</td>
           </tr>
         </tbody>

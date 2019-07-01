@@ -65,6 +65,8 @@ const Trade =
       <div className='cash col-4'>
         <h5>Cash Available:</h5>
         <p>${ cashAvailable.toFixed(2) }</p>
+        <h5>Trade Status</h5>
+        <p>Thing</p>
       </div>
     </div>
   )
