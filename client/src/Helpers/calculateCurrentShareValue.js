@@ -1,9 +1,19 @@
-export function calculateCurrentShareValue( symbol, transactions ) {
+export function getFilteredTransactions( transactions, date ) {
+    transactions.filter(transaction => {
+      let transactionDate = new Date(transaction.Date)
+      console.log('transactionDate ' + transactionDate)
+      console.log('date ' + date)
+
+      return transactionDate <= date
+    })
+  }
+
+export function calculateCurrentShareValue( symbol, transactions, date ) {
     let stockTransactions = transactions.filter( transaction => {
       return transaction.Symbol === symbol
     })
 
-    if (stockTransactions.length == 0) {
+    if (stockTransactions.length === 0) {
       return
     }
 
@@ -21,3 +31,4 @@ export function calculateCurrentShareValue( symbol, transactions ) {
 
     return (numberOfShares * currentPrice).toFixed(2)
   }
+

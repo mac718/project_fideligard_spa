@@ -3,7 +3,7 @@ import { makeDateString } from './Helpers/dateHelpers'
 
 const initialState = {
   date: new Date(1483315200000),
-  dateString: '2017-07-01',
+  dateString: '',
   historicalStockData: [],
   selectedStock: {},
   currentTradeCost: 0,

@@ -2,7 +2,7 @@ import React from 'react'
 import { calculateCurrentShareValue } from '../Helpers/calculateCurrentShareValue'
 import { retrievedStocks } from '../retrievedStocks'
 
-const Portfolio = ({transactions, dateString, historicalStockData, date}) => {
+const Portfolio = ( { transactions, dateString, historicalStockData, date } ) => {
 
   let filteredTransactions = transactions.filter(transaction => {
     let transactionDate = new Date(transaction.Date)
