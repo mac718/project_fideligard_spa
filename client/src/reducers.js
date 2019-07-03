@@ -57,7 +57,8 @@ export function fideligard (state = initialState, action) {
     case Actions.RESET_FORM_VALUES: 
       return {
         ...state,
-        selectedStock: {},
+        readOnly: false,
+        selectedStock: {...state.selectedStock, symbol: ''},
         currentTradeSymbol: '',
         currentTradePrice: '',
         currentTradeCost: 0 
