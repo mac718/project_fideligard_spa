@@ -6,7 +6,8 @@ import { Prompt } from 'react-router-dom'
 
 const Trade = 
   ( { date, selectedStock, onBlur, handleSymbolChange, cost, validSymbol, onSubmit, 
-      cashAvailable, dateString, stockData, price, hasFormData, readOnly } ) => {
+      cashAvailable, dateString, stockData, price, hasFormData, readOnly, 
+      submitDisabled } ) => {
   console.log('validSymbol' + validSymbol)
   console.log('selectedStock ' + JSON.stringify(selectedStock))
   console.log('date' + date)
@@ -38,7 +39,7 @@ const Trade =
           </InputGroup>
           <InputGroup>
             <label htmlFor='Date'>Date:</label>
-            <input type='date' name='Date' min='2017-01-01' max='2017-12-31' value={ makeDateString(date) } readOnly={true} />
+            <input type='date' name='Date' id='Date' min='2017-01-01' max='2017-12-31' value={ makeDateString(date) } readOnly={true} />
           </InputGroup>
           <InputGroup>
             <label htmlFor='Price'>Price: $</label>
@@ -54,7 +55,7 @@ const Trade =
             <label htmlFor='Price'>Cost: $</label>
             <input type='text' name='Cost' value={ cost } id='Cost' readOnly={true} />
           </InputGroup>
-          <input type='submit' />
+          <input type='submit' disabled={ submitDisabled } />
           <Prompt
             when={hasFormData}
             message='Your form contains unsubmitted data. Are you sure you want to leave?'

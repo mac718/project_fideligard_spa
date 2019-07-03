@@ -16,7 +16,8 @@ class TradeContainer extends Component {
 
   render(){
     const { date, selectedStock, cost, handleBlur, handleSymbolChange, validSymbol, 
-           onSubmit, cashAvailable, dateString, stockData, price, hasFormData, readOnly } = this.props 
+           onSubmit, cashAvailable, dateString, stockData, price, hasFormData, readOnly,
+           submitDisabled } = this.props 
     return <Trade 
               date={ date } 
               selectedStock={ selectedStock } 
@@ -31,6 +32,7 @@ class TradeContainer extends Component {
               price={ price }
               hasFormData={hasFormData}
               readOnly={ readOnly }
+              submitDisabled={ submitDisabled }
             />
   }
 }
@@ -46,7 +48,8 @@ const mapStateToProps = state => {
     stockData: state.historicalStockData,
     price: state.currentTradePrice,
     hasFormData: state.hasFormData,
-    readOnly: state.readOnly
+    readOnly: state.readOnly,
+    submitDisabled: state.submitDisabled
   }
 }
 
@@ -54,10 +57,7 @@ const mapDispatchToProps = dispatch => {
   return {
     handleBlur: (e) => {
       let quantity;
-      // console.log(e)
-      // if (e.key == 'Enter' || e.key == 'Tab') {
-      //   quantity = e.target.value
-      // }
+      
       quantity = e.target.value
       dispatch(updateCost(quantity))
     },

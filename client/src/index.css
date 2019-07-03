@@ -77,7 +77,7 @@ code {
   float: right;
 }
 
-#Price, #Cost {
+#Price, #Cost, #Date {
   border: none;
 }
 

@@ -1,3 +1,5 @@
+import { getNumberOfShares } from './Helpers/calculateCurrentShareValue'
+
 export const GET_DATA_REQUEST = 'GET_DATA_REQUEST';
 export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
 export const GET_DATA_FAILURE = 'GET_DATA_FAILURE';
@@ -126,6 +128,10 @@ export function tradeValidations(tradeInfo) {
   return (dispatch, getState) => {
     let state = getState();
     let symbol = tradeInfo.symbol
+
+    let numberOfShares = 0;
+
+
 
     console.log('trade ' + JSON.stringify(tradeInfo))
 
