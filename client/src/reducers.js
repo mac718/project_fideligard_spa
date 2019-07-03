@@ -23,7 +23,7 @@ const initialState = {
 export function fideligard (state = initialState, action) {
   switch (action.type){
     case Actions.ON_DATE_WIDGET_CHANGE:
-      console.log(action.date.toDateString())
+      console.log('dateWidget ' + action.date.toDateString())
       return {
         ...state,
         date: action.date

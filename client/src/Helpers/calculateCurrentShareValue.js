@@ -1,6 +1,7 @@
 export function getFilteredTransactions( transactions, date ) {
   transactions.filter(transaction => {
-    let transactionDate = new Date(transaction.Date)
+    console.log('transaction_date ' + transaction.Date)
+    let transactionDate = new Date(transaction.Date)  //not cooperating
     console.log('transactionDate ' + transactionDate)
     console.log('date ' + date)
 

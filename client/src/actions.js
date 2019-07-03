@@ -131,14 +131,18 @@ export function tradeValidations(tradeInfo) {
     let buyOrSell = tradeInfo.TradeDropdown
     let filteredTransactions = []
 
+    console.log('state ' + JSON.stringify(state.transactions))
+
     if ( state.transactions.length > 0) {
       filteredTransactions = getFilteredTransactions( state.transactions, state.date )
     }
 
-    console.log('filtered transactions ' + filteredTransactions)
-    //let numberOfShares = getNumberOfShares( filteredTransactions, symbol );
+    //console.log('filtered transactions ' + filteredTransactions)
+    if ( filteredTransactions.length > 0 ) {
+      let numberOfShares = getNumberOfShares( filteredTransactions, symbol );
 
-    //console.log('shares ' + numberOfShares)
+      console.log('shares ' + numberOfShares)
+    }
 
     // if ( tradeInfo.Quantity > state.portfolio.symbol.shares ) {
     //   //dispatch(error)

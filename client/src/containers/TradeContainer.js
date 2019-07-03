@@ -7,7 +7,9 @@ import {
         updateCost, 
         updateCashAvailable,
         tradeValidations,
-        setHasFormData
+        setHasFormData,
+        updateTransactions,
+        resetFormValues
       } from '../actions'
 import { retrievedStocks } from '../retrievedStocks'
 import serialize from 'form-serialize'
@@ -56,9 +58,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleBlur: (e) => {
-      let quantity;
-      
-      quantity = e.target.value
+      let quantity = e.target.value
+      let form = document.getElementById('buySell')
+      let tradeInfo = serialize( form, { hash: true } )
+
+      dispatch(tradeValidations(tradeInfo))
       dispatch(updateCost(quantity))
     },
 
@@ -99,7 +103,11 @@ const mapDispatchToProps = dispatch => {
 
       //console.log(tradeInfo)
 
-      dispatch(tradeValidations(tradeInfo))
+      //dispatch(tradeValidations(tradeInfo))
+    dispatch(updateCashAvailable(tradeInfo))
+    dispatch(updateTransactions(tradeInfo))
+    //dispatch(updatePortfolio(tradeInfo))
+    dispatch(resetFormValues())
     },
   }
 }
