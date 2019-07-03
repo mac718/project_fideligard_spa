@@ -1,4 +1,4 @@
-import { getNumberOfShares } from './Helpers/calculateCurrentShareValue'
+import { getNumberOfShares, getFilteredTransactions } from './Helpers/calculateCurrentShareValue'
 
 export const GET_DATA_REQUEST = 'GET_DATA_REQUEST';
 export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
@@ -127,13 +127,18 @@ export function getHistoricalStockData() {
 export function tradeValidations(tradeInfo) {
   return (dispatch, getState) => {
     let state = getState();
-    let symbol = tradeInfo.symbol
+    let symbol = tradeInfo.Symbol
+    let buyOrSell = tradeInfo.TradeDropdown
+    let filteredTransactions = []
 
-    let numberOfShares = 0;
+    if ( state.transactions.length > 0) {
+      filteredTransactions = getFilteredTransactions( state.transactions, state.date )
+    }
 
+    console.log('filtered transactions ' + filteredTransactions)
+    //let numberOfShares = getNumberOfShares( filteredTransactions, symbol );
 
-
-    console.log('trade ' + JSON.stringify(tradeInfo))
+    //console.log('shares ' + numberOfShares)
 
     // if ( tradeInfo.Quantity > state.portfolio.symbol.shares ) {
     //   //dispatch(error)
@@ -143,9 +148,9 @@ export function tradeValidations(tradeInfo) {
     //   //dispatch(error)
     // }
 
-    dispatch(updateCashAvailable(tradeInfo))
-    dispatch(updateTransactions(tradeInfo))
-    dispatch(updatePortfolio(tradeInfo))
-    dispatch(resetFormValues())
+    // dispatch(updateCashAvailable(tradeInfo))
+    // dispatch(updateTransactions(tradeInfo))
+    // dispatch(updatePortfolio(tradeInfo))
+    // dispatch(resetFormValues())
   }
 }

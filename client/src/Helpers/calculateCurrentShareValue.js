@@ -8,7 +8,7 @@ export function getFilteredTransactions( transactions, date ) {
   })
 }
 
-export function getNumberOfShares( symbol, transactions, date) {
+export function getNumberOfShares( symbol, transactions ) {
   let stockTransactions = transactions.filter( transaction => {
     return transaction.Symbol === symbol
   })
