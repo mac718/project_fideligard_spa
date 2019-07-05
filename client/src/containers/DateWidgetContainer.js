@@ -23,11 +23,14 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onChange: e => {
+      //console.log('milliseconds ' + e.target.value)
       let date = new Date(parseInt(e.target.value))
       let dateYear = date.getFullYear();
       let dateMonth = date.getMonth();
       let dateDay = date.getDate();
-      date = new Date(dateYear, dateMonth, dateDay);
+      //date = new Date(dateYear, dateMonth, dateDay);
+      //let dateString = date.toLocaleString('en-GB', {timezone: 'GMT'})
+      console.log('dateString2 ' + date)
 
       dispatch(onDateWidgetChange(date));
     }, 

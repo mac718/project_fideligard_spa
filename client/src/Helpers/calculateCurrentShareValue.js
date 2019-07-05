@@ -1,15 +1,18 @@
 export function getFilteredTransactions( transactions, date ) {
-  transactions.filter(transaction => {
+  let fliteredTransactions = transactions.filter(transaction => {
     console.log('transaction_date ' + transaction.Date)
-    let transactionDate = new Date(transaction.Date)  //not cooperating
+    console.log('parsed ' + Date.parse(transaction.Date))
+    let transactionDate = new Date(Date.parse(transaction.Date) + 86400000)  //not cooperating
     console.log('transactionDate ' + transactionDate)
     console.log('date ' + date)
+    console.log('bool ' + !(transactionDate > date))
 
-    return transactionDate <= date
+    return !(transactionDate > date)
   })
+  return fliteredTransactions
 }
 
-export function getNumberOfShares( symbol, transactions ) {
+export function getNumberOfShares( transactions, symbol ) {
   let stockTransactions = transactions.filter( transaction => {
     return transaction.Symbol === symbol
   })
