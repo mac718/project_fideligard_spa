@@ -35,7 +35,7 @@ export function getNumberOfShares( transactions, symbol ) {
 
 
 export function calculateCurrentShareValue( symbol, transactions, date ) {
-    let numberOfShares = getNumberOfShares( symbol, transactions, date )
+    let numberOfShares = getNumberOfShares( transactions, symbol )
 
     console.log('number FB ' + numberOfShares)
 

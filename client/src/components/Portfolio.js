@@ -1,16 +1,21 @@
 import React from 'react'
-import { calculateCurrentShareValue } from '../Helpers/calculateCurrentShareValue'
+import { 
+  calculateCurrentShareValue, 
+  getFilteredTransactions 
+} from '../Helpers/calculateCurrentShareValue'
 import { retrievedStocks } from '../retrievedStocks'
 
 const Portfolio = ( { transactions, dateString, historicalStockData, date } ) => {
 
-  let filteredTransactions = transactions.filter(transaction => {
-    let transactionDate = new Date(transaction.Date)
-    console.log('transactionDate ' + transactionDate)
-    console.log('date ' + date)
+  let filteredTransactions = getFilteredTransactions( transactions, date )
 
-    return transactionDate <= date
-  })
+  // let filteredTransactions = transactions.filter(transaction => {
+  //   let transactionDate = new Date(transaction.Date)
+  //   console.log('transactionDate ' + transactionDate)
+  //   console.log('date ' + date)
+
+  //   return transactionDate <= date
+  // })
 
   console.log('filteredTransactions ' + JSON.stringify(filteredTransactions))
 
@@ -29,7 +34,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
 
     currentStockValues = retrievedStocks.map( symbol => {
       console.log('transactions ' + JSON.stringify(transactions))
-      return calculateCurrentShareValue( symbol, transactions )
+      return calculateCurrentShareValue( symbol, filteredTransactions )
     }).filter(value => { return value != null })
 
     reducedValues = currentStockValues.reduce(reducer)
