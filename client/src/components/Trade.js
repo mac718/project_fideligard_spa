@@ -39,7 +39,15 @@ const Trade =
           </InputGroup>
           <InputGroup>
             <label htmlFor='Date'>Date:</label>
-            <input type='date' name='Date' id='Date' min='2017-01-01' max='2017-12-31' value={ makeDateString(date) } readOnly={true} />
+            <input 
+              type='date' 
+              name='Date' 
+              id='Date' 
+              min='2017-01-01' 
+              max='2017-12-31' 
+              value={ makeDateString(date) } 
+              readOnly={true} 
+            />
           </InputGroup>
           <InputGroup>
             <label htmlFor='Price'>Price: $</label>

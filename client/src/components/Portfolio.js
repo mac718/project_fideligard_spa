@@ -34,7 +34,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
     allStocksCostBasis = costs.reduce(reducer)
 
     currentStockValues = retrievedStocks.map( symbol => {
-      console.log('transactions ' + JSON.stringify(transactions))
+      //console.log('transactions ' + JSON.stringify(transactions))
       return calculateCurrentShareValue( symbol, filteredTransactions )
     })
 
@@ -51,15 +51,24 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
       }
     })
 
-    stockSummaries = individualStocksCostBasis.map( costBasis => {
-      console.log(costBasis.symbol)
+    let stockQuantities = retrievedStocks.map( symbol => {
+      let transactions = filteredTransactions.filter( transaction => { return transaction.Symbol === symbol})
+
+      let stockQuantities = transactions.map( transaction => { return transaction.Quantity })
+
+      return stockQuantities
+    })
+
+    stockSummaries = retrievedStocks.map( ( symbol, i ) => {
+      //console.log(costBasis.symbol)
       return (
-        <tr>
+        <tr key={ i } >
           <td></td>
-          <td></td>
-          <td>{ costBasis.symbol }</td>
-          <td></td>
-          <td></td>
+          <td>{ stockQuantities[i] }</td>
+          <td id={ `costBasis-${symbol}` }>{ -individualStocksCostBasis[i].symbol }</td>
+          <td id={ `currentValue-${symbol}` }>{ currentStockValues[i] }</td>
+          <td>{ document.getElementById(`currentValue-${symbol}`).innerHTML - 
+                document.getElementById(`costBasis-${symbol}`).innerHTML }</td>
           <td></td>
           <td></td>
           <td></td>
