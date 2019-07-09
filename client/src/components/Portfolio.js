@@ -67,8 +67,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
           <td>{ stockQuantities[i] }</td>
           <td id={ `costBasis-${symbol}` }>{ -individualStocksCostBasis[i].symbol }</td>
           <td id={ `currentValue-${symbol}` }>{ currentStockValues[i] }</td>
-          <td>{ document.getElementById(`currentValue-${symbol}`).innerHTML - 
-                document.getElementById(`costBasis-${symbol}`).innerHTML }</td>
+          <td>{ currentStockValues[i] - (-individualStocksCostBasis[i].symbol) }</td>
           <td></td>
           <td></td>
           <td></td>
