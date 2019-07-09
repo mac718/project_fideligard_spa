@@ -37,7 +37,7 @@ export function getNumberOfShares( transactions, symbol ) {
 export function calculateCurrentShareValue( symbol, transactions, date ) {
   let numberOfShares = getNumberOfShares( transactions, symbol )
 
-  let currentPrice = parseFloat(document.getElementById(`${symbol}-td`).innerHTML.slice(1))
+  let currentPrice = parseFloat(document.getElementById(`${symbol}-price`).innerHTML.slice(1))
 
   return (numberOfShares * currentPrice).toFixed(2)
 }

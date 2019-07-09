@@ -9,15 +9,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
 
   let filteredTransactions = getFilteredTransactions( transactions, date )
 
-  // let filteredTransactions = transactions.filter(transaction => {
-  //   let transactionDate = new Date(transaction.Date)
-  //   console.log('transactionDate ' + transactionDate)
-  //   console.log('date ' + date)
-
-  //   return transactionDate <= date
-  // })
-
-  console.log('filteredTransactions ' + JSON.stringify(filteredTransactions))
+  //console.log('filteredTransactions ' + JSON.stringify(filteredTransactions))
 
   let costs = filteredTransactions.map(transaction => {
     return -transaction.Cost
@@ -61,20 +53,26 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
 
     stockSummaries = retrievedStocks.map( ( symbol, i ) => {
       //console.log(costBasis.symbol)
-      return (
-        <tr key={ i } >
-          <td>{ symbol }</td>
-          <td>{ stockQuantities[i] }</td>
-          <td id={ `costBasis-${symbol}` }>{ -individualStocksCostBasis[i].symbol }</td>
-          <td id={ `currentValue-${symbol}` }>{ currentStockValues[i] }</td>
-          <td>{ currentStockValues[i] - (-individualStocksCostBasis[i].symbol) }</td>
-          <td>{ document.getElementById( `${symbol}-price` ).innerHTML }</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      )
+      if ( stockQuantities[i] != 0){
+        return (
+          <tr key={ i } >
+            <td>{ symbol }</td>
+            <td>{ stockQuantities[i] }</td>
+            <td id={ `costBasis-${symbol}` }>{ -individualStocksCostBasis[i].symbol }</td>
+            <td id={ `currentValue-${symbol}` }>{ currentStockValues[i] }</td>
+            <td>{ currentStockValues[i] - (-individualStocksCostBasis[i].symbol) }</td>
+            <td>{ document.getElementById( `${symbol}-price` ).innerHTML }</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        )
+      } else {
+        return 0
+      }
     })
+
+    stockSummaries = stockSummaries.filter( summary => { return summary != '' })
 
     console.log('individualStocksCostBasis ' + individualStocksCostBasis)
 

@@ -73,7 +73,7 @@ const mapDispatchToProps = dispatch => {
 
       if (retrievedStocks.includes(symbol.toUpperCase())) {
         
-        let price = parseFloat(document.getElementById(`${symbol}-td`).innerHTML.slice(1))
+        let price = parseFloat(document.getElementById(`${symbol}-price`).innerHTML.slice(1))
         let tradeInfo = { symbol: symbol, price: price }
     
         dispatch(onValidInput(tradeInfo))
