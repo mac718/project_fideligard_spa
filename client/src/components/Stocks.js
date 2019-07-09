@@ -11,11 +11,13 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
 
     let currentDateEntry = stock[currentDateEntryIndex]
 
+    let yesterdayEntry = currentDateEntry[1]-stock[currentDateEntryIndex - 1][1];
+
     let lastWeekEntry = currentDateEntry[1]-stock[currentDateEntryIndex - 7][1];
 
     let lastMonthEntry = currentDateEntry[1]-stock[currentDateEntryIndex - 30][1];
 
-    return [currentDateEntry[1], lastWeekEntry, lastMonthEntry]
+    return [currentDateEntry[1], yesterdayEntry, lastWeekEntry, lastMonthEntry]
   })
 
   const stockDivs = data.map(( entry, i ) => {
@@ -23,11 +25,13 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
     if ( entry[0] ) { 
       return <tr key={i}>
         <td id={retrievedStocks[i]}>{ retrievedStocks[i] }</td>
-        <td id={`${retrievedStocks[i]}-td`}>{ '$' + entry[0].toFixed(2) }</td>
-        <td id={`${retrievedStocks[i]}-7d`}>{ entry[1].toFixed(2) > 0 ? 
+        <td id={`${retrievedStocks[i]}-price`}>{ '$' + entry[0].toFixed(2) }</td>
+        <td id={`${retrievedStocks[i]}-1d`}>{ entry[1].toFixed(2) > 0 ? 
                                               '+$' + entry[1].toFixed(2) : '-$' + -entry[1].toFixed(2) }</td>
-        <td id={`${retrievedStocks[i]}-30d`}>{ entry[2].toFixed(2) > 0 ? 
-                                               '+$' + entry[2].toFixed(2) : '-$' + -entry[2].toFixed(2) }</td>
+        <td id={`${retrievedStocks[i]}-7d`}>{ entry[2].toFixed(2) > 0 ? 
+                                              '+$' + entry[2].toFixed(2) : '-$' + -entry[3].toFixed(2) }</td>
+        <td id={`${retrievedStocks[i]}-30d`}>{ entry[3].toFixed(2) > 0 ? 
+                                               '+$' + entry[3].toFixed(2) : '-$' + -entry[3].toFixed(2) }</td>
         <td><Link to='/Trade' onClick={ onClick }>trade</Link></td>
       </tr>
     } else {
@@ -47,7 +51,8 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
         <thead>
           <tr>
             <th>Symbol</th>
-            <th>td</th>
+            <th>Price</th>
+            <th>1d</th>
             <th>7 day</th>
             <th>30 day</th>
             <th>Trade</th>

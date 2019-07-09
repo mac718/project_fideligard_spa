@@ -63,12 +63,12 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
       //console.log(costBasis.symbol)
       return (
         <tr key={ i } >
-          <td></td>
+          <td>{ symbol }</td>
           <td>{ stockQuantities[i] }</td>
           <td id={ `costBasis-${symbol}` }>{ -individualStocksCostBasis[i].symbol }</td>
           <td id={ `currentValue-${symbol}` }>{ currentStockValues[i] }</td>
           <td>{ currentStockValues[i] - (-individualStocksCostBasis[i].symbol) }</td>
-          <td></td>
+          <td>{ document.getElementById( `${symbol}-price` ).innerHTML }</td>
           <td></td>
           <td></td>
           <td></td>
