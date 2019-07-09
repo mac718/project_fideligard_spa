@@ -141,7 +141,7 @@ export function tradeValidations(tradeInfo) {
     if ( filteredTransactions.length > 0 ) {
       let numberOfShares = getNumberOfShares( filteredTransactions, symbol );
 
-      console.log('shares ' + numberOfShares)
+      //console.log('shares ' + numberOfShares)
     }
 
     // if ( tradeInfo.Quantity > state.portfolio.symbol.shares ) {

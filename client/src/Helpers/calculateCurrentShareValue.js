@@ -35,12 +35,22 @@ export function getNumberOfShares( transactions, symbol ) {
 
 
 export function calculateCurrentShareValue( symbol, transactions, date ) {
-    let numberOfShares = getNumberOfShares( transactions, symbol )
+  let numberOfShares = getNumberOfShares( transactions, symbol )
 
-    console.log('number FB ' + numberOfShares)
+  let currentPrice = parseFloat(document.getElementById(`${symbol}-td`).innerHTML.slice(1))
 
-    let currentPrice = parseFloat(document.getElementById(`${symbol}-td`).innerHTML.slice(1))
+  return (numberOfShares * currentPrice).toFixed(2)
+}
 
-    return (numberOfShares * currentPrice).toFixed(2)
-  }
+export function getCostBasis( symbol, transactions ) {
+  let costs = transactions.map( transaction => {
+    return transaction.Cost
+  })
+
+ let reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+ let costBasis = costs.reduce( reducer )
+
+ return costBasis
+}
 
