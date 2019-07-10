@@ -24,3 +24,13 @@ export const makeDateString = date => {
   console.log(dateString)
   return dateString
 }
+
+export const makeUTCDate = milliseconds => {
+  let date = new Date(milliseconds)
+  let dateYear = date.getUTCFullYear();
+  let dateMonth = date.getUTCMonth();
+  let dateDay = date.getUTCDate();
+  let UTCdate = new Date(Date.UTC(dateYear, dateMonth, dateDay))
+
+  return UTCdate
+}

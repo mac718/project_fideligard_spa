@@ -4,6 +4,7 @@ import { getCurrentDateEntryIndex } from '../Helpers/dateHelpers';
 import { Link } from 'react-router-dom'
 
 const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
+  console.log('stock_date ' + date)
 
   const data = stockData.map( stock => {
     
@@ -45,7 +46,7 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
     }
   })
   return (
-    <div className='Stocks col-4'>
+    <div className='Stocks col-4 table-responsive'>
       <h1>Stocks</h1>
       <table className='table table-striped'>
         <thead>

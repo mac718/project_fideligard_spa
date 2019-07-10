@@ -1,8 +1,8 @@
 import * as Actions from './actions';
-import { makeDateString } from './Helpers/dateHelpers'
+import { makeDateString, makeUTCDate } from './Helpers/dateHelpers'
 
 const initialState = {
-  date: new Date(1483315200000),
+  date: makeUTCDate(1483315200000), //new Date(1483315200000),
   dateString: '',
   historicalStockData: [],
   selectedStock: {},

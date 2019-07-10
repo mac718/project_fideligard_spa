@@ -25,14 +25,17 @@ const mapDispatchToProps = dispatch => {
     onChange: e => {
       //console.log('milliseconds ' + e.target.value)
       let date = new Date(parseInt(e.target.value))
-      let dateYear = date.getFullYear();
-      let dateMonth = date.getMonth();
-      let dateDay = date.getDate();
-      //date = new Date(dateYear, dateMonth, dateDay);
-      //let dateString = date.toLocaleString('en-GB', {timezone: 'GMT'})
-      console.log('dateString2 ' + date)
+      //let dateString = date.toDateString();
+      //console.log('date2 '+date2)
+      let dateYear = date.getUTCFullYear();
+      let dateMonth = date.getUTCMonth();
+      let dateDay = date.getUTCDate();
+      let date2 = new Date(Date.UTC(dateYear, dateMonth, dateDay))
+      // //date = new Date(dateYear, dateMonth, dateDay);
+      // //let dateString = date.toLocaleString('en-GB', {timezone: 'GMT'})
+      // console.log('dateString2 ' + date)
 
-      dispatch(onDateWidgetChange(date));
+      dispatch(onDateWidgetChange(date2));
     }, 
 
     getHistoricalStockData: () => {
