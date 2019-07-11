@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => {
       // //let dateString = date.toLocaleString('en-GB', {timezone: 'GMT'})
       // console.log('dateString2 ' + date)
 
-      dispatch(onDateWidgetChange(date2));
+      setTimeout(()=>{dispatch(onDateWidgetChange(date2))}, 500)
     }, 
 
     getHistoricalStockData: () => {

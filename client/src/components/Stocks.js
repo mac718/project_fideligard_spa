@@ -24,7 +24,7 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
   const stockDivs = data.map(( entry, i ) => {
 
     if ( entry[0] ) { 
-      return <tr key={i}>
+      return <tr key={ i }>
         <td id={retrievedStocks[i]}>{ retrievedStocks[i] }</td>
         <td id={`${retrievedStocks[i]}-price`}>{ '$' + entry[0].toFixed(2) }</td>
         <td id={`${retrievedStocks[i]}-1d`}>{ entry[1].toFixed(2) > 0 ? 
