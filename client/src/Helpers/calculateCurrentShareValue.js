@@ -1,3 +1,5 @@
+import { makeDateString } from '../Helpers/dateHelpers'
+
 export function getFilteredTransactions( transactions, date ) {
   let fliteredTransactions = transactions.filter(transaction => {
     console.log('transaction_date ' + transaction.Date)
@@ -34,10 +36,14 @@ export function getNumberOfShares( transactions, symbol ) {
 
 
 
-export function calculateCurrentShareValue( symbol, transactions, date ) {
+export function calculateCurrentShareValue( symbol, transactions, date, historicalStockData, index ) {
   let numberOfShares = getNumberOfShares( transactions, symbol )
 
-  let currentPrice = parseFloat(document.getElementById(`${symbol}-price`).innerHTML.slice(1))
+  let dateString = makeDateString(date)
+
+  //let currentPrice = parseFloat(document.getElementById(`${symbol}-price`).innerHTML.slice(1))
+  let currentPrice = historicalStockData[index].dataset_data.data.filter( entry => { return entry[0] === dateString })[0][1]
+
 
   return (numberOfShares * currentPrice).toFixed(2)
 }

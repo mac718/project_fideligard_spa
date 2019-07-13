@@ -3,6 +3,7 @@ import {
   calculateCurrentShareValue, 
   getFilteredTransactions 
 } from '../Helpers/calculateCurrentShareValue'
+import { makeDateString } from '../Helpers/dateHelpers'
 import { retrievedStocks } from '../retrievedStocks'
 
 const Portfolio = ( { transactions, dateString, historicalStockData, date } ) => {
@@ -25,9 +26,9 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
   if ( costs.length > 0 ) {
     allStocksCostBasis = costs.reduce(reducer)
 
-    currentStockValues = retrievedStocks.map( symbol => {
+    currentStockValues = retrievedStocks.map( (symbol, i) => {
       //console.log('transactions ' + JSON.stringify(transactions))
-      return calculateCurrentShareValue( symbol, filteredTransactions )
+      return calculateCurrentShareValue( symbol, filteredTransactions, date, historicalStockData, i )
     })
 
     let individualStocksCostBasis = retrievedStocks.map( symbol => {
@@ -52,6 +53,9 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
     })
 
     stockSummaries = retrievedStocks.map( ( symbol, i ) => {
+      let dateString = makeDateString(date)
+      //console.log(historicalStockData[i])
+      let currentPrice = historicalStockData[i].dataset_data.data.filter( entry => { return entry[0] === dateString })[0][1]
       //console.log(costBasis.symbol)
       if ( stockQuantities[i] != 0){
         return (
@@ -61,7 +65,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
             <td id={ `costBasis-${symbol}` }>{ -individualStocksCostBasis[i].symbol }</td>
             <td id={ `currentValue-${symbol}` }>{ currentStockValues[i] }</td>
             <td>{ (currentStockValues[i] - (-individualStocksCostBasis[i].symbol)).toFixed(2) }</td>
-            <td>{ document.getElementById( `${symbol}-price` ).innerHTML }</td>
+            <td>{ currentPrice }</td>
             <td></td>
             <td></td>
             <td></td>
