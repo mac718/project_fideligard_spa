@@ -15,6 +15,7 @@ export const UPDATE_PORTFOLIO = 'UPDATE_PORTFOLIO'
 export const UPDATE_TRANSACTIONS ='UPDATE_TRANSACTIONS'
 export const SET_HAS_FORM_DATA = 'SET_HAS_FORM_DATA'
 export const CLEAR_TRADE_FORM = 'CLEAR_TRADE_FORM'
+export const INVALID_TRADE =' INVALID_TRADE'
 
 export function getDataRequest() {
   return {
@@ -103,6 +104,12 @@ export function setHasFormData() {
   }
 }
 
+export function invalidTrade() {
+  return {
+    type: INVALID_TRADE,
+  }
+}
+
 export function getHistoricalStockData() {
   return dispatch => {
     dispatch(getDataRequest())
@@ -130,6 +137,7 @@ export function tradeValidations(tradeInfo) {
     let symbol = tradeInfo.Symbol
     let buyOrSell = tradeInfo.TradeDropdown
     let filteredTransactions = []
+    let numberOfShares;
 
     console.log('state ' + JSON.stringify(state.transactions))
 
@@ -138,10 +146,11 @@ export function tradeValidations(tradeInfo) {
     }
 
     //console.log('filtered transactions ' + filteredTransactions)
-    if ( filteredTransactions.length > 0 ) {
-      let numberOfShares = getNumberOfShares( filteredTransactions, symbol );
-
+    if (buyOrSell === '/Sell' && filteredTransactions.length > 0) {
+      numberOfShares = getNumberOfShares( filteredTransactions, symbol );
       //console.log('shares ' + numberOfShares)
+    } else {
+      dispatch(invalidTrade())
     }
 
     // if ( tradeInfo.Quantity > state.portfolio.symbol.shares ) {

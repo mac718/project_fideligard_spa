@@ -62,8 +62,9 @@ const mapDispatchToProps = dispatch => {
       let form = document.getElementById('buySell')
       let tradeInfo = serialize( form, { hash: true } )
 
-      dispatch(tradeValidations(tradeInfo))
+      //dispatch(tradeValidations(tradeInfo))
       dispatch(updateCost(quantity))
+      dispatch(tradeValidations(tradeInfo))
     },
 
     handleSymbolChange: (e) => {
