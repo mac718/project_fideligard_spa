@@ -16,6 +16,7 @@ export const UPDATE_TRANSACTIONS ='UPDATE_TRANSACTIONS'
 export const SET_HAS_FORM_DATA = 'SET_HAS_FORM_DATA'
 export const CLEAR_TRADE_FORM = 'CLEAR_TRADE_FORM'
 export const INVALID_TRADE =' INVALID_TRADE'
+export const VALID_TRADE = 'VALID_TRADE'
 
 export function getDataRequest() {
   return {
@@ -110,6 +111,12 @@ export function invalidTrade() {
   }
 }
 
+export function validTrade() {
+  return {
+    type: VALID_TRADE,
+  }
+}
+
 export function getHistoricalStockData() {
   return dispatch => {
     dispatch(getDataRequest())
@@ -139,18 +146,31 @@ export function tradeValidations(tradeInfo) {
     let filteredTransactions = []
     let numberOfShares;
 
-    console.log('state ' + JSON.stringify(state.transactions))
+    //console.log('state ' + JSON.stringify(state.transactions))
+    console.log('buyOrSell ' + buyOrSell)
 
     if ( state.transactions.length > 0) {
       filteredTransactions = getFilteredTransactions( state.transactions, state.date )
     }
 
     //console.log('filtered transactions ' + filteredTransactions)
-    if (buyOrSell === '/Sell' && filteredTransactions.length > 0) {
-      numberOfShares = getNumberOfShares( filteredTransactions, symbol );
-      //console.log('shares ' + numberOfShares)
-    } else {
-      dispatch(invalidTrade())
+    if (buyOrSell === '/Sell') {
+      if ( filteredTransactions.length > 0 ) {  
+        numberOfShares = getNumberOfShares( filteredTransactions, symbol );
+        if ( tradeInfo.Quantity > numberOfShares) {
+          dispatch( invalidTrade() )
+        } else {
+          dispatch( validTrade() )
+        }
+      } else {
+        dispatch( invalidTrade() )
+      }
+    } else if (buyOrSell === '/Buy') {
+      if ( state.cashAvailable >= tradeInfo.Cost )
+        dispatch( validTrade() )
+      else {
+        dispatch( invalidTrade () )
+      }
     }
 
     // if ( tradeInfo.Quantity > state.portfolio.symbol.shares ) {

@@ -83,6 +83,11 @@ export function fideligard (state = initialState, action) {
         ...state,
         submitDisabled: true,
       }
+    case Actions.VALID_TRADE:
+      return {
+        ...state,
+        submitDisabled: false,
+      }
     case Actions.GET_DATA_REQUEST:
       return {
         ...state,
