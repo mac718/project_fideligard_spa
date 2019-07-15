@@ -90,3 +90,10 @@ code {
   margin-top: 60px;
 }
 
+#ValidTradeStatus {
+  color: green;
+}
+
+#InvalidTradeStatus {
+  color: red;
+}

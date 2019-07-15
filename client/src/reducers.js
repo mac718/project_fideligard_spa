@@ -16,7 +16,7 @@ const initialState = {
   isFetchingHistoricalData: false,
   hasFormData: false,
   readOnly: false,
-  submitDisabled: '',
+  submitDisabled: true,
   error: null
 }
 

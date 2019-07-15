@@ -169,7 +169,7 @@ export function tradeValidations(tradeInfo) {
       if ( state.cashAvailable >= tradeInfo.Cost )
         dispatch( validTrade() )
       else {
-        dispatch( invalidTrade () )
+        dispatch( invalidTrade() )
       }
     }
 
