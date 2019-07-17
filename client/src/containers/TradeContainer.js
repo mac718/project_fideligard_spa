@@ -63,8 +63,8 @@ const mapDispatchToProps = dispatch => {
       let tradeInfo = serialize( form, { hash: true } )
 
       //dispatch(tradeValidations(tradeInfo))
-      dispatch(updateCost(quantity))
-      dispatch(tradeValidations(tradeInfo))
+      Promise.resolve(dispatch(updateCost(quantity))).
+      then(dispatch(tradeValidations(tradeInfo)))
     },
 
     handleSymbolChange: (e) => {

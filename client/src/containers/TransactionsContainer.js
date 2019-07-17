@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import Transactions from '../components/Transactions'
+import { handleTransactionsDatesSort } from '../actions'
 
 class TransactionsContainer extends Component {
   render() {
-    const { transactions } = this.props
+    const { transactions, handleSortArrowClick, transactionsDatesSortDirection } = this.props
     return (
-      <Transactions transactions={ transactions } />
+      <Transactions transactions={ transactions } onClick={ handleSortArrowClick } />
     )
   }
 }
@@ -14,10 +15,19 @@ class TransactionsContainer extends Component {
 const mapStateToProps = state => {
   return {
     transactions: state.transactions,
+    transactionsDatesSortDirection: state.transactionsDatesSortDirection
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleSortArrowClick: () => {
+      dispatch(handleTransactionsDatesSort())
+    }
   }
 }
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(TransactionsContainer)

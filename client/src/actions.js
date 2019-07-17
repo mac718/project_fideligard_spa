@@ -17,6 +17,8 @@ export const SET_HAS_FORM_DATA = 'SET_HAS_FORM_DATA'
 export const CLEAR_TRADE_FORM = 'CLEAR_TRADE_FORM'
 export const INVALID_TRADE =' INVALID_TRADE'
 export const VALID_TRADE = 'VALID_TRADE'
+export const CHANGE_TRANSACTIONS_DATES_SORT_DIRECTION = 'CHANGE_TRANSACTIONS_DATES_SORT_DIRECTION'
+export const SORT_TRANSACTIONS_DATES = 'SORT_TRANSACTIONS_DATES'
 
 export function getDataRequest() {
   return {
@@ -117,6 +119,20 @@ export function validTrade() {
   }
 }
 
+export function changeTransactionsDatesSortDirection(sortDirection) {
+  return {
+    type: CHANGE_TRANSACTIONS_DATES_SORT_DIRECTION,
+    sortDirection,
+  }
+}
+
+export function sortTransactionsDates( transactions ) {
+  return {
+    type: SORT_TRANSACTIONS_DATES,
+    transactions
+  }
+}
+
 export function getHistoricalStockData() {
   return dispatch => {
     dispatch(getDataRequest())
@@ -172,18 +188,30 @@ export function tradeValidations(tradeInfo) {
         dispatch( invalidTrade() )
       }
     }
+  }
+}
 
-    // if ( tradeInfo.Quantity > state.portfolio.symbol.shares ) {
-    //   //dispatch(error)
-    // }
+export function handleTransactionsDatesSort() {
+  return (dispatch, getState) => {
+    let state = getState()
+    let transactions = state.transactions
+    let sortDirection = state.transactionsDatesSortDirection
+    let sortedTransactions;
 
-    // if ( tradeInfo.Cost > state.cashAvailable ) {
-    //   //dispatch(error)
-    // }
+    if ( sortDirection === 'ascending' ) {
+      sortedTransactions = transactions.sort( (a, b) => {
+        return new Date(a.Date) - new Date(b.Date)
+      } )
+    } else {
+      sortedTransactions = transactions.sort( (a, b) => {
+        return new Date(b.Date) - new Date(a.Date)
+      } )
+    }
 
-    // dispatch(updateCashAvailable(tradeInfo))
-    // dispatch(updateTransactions(tradeInfo))
-    // dispatch(updatePortfolio(tradeInfo))
-    // dispatch(resetFormValues())
+    sortDirection === 'ascending' ? sortDirection = 'descending' : sortDirection = 'ascending'
+
+    console.log(sortedTransactions)
+    Promise.resolve(dispatch(sortTransactionsDates( sortedTransactions )))
+    .then(dispatch(changeTransactionsDatesSortDirection( sortDirection )))
   }
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Transactions = ({transactions}) => {
-  const transactionRows = transactions.map(transaction => {
+const Transactions = ({ transactions, onClick }) => {
+  const transactionRows = transactions.map( (transaction, i) => {
     return (
-      <tr className='transaction-row'>
+      <tr className='transaction-row' key={ i }>
         <td>{ transaction.Date }</td>
         <td>{ transaction.Symbol }</td>
         <td>{ transaction.TradeDropdown.slice(1) }</td>
@@ -18,8 +18,8 @@ const Transactions = ({transactions}) => {
       <table className='table table-striped'>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Symbol</th>
+            <th>Date <span className='sort-arrow' onClick={ onClick }>&#x25B4;</span></th>
+            <th>Symbol <span className='sort-arrow' onClick={ onClick }>&#x25B4;</span></th>
             <th>Type</th>
             <th>Quantity</th>  
             <th>Price</th>

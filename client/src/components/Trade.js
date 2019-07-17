@@ -75,7 +75,7 @@ const Trade =
         <h5>Cash Available:</h5>
         <p>${ cashAvailable.toFixed(2) }</p>
         <h5>Trade Status</h5>
-        <p>{ submitDisabled ? <p id='InvalidTradeStatus'>INVALID</p> : <p id='ValidTradeStatus'>VALID</p>}</p>
+        { submitDisabled ? <p id='InvalidTradeStatus'>INVALID</p> : <p id='ValidTradeStatus'>VALID</p>}
       </div>
     </div>
   )

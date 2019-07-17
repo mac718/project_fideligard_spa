@@ -17,6 +17,8 @@ const initialState = {
   hasFormData: false,
   readOnly: false,
   submitDisabled: true,
+  transactionsDatesSortDirection: 'ascending',
+  transactionsSymbolSortDirection: 'ascending',
   error: null
 }
 
@@ -87,6 +89,16 @@ export function fideligard (state = initialState, action) {
       return {
         ...state,
         submitDisabled: false,
+      }
+    case Actions.CHANGE_TRANSACTIONS_DATES_SORT_DIRECTION:
+      return {
+        ...state,
+        transactionsDatesSortDirection: action.sortDirection,
+      }
+    case Actions.SORT_TRANSACTIONS_DATES:
+      return {
+        ...state,
+        transactions: action.transactions
       }
     case Actions.GET_DATA_REQUEST:
       return {

@@ -6,7 +6,7 @@ import {
 import { makeDateString } from '../Helpers/dateHelpers'
 import { retrievedStocks } from '../retrievedStocks'
 
-const Portfolio = ( { transactions, dateString, historicalStockData, date } ) => {
+const Portfolio = ( { transactions, dateString, historicalStockData, date, onClick } ) => {
 
   let filteredTransactions = getFilteredTransactions( transactions, date )
 
@@ -115,7 +115,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date } ) =>
       <table className='Portfolio-breakdown table table-striped'>
         <thead>
           <tr>
-            <th>Symbol</th>
+            <th>Symbol <span className='sort-arrow' onClick={ onClick }>&#x25B4;</span></th>
             <th>Quantity</th>
             <th>Cost Basis</th>
             <th>Current value</th>
