@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Transactions = ({ transactions, onClick }) => {
+const Transactions = ({ transactions, handleDatesSortArrowClick, handleSymbolsSortArrowClick, transactionsDatesSortDirection, transactionsSymbolsSortDirection }) => {
   const transactionRows = transactions.map( (transaction, i) => {
     return (
       <tr className='transaction-row' key={ i }>
@@ -18,8 +18,20 @@ const Transactions = ({ transactions, onClick }) => {
       <table className='table table-striped'>
         <thead>
           <tr>
-            <th>Date <span className='sort-arrow' onClick={ onClick }>&#x25B4;</span></th>
-            <th>Symbol <span className='sort-arrow' onClick={ onClick }>&#x25B4;</span></th>
+            <th>
+              Date 
+              { transactionsDatesSortDirection === 'ascending' ? 
+                <span className='sort-arrow' onClick={ handleDatesSortArrowClick }>&#x25B4;</span> :
+                <span className='sort-arrow' onClick={ handleDatesSortArrowClick }>&#x25BE;</span>
+              }
+            </th>
+            <th>
+              Symbol 
+              { transactionsSymbolsSortDirection === 'ascending' ?
+                <span className='sort-arrow' onClick={ handleSymbolsSortArrowClick }>&#x25B4;</span> :
+                <span className='sort-arrow' onClick={ handleSymbolsSortArrowClick }>&#x25BE;</span>
+              }
+            </th>
             <th>Type</th>
             <th>Quantity</th>  
             <th>Price</th>

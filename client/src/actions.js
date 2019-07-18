@@ -18,6 +18,7 @@ export const CLEAR_TRADE_FORM = 'CLEAR_TRADE_FORM'
 export const INVALID_TRADE =' INVALID_TRADE'
 export const VALID_TRADE = 'VALID_TRADE'
 export const CHANGE_TRANSACTIONS_DATES_SORT_DIRECTION = 'CHANGE_TRANSACTIONS_DATES_SORT_DIRECTION'
+export const CHANGE_TRANSACTIONS_SYMBOLS_SORT_DIRECTION = 'CHANGE_TRANSACTIONS_SYMBOLS_SORT_DIRECTION'
 export const SORT_TRANSACTIONS_DATES = 'SORT_TRANSACTIONS_DATES'
 
 export function getDataRequest() {
@@ -119,9 +120,16 @@ export function validTrade() {
   }
 }
 
-export function changeTransactionsDatesSortDirection(sortDirection) {
+export function changeTransactionsDatesSortDirection( sortDirection ) {
   return {
     type: CHANGE_TRANSACTIONS_DATES_SORT_DIRECTION,
+    sortDirection,
+  }
+}
+
+export function changeTransactionsSymbolsSortDirection( sortDirection ) {
+  return {
+    type: CHANGE_TRANSACTIONS_SYMBOLS_SORT_DIRECTION,
     sortDirection,
   }
 }
@@ -213,5 +221,30 @@ export function handleTransactionsDatesSort() {
     console.log(sortedTransactions)
     Promise.resolve(dispatch(sortTransactionsDates( sortedTransactions )))
     .then(dispatch(changeTransactionsDatesSortDirection( sortDirection )))
+  }
+}
+
+export function handleTransactionsSymbolsSort() {
+  return (dispatch, getState) => {
+    let state = getState()
+    let transactions = state.transactions
+    let sortDirection = state.transactionsSymbolsSortDirection
+    let sortedTransactions;
+
+    if ( sortDirection === 'ascending' ) {
+      sortedTransactions = transactions.sort( (a, b) => {
+        return a.Symbol - b.Symbol
+      } )
+    } else {
+      sortedTransactions = transactions.sort( (a, b) => {
+        return b.Symbol - a.Symbol
+      } )
+    }
+
+    sortDirection === 'ascending' ? sortDirection = 'descending' : sortDirection = 'ascending'
+
+    console.log(sortedTransactions)
+    Promise.resolve( dispatch( sortTransactionsDates( sortedTransactions ) ) )
+    .then( dispatch( changeTransactionsSymbolsSortDirection( sortDirection ) ) )
   }
 }

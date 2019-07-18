@@ -1,13 +1,21 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import Transactions from '../components/Transactions'
-import { handleTransactionsDatesSort } from '../actions'
+import { handleTransactionsDatesSort, handleTransactionsSymbolsSort } from '../actions'
 
 class TransactionsContainer extends Component {
   render() {
-    const { transactions, handleSortArrowClick, transactionsDatesSortDirection } = this.props
+    const { transactions, handleDatesSortArrowClick, 
+            transactionsDatesSortDirection, handleSymbolsSortArrowClick,
+            transactionsSymbolsSortDirection } = this.props
     return (
-      <Transactions transactions={ transactions } onClick={ handleSortArrowClick } />
+      <Transactions 
+        transactions={ transactions } 
+        handleDatesSortArrowClick={ handleDatesSortArrowClick } 
+        handleSymbolsSortArrowClick={ handleSymbolsSortArrowClick }
+        transactionsDatesSortDirection={ transactionsDatesSortDirection }
+        transactionsSymbolsSortDirection={ transactionsSymbolsSortDirection }
+      />
     )
   }
 }
@@ -15,14 +23,19 @@ class TransactionsContainer extends Component {
 const mapStateToProps = state => {
   return {
     transactions: state.transactions,
-    transactionsDatesSortDirection: state.transactionsDatesSortDirection
+    transactionsDatesSortDirection: state.transactionsDatesSortDirection,
+    transactionsSymbolsSortDirection: state.transactionsSymbolsSortDirection,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleSortArrowClick: () => {
-      dispatch(handleTransactionsDatesSort())
+    handleDatesSortArrowClick: () => {
+      dispatch( handleTransactionsDatesSort() )
+    },
+
+    handleSymbolsSortArrowClick: () => {
+      dispatch( handleTransactionsSymbolsSort() )
     }
   }
 }
