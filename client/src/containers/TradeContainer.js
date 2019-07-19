@@ -9,7 +9,8 @@ import {
         tradeValidations,
         setHasFormData,
         updateTransactions,
-        resetFormValues
+        resetFormValues,
+        invalidTrade
       } from '../actions'
 import { retrievedStocks } from '../retrievedStocks'
 import serialize from 'form-serialize'
@@ -109,6 +110,7 @@ const mapDispatchToProps = dispatch => {
     dispatch(updateTransactions(tradeInfo))
     //dispatch(updatePortfolio(tradeInfo))
     dispatch(resetFormValues())
+    dispatch(invalidTrade())
     },
   }
 }

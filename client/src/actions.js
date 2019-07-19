@@ -233,11 +233,11 @@ export function handleTransactionsSymbolsSort() {
 
     if ( sortDirection === 'ascending' ) {
       sortedTransactions = transactions.sort( (a, b) => {
-        return a.Symbol - b.Symbol
+        return a.Symbol > b.Symbol
       } )
     } else {
       sortedTransactions = transactions.sort( (a, b) => {
-        return b.Symbol - a.Symbol
+        return a.Symbol < b.Symbol
       } )
     }
 
