@@ -10,7 +10,8 @@ import {
         setHasFormData,
         updateTransactions,
         resetFormValues,
-        invalidTrade
+        invalidTrade,
+        updateQuantity
       } from '../actions'
 import { retrievedStocks } from '../retrievedStocks'
 import serialize from 'form-serialize'
@@ -64,8 +65,9 @@ const mapDispatchToProps = dispatch => {
       let tradeInfo = serialize( form, { hash: true } )
 
       //dispatch(tradeValidations(tradeInfo))
-      Promise.resolve(dispatch(updateCost(quantity))).
-      then(dispatch(tradeValidations(tradeInfo)))
+      Promise.resolve( dispatch( updateQuantity(quantity) ))
+      .then( dispatch( updateCost(quantity) )).
+      then( dispatch( tradeValidations(tradeInfo) ))
     },
 
     handleSymbolChange: (e) => {
@@ -111,6 +113,7 @@ const mapDispatchToProps = dispatch => {
     //dispatch(updatePortfolio(tradeInfo))
     dispatch(resetFormValues())
     dispatch(invalidTrade())
+    form.reset()
     },
   }
 }

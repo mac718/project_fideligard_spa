@@ -4,7 +4,7 @@ export function getFilteredTransactions( transactions, date ) {
   let fliteredTransactions = transactions.filter(transaction => {
     console.log('transaction_date ' + transaction.Date)
     console.log('parsed ' + Date.parse(transaction.Date))
-    let transactionDate = new Date(Date.parse(transaction.Date) + 86400000)  //not cooperating
+    let transactionDate = new Date(Date.parse(transaction.Date))  //not cooperating
     transactionDate = makeUTCDate(transactionDate)
     console.log('transactionDate ' + transactionDate)
     console.log('date ' + date)

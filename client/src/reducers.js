@@ -8,6 +8,7 @@ const initialState = {
   selectedStock: {},
   currentTradeCost: 0,
   currentTradeSymbol: '',
+  currentTradeQuantity: 0,
   currentTradePrice: 0,
   validSymbol: true,
   cashAvailable: 1000.00,
@@ -38,6 +39,11 @@ export function fideligard (state = initialState, action) {
         dateString: makeDateString(state.date),
         readOnly: true
       }
+    case Actions.UPDATE_QUANTITY:
+      return {
+        ...state,
+        currentTradeQuantity: action.quantity
+      }
     case Actions.UPDATE_COST:
       return {
         ...state,
@@ -63,7 +69,8 @@ export function fideligard (state = initialState, action) {
         selectedStock: {...state.selectedStock, symbol: ''},
         currentTradeSymbol: '',
         currentTradePrice: '',
-        currentTradeCost: 0 
+        currentTradeCost: 0,
+        currentTradeQuantity: '' 
       }
     case Actions.UPDATE_CASH_AVAILABLE:
       return {

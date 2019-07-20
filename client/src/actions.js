@@ -7,6 +7,7 @@ export const GET_DATA_FAILURE = 'GET_DATA_FAILURE';
 export const ON_DATE_WIDGET_CHANGE = 'ON_DATE_WIDGET_CHANGE';
 export const ON_TRADE_CLICK = 'ON_TRADE_CLICK';
 export const UPDATE_COST = 'UPDATE_COST';
+export const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
 export const ON_VALID_INPUT ='ON_VALID_INPUT';
 export const ON_INVALID_INPUT ='ON_INVALID_INPUT'
 export const RESET_FORM_VALUES = 'RESET_FORM_VALUES'
@@ -52,6 +53,13 @@ export function onTradeClick(selectedStock) {
   return {
     type: ON_TRADE_CLICK,
     selectedStock
+  }
+}
+
+export function updateQuantity(quantity) {
+  return {
+    type: UPDATE_QUANTITY,
+    quantity
   }
 }
 
@@ -179,7 +187,9 @@ export function tradeValidations(tradeInfo) {
 
     //console.log('filtered transactions ' + filteredTransactions)
     if (buyOrSell === '/Sell') {
-      if ( filteredTransactions.length > 0 ) {  
+      if ( tradeInfo.Quantity === '' || tradeInfo.Quantity <= 0 ) {
+        dispatch( invalidTrade() )
+      } else if ( filteredTransactions.length > 0 ) {  
         numberOfShares = getNumberOfShares( filteredTransactions, symbol );
         if ( tradeInfo.Quantity > numberOfShares) {
           dispatch( invalidTrade() )
@@ -190,9 +200,11 @@ export function tradeValidations(tradeInfo) {
         dispatch( invalidTrade() )
       }
     } else if (buyOrSell === '/Buy') {
-      if ( state.cashAvailable >= tradeInfo.Cost )
+      if ( tradeInfo.Quantity === '' || tradeInfo.Quantity <= 0 ) {
+        dispatch( invalidTrade() )
+      } else if ( state.cashAvailable >= tradeInfo.Cost ) {
         dispatch( validTrade() )
-      else {
+      }  else {
         dispatch( invalidTrade() )
       }
     }
