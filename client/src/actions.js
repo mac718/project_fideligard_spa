@@ -202,7 +202,8 @@ export function tradeValidations(tradeInfo) {
     } else if (buyOrSell === '/Buy') {
       if ( tradeInfo.Quantity === '' || tradeInfo.Quantity <= 0 ) {
         dispatch( invalidTrade() )
-      } else if ( state.cashAvailable >= tradeInfo.Cost ) {
+      } else if ( state.cashAvailable >= state.currentTradeCost ) {
+        console.log('Cost & ' + tradeInfo.Quantity)
         dispatch( validTrade() )
       }  else {
         dispatch( invalidTrade() )
