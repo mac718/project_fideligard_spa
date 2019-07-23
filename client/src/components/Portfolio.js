@@ -51,8 +51,14 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, handl
      // let stockQuantities = transactions.map( transaction => { return parseInt(transaction.Quantity) })
       let stockQuantities = transactions.map( transaction => { return parseInt(transaction.Quantity) })
       //not working
+      let reducedQuantities;
 
-      return stockQuantities
+      if(stockQuantities.length > 0){
+        reducedQuantities = stockQuantities.reduce(reducer)
+      } else {
+        reducedQuantities = null
+      }
+      return reducedQuantities
     })
 
     stockSummaries = retrievedStocks.map( ( symbol, i ) => {
@@ -60,7 +66,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, handl
       //console.log(historicalStockData[i])
       let currentPrice = historicalStockData[i].dataset_data.data.filter( entry => { return entry[0] === dateString })[0][1]
       //console.log(costBasis.symbol)
-      if ( stockQuantities[i] != 0){
+      if ( stockQuantities[i] != null){
         return (
           <tr key={ i } >
             <td id={`${symbol}-Portfolio`}>{ symbol }</td>
