@@ -104,6 +104,10 @@ const mapDispatchToProps = dispatch => {
         tradeInfo.Cost = tradeInfo.Cost * -1
       }
 
+      if (tradeInfo.TradeDropdown === '/Sell') {
+        tradeInfo.Quantity = tradeInfo.Quantity * -1
+      }
+
       //console.log(tradeInfo)
 
       //dispatch(tradeValidations(tradeInfo))

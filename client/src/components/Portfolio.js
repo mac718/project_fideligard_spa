@@ -48,9 +48,8 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, handl
     let stockQuantities = retrievedStocks.map( symbol => {
       let transactions = filteredTransactions.filter( transaction => { return transaction.Symbol === symbol})
 
-     // let stockQuantities = transactions.map( transaction => { return parseInt(transaction.Quantity) })
       let stockQuantities = transactions.map( transaction => { return parseInt(transaction.Quantity) })
-      //not working
+    
       let reducedQuantities;
 
       if(stockQuantities.length > 0){
@@ -58,6 +57,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, handl
       } else {
         reducedQuantities = null
       }
+      
       return reducedQuantities
     })
 
@@ -71,10 +71,10 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, handl
           <tr key={ i } >
             <td id={`${symbol}-Portfolio`}>{ symbol }</td>
             <td>{ stockQuantities[i] }</td>
-            <td id={ `costBasis-${symbol}` }>{ -individualStocksCostBasis[i].symbol }</td>
-            <td id={ `currentValue-${symbol}` }>{ currentStockValues[i] }</td>
-            <td>{ (currentStockValues[i] - (-individualStocksCostBasis[i].symbol)).toFixed(2) }</td>
-            <td>{ currentPrice }</td>
+            <td id={ `costBasis-${symbol}` }>${ -individualStocksCostBasis[i].symbol.toFixed(2) }</td>
+            <td id={ `currentValue-${symbol}` }>${ currentStockValues[i] }</td>
+            <td>${ (currentStockValues[i] - (-individualStocksCostBasis[i].symbol)).toFixed(2) }</td>
+            <td>${ currentPrice }</td>
             <td></td>
             <td></td>
             <td><Link to='/Trade' onClick={ handleTradeClick(symbol) }>trade</Link></td>
