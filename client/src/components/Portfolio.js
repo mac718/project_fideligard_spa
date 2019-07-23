@@ -5,8 +5,9 @@ import {
 } from '../Helpers/calculateCurrentShareValue'
 import { makeDateString } from '../Helpers/dateHelpers'
 import { retrievedStocks } from '../retrievedStocks'
+import { Link } from 'react-router-dom'
 
-const Portfolio = ( { transactions, dateString, historicalStockData, date, onClick } ) => {
+const Portfolio = ( { transactions, dateString, historicalStockData, date, handleSortArrowClick, handleTradeClick } ) => {
 
   let filteredTransactions = getFilteredTransactions( transactions, date )
 
@@ -47,7 +48,9 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, onCli
     let stockQuantities = retrievedStocks.map( symbol => {
       let transactions = filteredTransactions.filter( transaction => { return transaction.Symbol === symbol})
 
-      let stockQuantities = transactions.map( transaction => { return transaction.Quantity })
+     // let stockQuantities = transactions.map( transaction => { return parseInt(transaction.Quantity) })
+      let stockQuantities = transactions.map( transaction => { return parseInt(transaction.Quantity) })
+      //not working
 
       return stockQuantities
     })
@@ -60,7 +63,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, onCli
       if ( stockQuantities[i] != 0){
         return (
           <tr key={ i } >
-            <td>{ symbol }</td>
+            <td id={`${symbol}-Portfolio`}>{ symbol }</td>
             <td>{ stockQuantities[i] }</td>
             <td id={ `costBasis-${symbol}` }>{ -individualStocksCostBasis[i].symbol }</td>
             <td id={ `currentValue-${symbol}` }>{ currentStockValues[i] }</td>
@@ -68,7 +71,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, onCli
             <td>{ currentPrice }</td>
             <td></td>
             <td></td>
-            <td></td>
+            <td><Link to='/Trade' onClick={ handleTradeClick(symbol) }>trade</Link></td>
           </tr>
         )
       } else {
@@ -115,7 +118,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, onCli
       <table className='Portfolio-breakdown table table-striped'>
         <thead>
           <tr>
-            <th>Symbol <span className='sort-arrow' onClick={ onClick }>&#x25B4;</span></th>
+            <th>Symbol <span className='sort-arrow' onClick={ handleSortArrowClick }>&#x25B4;</span></th>
             <th>Quantity</th>
             <th>Cost Basis</th>
             <th>Current value</th>
@@ -124,6 +127,7 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, onCli
             <th>1d</th>
             <th>7d</th>
             <th>30d</th>
+            <th>Trade?</th>
           </tr>
         </thead>
         <tbody>

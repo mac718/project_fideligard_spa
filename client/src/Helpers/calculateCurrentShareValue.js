@@ -25,7 +25,7 @@ export function getNumberOfShares( transactions, symbol ) {
   }
 
   let transactionQuantities = stockTransactions.map( transaction => {
-    return parseFloat(transaction.Quantity)
+    return parseInt(transaction.Quantity)
   })
 
   let reducer = (accumulator, currentValue) => accumulator + currentValue;
