@@ -74,7 +74,8 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, handl
             <td id={ `costBasis-${symbol}` }>${ -individualStocksCostBasis[i].symbol.toFixed(2) }</td>
             <td id={ `currentValue-${symbol}` }>${ currentStockValues[i] }</td>
             <td>${ (currentStockValues[i] - (-individualStocksCostBasis[i].symbol)).toFixed(2) }</td>
-            <td>${ currentPrice }</td>
+            <td>${ currentPrice.toFixed(2) }</td>
+            <td></td>
             <td></td>
             <td></td>
             <td><Link to='/Trade' onClick={ handleTradeClick(symbol) }>trade</Link></td>
