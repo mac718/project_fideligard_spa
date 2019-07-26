@@ -244,13 +244,16 @@ export function handleTransactionsSymbolsSort() {
     let sortDirection = state.transactionsSymbolsSortDirection
     let sortedTransactions;
 
+
     if ( sortDirection === 'ascending' ) {
       sortedTransactions = transactions.sort( (a, b) => {
-        return a.Symbol > b.Symbol
+        //console.log(a.Symbol)
+        return a.Symbol > b.Symbol ? 1 : -1
       } )
     } else {
       sortedTransactions = transactions.sort( (a, b) => {
-        return a.Symbol < b.Symbol
+        //console.log(b.Symbol)
+        return a.Symbol < b.Symbol ? 1 : -1
       } )
     }
 
