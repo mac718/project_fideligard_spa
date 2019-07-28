@@ -10,7 +10,7 @@ class DateWidgetContainer extends Component {
   render() {
     const {date, onChange} = this.props
     //console.log(date)
-    return <DateWidget onChange={onChange} date={date} />
+    return <DateWidget onChange={ onChange } date={ date } />
   }
 }
 
@@ -35,7 +35,9 @@ const mapDispatchToProps = dispatch => {
       // //let dateString = date.toLocaleString('en-GB', {timezone: 'GMT'})
       // console.log('dateString2 ' + date)
 
-      setTimeout(()=>{dispatch(onDateWidgetChange(date2))}, 500)
+      dispatch(onDateWidgetChange(date2))
+
+      //setTimeout(()=>{dispatch(onDateWidgetChange(date2))}, 500)
     }, 
 
     getHistoricalStockData: () => {

@@ -20,6 +20,7 @@ const initialState = {
   submitDisabled: true,
   transactionsDatesSortDirection: 'ascending',
   transactionsSymbolsSortDirection: 'ascending',
+  filterInput: '',
   error: null
 }
 
@@ -111,6 +112,11 @@ export function fideligard (state = initialState, action) {
       return {
         ...state,
         transactions: action.transactions
+      }
+    case Actions.SET_FILTER_INPUT:
+      return {
+        ...state,
+        filterInput: action.input
       }
     case Actions.GET_DATA_REQUEST:
       return {

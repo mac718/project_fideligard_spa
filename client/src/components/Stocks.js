@@ -2,9 +2,10 @@ import React from 'react';
 import { retrievedStocks } from '../retrievedStocks'
 import { getCurrentDateEntryIndex } from '../Helpers/dateHelpers';
 import { Link } from 'react-router-dom'
+import FilterField from './FilterField'
 
-const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
-  console.log('stock_date ' + date)
+const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick, filterInput, handleFilter } ) => {
+  console.log('stockData ' + stockData)
 
   const data = stockData.map( stock => {
     
@@ -22,8 +23,11 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
   })
 
   const stockDivs = data.map(( entry, i ) => {
+    console.log(retrievedStocks[i])
+    console.log('fart ' + filterInput)
 
     if ( entry[0] ) { 
+      if(filterInput == '' || retrievedStocks[i].includes(filterInput)){
       return <tr key={ i }>
         <td id={retrievedStocks[i]}>{ retrievedStocks[i] }</td>
         <td id={`${retrievedStocks[i]}-price`}>{ '$' + entry[0].toFixed(2) }</td>
@@ -35,6 +39,7 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
                                                '+$' + entry[3].toFixed(2) : '-$' + -entry[3].toFixed(2) }</td>
         <td><Link to='/Trade' onClick={ onClick }>trade</Link></td>
       </tr>
+    }
     } else {
       return <tr key={ i }>
         <td></td>
@@ -45,9 +50,12 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick } ) => {
       </tr>
     }
   })
+
   return (
     <div className='Stocks col-4 table-responsive'>
       <h1>Stocks</h1>
+      <FilterField onChange={ handleFilter }/>
+      
       <table className='table table-striped'>
         <thead>
           <tr>

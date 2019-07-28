@@ -49,6 +49,10 @@ code {
   width: auto;
 }
 
+.Stocks h1 {
+  display: inline-block;
+}
+
 .ControlPanel {
   border: 1px solid;
   margin-top: 20px;
@@ -96,4 +100,14 @@ code {
 
 #InvalidTradeStatus {
   color: red;
+}
+
+.FilterField {
+  display: inline-block;
+  float: right;
+  margin-top: 7px;
+}
+
+.FilterField input {
+  max-width: 150px;
 }

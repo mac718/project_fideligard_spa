@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Stocks from '../components/Stocks';
 import {cleanUp} from '../Helpers/ApiCleanup';
-import {onTradeClick, onValidInput} from '../actions';
+import {onTradeClick, onValidInput, setFilterInput} from '../actions';
 
 
 class StocksContainer extends Component {
   
   render() {
-    const {stockData, date, isFetchingHistoricalData, onClick} = this.props
+    const {stockData, date, isFetchingHistoricalData, onClick, handleFilter, filterInput} = this.props
     let cleanStockData = stockData.map(stock => {
       return cleanUp(stock.dataset_data.data)
     })
@@ -17,6 +17,8 @@ class StocksContainer extends Component {
               date={date} 
               isFetchingHistoricalData={isFetchingHistoricalData} 
               onClick={onClick}
+              filterInput={filterInput}
+              handleFilter={handleFilter}
             />
   }
 }
@@ -26,10 +28,11 @@ const mapStateToProps = state => {
     stockData: state.historicalStockData,
     date: state.date,
     isFetchingHistoricalData: state.isFetchingHistoricalData,
+    filterInput: state.filterInput
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = ( dispatch, ownProps ) => {
   return {
     onClick: (e) => {
       let tradeInfo = {}
@@ -40,6 +43,12 @@ const mapDispatchToProps = dispatch => {
 
       dispatch(onTradeClick(tradeInfo))
       dispatch(onValidInput(tradeInfo))
+    },
+
+    handleFilter: (e) => {
+      let input = e.target.value
+      console.log('filterInput ' + input)
+      dispatch(setFilterInput(input))
     }
   }
 }

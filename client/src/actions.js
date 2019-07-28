@@ -21,6 +21,7 @@ export const VALID_TRADE = 'VALID_TRADE'
 export const CHANGE_TRANSACTIONS_DATES_SORT_DIRECTION = 'CHANGE_TRANSACTIONS_DATES_SORT_DIRECTION'
 export const CHANGE_TRANSACTIONS_SYMBOLS_SORT_DIRECTION = 'CHANGE_TRANSACTIONS_SYMBOLS_SORT_DIRECTION'
 export const SORT_TRANSACTIONS_DATES = 'SORT_TRANSACTIONS_DATES'
+export const SET_FILTER_INPUT = 'SET_FILTER_INPUT'
 
 export function getDataRequest() {
   return {
@@ -146,6 +147,13 @@ export function sortTransactionsDates( transactions ) {
   return {
     type: SORT_TRANSACTIONS_DATES,
     transactions
+  }
+}
+
+export function setFilterInput( input ) {
+  return {
+    type: SET_FILTER_INPUT,
+    input
   }
 }
 
