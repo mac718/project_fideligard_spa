@@ -247,12 +247,10 @@ export function handleTransactionsSymbolsSort() {
 
     if ( sortDirection === 'ascending' ) {
       sortedTransactions = transactions.sort( (a, b) => {
-        //console.log(a.Symbol)
         return a.Symbol > b.Symbol ? 1 : -1
       } )
     } else {
       sortedTransactions = transactions.sort( (a, b) => {
-        //console.log(b.Symbol)
         return a.Symbol < b.Symbol ? 1 : -1
       } )
     }
