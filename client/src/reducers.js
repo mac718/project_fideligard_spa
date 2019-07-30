@@ -2,7 +2,7 @@ import * as Actions from './actions';
 import { makeDateString, makeUTCDate } from './Helpers/dateHelpers'
 
 const initialState = {
-  date: makeUTCDate(1483315200000), //new Date(1483315200000),
+  date: makeUTCDate(1483315200000),
   dateString: '',
   historicalStockData: [],
   selectedStock: {},
@@ -21,6 +21,8 @@ const initialState = {
   transactionsDatesSortDirection: 'ascending',
   transactionsSymbolsSortDirection: 'ascending',
   filterInput: '',
+  stocksFilterInput: '',
+  transactionsFilterInput: '',
   error: null
 }
 
@@ -117,6 +119,11 @@ export function fideligard (state = initialState, action) {
       return {
         ...state,
         filterInput: action.input
+      }
+    case Actions.SET_TRANSACTIONS_FILTER_INPUT:
+      return {
+        ...state,
+        transactionsFilterInput: action.input
       }
     case Actions.GET_DATA_REQUEST:
       return {

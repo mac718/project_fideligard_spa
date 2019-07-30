@@ -7,9 +7,9 @@ const Transactions = ({ transactions,
                         transactionsDatesSortDirection, 
                         transactionsSymbolsSortDirection, 
                         handleFilter, 
-                        filterInput }) => {
+                        transactionsFilterInput }) => {
   const transactionRows = transactions.map( (transaction, i) => {
-    if (filterInput === '' || transaction.Symbol.includes(filterInput) || transaction.Date.includes(filterInput)) {
+    if (transactionsFilterInput === '' || transaction.Symbol.includes(transactionsFilterInput) || transaction.Date.includes(transactionsFilterInput)) {
       return (
         <tr className='transaction-row' key={ i }>
           <td>{ transaction.Date }</td>
