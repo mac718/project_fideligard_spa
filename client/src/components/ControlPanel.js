@@ -1,5 +1,4 @@
 import React from 'react'
-import MainDropdownContainer from '../containers/MainDropdownContainer'
 
 const ControlPanel = ({children, onChange}) => {
   return (

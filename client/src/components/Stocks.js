@@ -4,8 +4,13 @@ import { getCurrentDateEntryIndex } from '../Helpers/dateHelpers';
 import { Link } from 'react-router-dom'
 import FilterField from './FilterField'
 
-const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick, filterInput, handleFilter } ) => {
-  console.log('stockData ' + stockData)
+const Stocks = ( { stockData, 
+                   date, 
+                   isFetchingHistoricalData, 
+                   onClick, 
+                   filterInput, 
+                   handleFilter } ) => {
+  
 
   const data = stockData.map( stock => {
     
@@ -25,7 +30,7 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick, filterInp
   const stockDivs = data.map(( entry, i ) => {
 
     if ( entry[0] ) { 
-      if(filterInput == '' || retrievedStocks[i].includes(filterInput)){
+      if(filterInput === '' || retrievedStocks[i].includes(filterInput)){
         return <tr key={ i }>
           <td id={retrievedStocks[i]}>{ retrievedStocks[i] }</td>
           <td id={`${retrievedStocks[i]}-price`}>{ '$' + entry[0].toFixed(2) }</td>

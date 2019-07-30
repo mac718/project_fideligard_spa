@@ -11,7 +11,7 @@ import {
         updateTransactions,
         resetFormValues,
         invalidTrade,
-        updateQuantity
+        //updateQuantity
       } from '../actions'
 import { retrievedStocks } from '../retrievedStocks'
 import serialize from 'form-serialize'
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => {
     
         dispatch(onValidInput(tradeInfo))
         dispatch(setHasFormData())
-      } else if ( symbol == '' ) {
+      } else if ( symbol === '' ) {
         
         let tradeInfo = { symbol: symbol, price: '' }
         dispatch(onValidInput(tradeInfo))

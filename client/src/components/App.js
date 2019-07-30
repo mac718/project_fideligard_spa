@@ -4,7 +4,6 @@ import {
   //BrowserRouter as Router,
   Route,
   Switch,
-  NavLinks,
   withRouter,
 } from 'react-router-dom'
 import DateWidgetContainer from '../containers/DateWidgetContainer'

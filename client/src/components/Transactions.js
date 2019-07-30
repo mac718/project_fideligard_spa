@@ -1,16 +1,22 @@
 import React from 'react'
 import FilterField from './FilterField'
 
-const Transactions = ({ transactions, handleDatesSortArrowClick, handleSymbolsSortArrowClick, transactionsDatesSortDirection, transactionsSymbolsSortDirection, handleFilter, filterInput }) => {
+const Transactions = ({ transactions, 
+                        handleDatesSortArrowClick, 
+                        handleSymbolsSortArrowClick, 
+                        transactionsDatesSortDirection, 
+                        transactionsSymbolsSortDirection, 
+                        handleFilter, 
+                        filterInput }) => {
   const transactionRows = transactions.map( (transaction, i) => {
-    if (filterInput == '' || transaction.Symbol.includes(filterInput) || transaction.Date.includes(filterInput)) {
+    if (filterInput === '' || transaction.Symbol.includes(filterInput) || transaction.Date.includes(filterInput)) {
       return (
         <tr className='transaction-row' key={ i }>
           <td>{ transaction.Date }</td>
           <td>{ transaction.Symbol }</td>
           <td>{ transaction.TradeDropdown.slice(1) }</td>
           <td>{ transaction.Quantity }</td>
-          <td>{ transaction.Price }</td>
+          <td>${ transaction.Price }</td>
         </tr>
       )
     }

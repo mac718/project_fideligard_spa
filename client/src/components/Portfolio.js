@@ -7,7 +7,12 @@ import { makeDateString } from '../Helpers/dateHelpers'
 import { retrievedStocks } from '../retrievedStocks'
 import { Link } from 'react-router-dom'
 
-const Portfolio = ( { transactions, dateString, historicalStockData, date, handleSortArrowClick, handleTradeClick } ) => {
+const Portfolio = ( { transactions, 
+                      dateString, 
+                      historicalStockData, 
+                      date, 
+                      handleSortArrowClick, 
+                      handleTradeClick } ) => {
 
   let filteredTransactions = getFilteredTransactions( transactions, date )
 
@@ -86,11 +91,11 @@ const Portfolio = ( { transactions, dateString, historicalStockData, date, handl
       }
     })
 
-    stockSummaries = stockSummaries.filter( summary => { return summary != '' })
+    stockSummaries = stockSummaries.filter( summary => { return summary !== '' })
 
     console.log('individualStocksCostBasis ' + individualStocksCostBasis)
 
-    reducedValues = currentStockValues.filter(value => { return value != null }).reduce(reducer)
+    reducedValues = currentStockValues.filter(value => { return value !== null }).reduce(reducer)
     
     console.log('reducedValues ' + reducedValues)
 
