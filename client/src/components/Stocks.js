@@ -23,23 +23,21 @@ const Stocks = ( { stockData, date, isFetchingHistoricalData, onClick, filterInp
   })
 
   const stockDivs = data.map(( entry, i ) => {
-    console.log(retrievedStocks[i])
-    console.log('fart ' + filterInput)
 
     if ( entry[0] ) { 
       if(filterInput == '' || retrievedStocks[i].includes(filterInput)){
-      return <tr key={ i }>
-        <td id={retrievedStocks[i]}>{ retrievedStocks[i] }</td>
-        <td id={`${retrievedStocks[i]}-price`}>{ '$' + entry[0].toFixed(2) }</td>
-        <td id={`${retrievedStocks[i]}-1d`}>{ entry[1].toFixed(2) > 0 ? 
-                                              '+$' + entry[1].toFixed(2) : '-$' + -entry[1].toFixed(2) }</td>
-        <td id={`${retrievedStocks[i]}-7d`}>{ entry[2].toFixed(2) > 0 ? 
-                                              '+$' + entry[2].toFixed(2) : '-$' + -entry[3].toFixed(2) }</td>
-        <td id={`${retrievedStocks[i]}-30d`}>{ entry[3].toFixed(2) > 0 ? 
-                                               '+$' + entry[3].toFixed(2) : '-$' + -entry[3].toFixed(2) }</td>
-        <td><Link to='/Trade' onClick={ onClick }>trade</Link></td>
-      </tr>
-    }
+        return <tr key={ i }>
+          <td id={retrievedStocks[i]}>{ retrievedStocks[i] }</td>
+          <td id={`${retrievedStocks[i]}-price`}>{ '$' + entry[0].toFixed(2) }</td>
+          <td id={`${retrievedStocks[i]}-1d`}>{ entry[1].toFixed(2) > 0 ? 
+                                                '+$' + entry[1].toFixed(2) : '-$' + -entry[1].toFixed(2) }</td>
+          <td id={`${retrievedStocks[i]}-7d`}>{ entry[2].toFixed(2) > 0 ? 
+                                                '+$' + entry[2].toFixed(2) : '-$' + -entry[3].toFixed(2) }</td>
+          <td id={`${retrievedStocks[i]}-30d`}>{ entry[3].toFixed(2) > 0 ? 
+                                                 '+$' + entry[3].toFixed(2) : '-$' + -entry[3].toFixed(2) }</td>
+          <td><Link to='/Trade' onClick={ onClick }>trade</Link></td>
+        </tr>
+      }
     } else {
       return <tr key={ i }>
         <td></td>

@@ -1,20 +1,24 @@
 import React from 'react'
+import FilterField from './FilterField'
 
-const Transactions = ({ transactions, handleDatesSortArrowClick, handleSymbolsSortArrowClick, transactionsDatesSortDirection, transactionsSymbolsSortDirection }) => {
+const Transactions = ({ transactions, handleDatesSortArrowClick, handleSymbolsSortArrowClick, transactionsDatesSortDirection, transactionsSymbolsSortDirection, handleFilter, filterInput }) => {
   const transactionRows = transactions.map( (transaction, i) => {
-    return (
-      <tr className='transaction-row' key={ i }>
-        <td>{ transaction.Date }</td>
-        <td>{ transaction.Symbol }</td>
-        <td>{ transaction.TradeDropdown.slice(1) }</td>
-        <td>{ transaction.Quantity }</td>
-        <td>{ transaction.Price }</td>
-      </tr>
-    )
+    if (filterInput == '' || transaction.Symbol.includes(filterInput) || transaction.Date.includes(filterInput)) {
+      return (
+        <tr className='transaction-row' key={ i }>
+          <td>{ transaction.Date }</td>
+          <td>{ transaction.Symbol }</td>
+          <td>{ transaction.TradeDropdown.slice(1) }</td>
+          <td>{ transaction.Quantity }</td>
+          <td>{ transaction.Price }</td>
+        </tr>
+      )
+    }
   })
   return (
     <div className='Transactions col-8'>
       <h1>Transactions</h1>
+      <FilterField onChange={ handleFilter }/>
       <table className='table table-striped'>
         <thead>
           <tr>
