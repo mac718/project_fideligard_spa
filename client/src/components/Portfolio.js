@@ -104,7 +104,7 @@ const Portfolio = ( { transactions,
 
   
   return (
-    <div className='Portfolio'>
+    <div className='Portfolio table-responsive'>
       <h1>Portfolio</h1>
       <table className='Portfolio-summary table table-striped'>
         <thead>
