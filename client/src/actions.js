@@ -1,4 +1,4 @@
-import { getNumberOfShares, getFilteredTransactions } from './Helpers/calculateCurrentShareValue'
+import { getNumberOfShares, getFilteredTransactions } from './Helpers/PortfolioHelpers'
 
 export const GET_DATA_REQUEST = 'GET_DATA_REQUEST';
 export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';

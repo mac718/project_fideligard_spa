@@ -2,7 +2,7 @@ import React from 'react'
 import { 
   calculateCurrentShareValue, 
   getFilteredTransactions 
-} from '../Helpers/calculateCurrentShareValue'
+} from '../Helpers/PortfolioHelpers'
 import { makeDateString } from '../Helpers/dateHelpers'
 import { retrievedStocks } from '../retrievedStocks'
 import { Link } from 'react-router-dom'
@@ -86,8 +86,6 @@ const Portfolio = ( { transactions,
             <td><Link to='/Trade' onClick={ handleTradeClick(symbol) }>trade</Link></td>
           </tr>
         )
-      } else {
-        return 0
       }
     })
 
@@ -124,6 +122,9 @@ const Portfolio = ( { transactions,
             <td>${ allStocksCostBasis.toFixed(2) }</td>
             <td>${ parseFloat(reducedValues).toFixed(2) }</td>
             <td>${ (reducedValues - allStocksCostBasis).toFixed(2) }</td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
