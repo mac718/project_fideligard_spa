@@ -22,7 +22,7 @@ const Transactions = ({ transactions,
     }
   })
   return (
-    <div className='Transactions col-8'>
+    <div className='Transactions'>
       <h1>Transactions</h1>
       <FilterField onChange={ handleFilter }/>
       <table className='table table-striped'>

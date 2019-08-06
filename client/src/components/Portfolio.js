@@ -80,9 +80,6 @@ const Portfolio = ( { transactions,
             <td id={ `currentValue-${symbol}` }>${ currentStockValues[i] }</td>
             <td>${ (currentStockValues[i] - (-individualStocksCostBasis[i].symbol)).toFixed(2) }</td>
             <td>${ currentPrice.toFixed(2) }</td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td><Link to='/Trade' onClick={ handleTradeClick(symbol) }>trade</Link></td>
           </tr>
         )
@@ -112,9 +109,6 @@ const Portfolio = ( { transactions,
             <th>Cost Basis</th>
             <th>Current Value</th>
             <th>Profit/Loss</th>
-            <th>td</th>  
-            <th>7d</th>
-            <th>30d</th>
           </tr>
         </thead>
         <tbody>
@@ -122,9 +116,6 @@ const Portfolio = ( { transactions,
             <td>${ allStocksCostBasis.toFixed(2) }</td>
             <td>${ parseFloat(reducedValues).toFixed(2) }</td>
             <td>${ (reducedValues - allStocksCostBasis).toFixed(2) }</td>
-            <td></td>
-            <td></td>
-            <td></td>
           </tr>
         </tbody>
       </table>
@@ -137,9 +128,6 @@ const Portfolio = ( { transactions,
             <th>Current value</th>
             <th>Profit/Loss</th>
             <th>Current Price</th>
-            <th>1d</th>
-            <th>7d</th>
-            <th>30d</th>
             <th>Trade?</th>
           </tr>
         </thead>
