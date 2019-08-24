@@ -1,5 +1,5 @@
 import React from 'react';
-import {widgetStartDate, endDate, dayLength} from '../dateMillisecondValues';
+import {JAN_1_2017, DEC_31_2017, dayLength} from '../dateMillisecondValues';
 
 
 const DateWidget = ({onChange, date}) => {
@@ -12,8 +12,8 @@ const DateWidget = ({onChange, date}) => {
           name='slider' 
           id='slider' 
           type='range' 
-          min={widgetStartDate}  
-          max={endDate} 
+          min={JAN_1_2017}  
+          max={DEC_31_2017} 
           step={dayLength} 
           onChange={onChange} 
         />

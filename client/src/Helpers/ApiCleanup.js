@@ -1,9 +1,9 @@
-import {dataStartDate, endDate, dayLength} from '../dateMillisecondValues';
+import {DEC_1_2016, DEC_31_2017, dayLength} from '../dateMillisecondValues';
 
 export function cleanUp(results) {
   let dates = []
 
-  for (let i = dataStartDate; i <= endDate; i += dayLength) {
+  for (let i = DEC_1_2016; i <= DEC_31_2017; i += dayLength) {
     let date = new Date(i)
     let year = `${date.getFullYear()}`;
     let month;
