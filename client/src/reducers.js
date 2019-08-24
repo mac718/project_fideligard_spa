@@ -33,7 +33,7 @@ export function fideligard (state = initialState, action) {
       console.log('dateWidget ' + action.date)
       return {
         ...state,
-        date: action.date
+        date: makeUTCDate(action.date)
       }
     case Actions.ON_TRADE_CLICK:
       return {

@@ -194,14 +194,10 @@ export function tradeValidations(tradeInfo) {
     let filteredTransactions = []
     let numberOfShares;
 
-    //console.log('state ' + JSON.stringify(state.transactions))
-    console.log('buyOrSell ' + buyOrSell)
-
     if ( state.transactions.length > 0) {
       filteredTransactions = getFilteredTransactions( state.transactions, state.date )
     }
 
-    //console.log('filtered transactions ' + filteredTransactions)
     if (buyOrSell === '/Sell') {
       if ( tradeInfo.Quantity === '' || tradeInfo.Quantity <= 0 ) {
         dispatch( invalidTrade() )
@@ -247,7 +243,6 @@ export function handleTransactionsDatesSort() {
 
     sortDirection === 'ascending' ? sortDirection = 'descending' : sortDirection = 'ascending'
 
-    console.log(sortedTransactions)
     Promise.resolve(dispatch(sortTransactionsDates( sortedTransactions )))
     .then(dispatch(changeTransactionsDatesSortDirection( sortDirection )))
   }
@@ -273,7 +268,6 @@ export function handleTransactionsSymbolsSort() {
 
     sortDirection === 'ascending' ? sortDirection = 'descending' : sortDirection = 'ascending'
 
-    console.log(sortedTransactions)
     Promise.resolve( dispatch( sortTransactionsDates( sortedTransactions ) ) )
     .then( dispatch( changeTransactionsSymbolsSortDirection( sortDirection ) ) )
   }

@@ -16,8 +16,6 @@ const Portfolio = ( { transactions,
 
   let filteredTransactions = getFilteredTransactions( transactions, date )
 
-  //console.log('filteredTransactions ' + JSON.stringify(filteredTransactions))
-
   let costs = filteredTransactions.map(transaction => {
     return -transaction.Cost
   })
@@ -33,7 +31,6 @@ const Portfolio = ( { transactions,
     allStocksCostBasis = costs.reduce(reducer)
 
     currentStockValues = retrievedStocks.map( (symbol, i) => {
-      //console.log('transactions ' + JSON.stringify(transactions))
       return calculateCurrentShareValue( symbol, filteredTransactions, date, historicalStockData, i )
     })
 
@@ -68,9 +65,9 @@ const Portfolio = ( { transactions,
 
     stockSummaries = retrievedStocks.map( ( symbol, i ) => {
       let dateString = makeDateString(date)
-      //console.log(historicalStockData[i])
+      
       let currentPrice = historicalStockData[i].dataset_data.data.filter( entry => { return entry[0] === dateString })[0][1]
-      //console.log(costBasis.symbol)
+      
       if ( stockQuantities[i] != null){
         return (
           <tr key={ i } >
@@ -80,9 +77,6 @@ const Portfolio = ( { transactions,
             <td id={ `currentValue-${symbol}` }>${ currentStockValues[i] }</td>
             <td>${ (currentStockValues[i] - (-individualStocksCostBasis[i].symbol)).toFixed(2) }</td>
             <td>${ currentPrice.toFixed(2) }</td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td><Link to='/Trade' onClick={ handleTradeClick(symbol) }>trade</Link></td>
           </tr>
         )
@@ -91,17 +85,8 @@ const Portfolio = ( { transactions,
 
     stockSummaries = stockSummaries.filter( summary => { return summary !== '' })
 
-    console.log('individualStocksCostBasis ' + individualStocksCostBasis)
-
     reducedValues = currentStockValues.filter(value => { return value !== null }).reduce(reducer)
-    
-    console.log('reducedValues ' + reducedValues)
-
   }
-
-  console.log( 'currentStockValues ' + currentStockValues)
-
-
   
   return (
     <div className='Portfolio table-responsive'>
@@ -112,9 +97,6 @@ const Portfolio = ( { transactions,
             <th>Cost Basis</th>
             <th>Current Value</th>
             <th>Profit/Loss</th>
-            <th>td</th>  
-            <th>7d</th>
-            <th>30d</th>
           </tr>
         </thead>
         <tbody>
@@ -137,9 +119,6 @@ const Portfolio = ( { transactions,
             <th>Current value</th>
             <th>Profit/Loss</th>
             <th>Current Price</th>
-            <th>1d</th>
-            <th>7d</th>
-            <th>30d</th>
             <th>Trade?</th>
           </tr>
         </thead>
