@@ -11,7 +11,6 @@ import {
         updateTransactions,
         resetFormValues,
         invalidTrade,
-        //updateQuantity
       } from '../actions'
 import { retrievedStocks } from '../retrievedStocks'
 import serialize from 'form-serialize'

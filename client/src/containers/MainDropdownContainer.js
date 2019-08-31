@@ -18,7 +18,6 @@ const mapDispatchToProps = dispatch => {
   return {
     onChange: (e) => {
       console.log(e.target.value)
-      //console.log(history)
       history.push(`${e.target.value}`)
       dispatch(resetFormValues())
     }

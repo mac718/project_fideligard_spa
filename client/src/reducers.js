@@ -3,7 +3,7 @@ import { makeDateString, makeUTCDate } from './Helpers/dateHelpers'
 import { JAN_1_2017 } from './dateMillisecondValues'
 
 const initialState = {
-  date: makeUTCDate(JAN_1_2017), //1483315200000
+  date: new Date(JAN_1_2017),//makeUTCDate(JAN_1_2017), //1483315200000
   dateString: '',
   historicalStockData: [],
   selectedStock: {},
@@ -33,7 +33,7 @@ export function fideligard (state = initialState, action) {
       console.log('dateWidget ' + action.date)
       return {
         ...state,
-        date: makeUTCDate(action.date)
+        date: action.date//makeUTCDate(action.date)
       }
     case Actions.ON_TRADE_CLICK:
       return {
