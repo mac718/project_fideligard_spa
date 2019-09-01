@@ -31,7 +31,7 @@ const Stocks = ( { stockData,
 
     if ( entry[0] ) { 
       if(filterInput === '' || retrievedStocks[i].includes(filterInput)){
-        return <tr key={ i }>
+        return <tr key={ retrievedStocks[i] }>
           <td id={retrievedStocks[i]}>{ retrievedStocks[i] }</td>
           <td id={`${retrievedStocks[i]}-price`}>{ '$' + entry[0].toFixed(2) }</td>
           <td id={`${retrievedStocks[i]}-1d`}>{ entry[1].toFixed(2) > 0 ? 

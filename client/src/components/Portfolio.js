@@ -70,7 +70,7 @@ const Portfolio = ( { transactions,
       
       if ( stockQuantities[i] != null){
         return (
-          <tr key={ i } >
+          <tr key={ symbol } >
             <td id={`${symbol}-Portfolio`}>{ symbol }</td>
             <td>{ stockQuantities[i] }</td>
             <td id={ `costBasis-${symbol}` }>${ -individualStocksCostBasis[i].symbol.toFixed(2) }</td>
