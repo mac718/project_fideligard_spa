@@ -23,7 +23,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onChange: e => {
-      let date = new Date(parseInt(e.target.value)) //makeUTCDate(parseInt(e.target.value))
+      let date = makeUTCDate(parseInt(e.target.value))
 
       dispatch(onDateWidgetChange(date))
     }, 
