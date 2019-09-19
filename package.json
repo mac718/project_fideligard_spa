@@ -1,0 +1,26 @@
+{
+  "name": "project_fideligard_spa",
+  "version": "1.0.0",
+  "description": "Buy low, sell high.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm install && npm build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm build && npm deploy && echo 'Client built!'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mac718/project_fideligard_spa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mac718/project_fideligard_spa/issues"
+  },
+  "homepage": "https://github.com/mac718/project_fideligard_spa#readme"
+}
