@@ -42,7 +42,6 @@ export function calculateCurrentShareValue( symbol, transactions, date, historic
 
   let dateString = makeDateString(date)
 
-  //let currentPrice = parseFloat(document.getElementById(`${symbol}-price`).innerHTML.slice(1))
   let currentPrice = historicalStockData[index].dataset_data.data.filter( entry => { return entry[0] === dateString })[0][1]
 
 
