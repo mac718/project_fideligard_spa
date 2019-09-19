@@ -8,11 +8,7 @@ const Trade =
   ( { date, selectedStock, onBlur, handleSymbolChange, cost, validSymbol, onSubmit, 
       cashAvailable, dateString, stockData, price, hasFormData, readOnly, 
       submitDisabled } ) => {
-  console.log('validSymbol' + validSymbol)
-  console.log('selectedStock ' + JSON.stringify(selectedStock))
-  console.log('date' + date)
-  console.log('dateString' + dateString)
-  console.log('price ' + price )
+    
   return (
     <div id='Trade'>
       <h2>Trade</h2>

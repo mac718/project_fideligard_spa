@@ -11,7 +11,6 @@ import {
         updateTransactions,
         resetFormValues,
         invalidTrade,
-        //updateQuantity
       } from '../actions'
 import { retrievedStocks } from '../retrievedStocks'
 import serialize from 'form-serialize'
@@ -64,7 +63,6 @@ const mapDispatchToProps = dispatch => {
       let form = document.getElementById('buySell')
       let tradeInfo = serialize( form, { hash: true } )
 
-      //dispatch(tradeValidations(tradeInfo))
       Promise.resolve( dispatch( updateCost(quantity) ))
       .then( dispatch( tradeValidations(tradeInfo) ))
     },
@@ -108,12 +106,8 @@ const mapDispatchToProps = dispatch => {
         tradeInfo.Quantity = tradeInfo.Quantity * -1
       }
 
-      //console.log(tradeInfo)
-
-      //dispatch(tradeValidations(tradeInfo))
     dispatch(updateCashAvailable(tradeInfo))
     dispatch(updateTransactions(tradeInfo))
-    //dispatch(updatePortfolio(tradeInfo))
     dispatch(resetFormValues())
     dispatch(invalidTrade())
     form.reset()

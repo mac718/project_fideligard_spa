@@ -30,7 +30,7 @@ export const makeUTCDate = milliseconds => {
   let dateYear = date.getUTCFullYear();
   let dateMonth = date.getUTCMonth();
   let dateDay = date.getUTCDate();
-  let UTCdate = new Date(Date.UTC(dateYear, dateMonth, dateDay))
+  let UTCdate = new Date(dateYear, dateMonth, dateDay)
 
   return UTCdate
 }

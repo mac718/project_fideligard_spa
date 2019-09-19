@@ -11,7 +11,7 @@ const Transactions = ({ transactions,
   const transactionRows = transactions.map( (transaction, i) => {
     if (transactionsFilterInput === '' || transaction.Symbol.includes(transactionsFilterInput) || transaction.Date.includes(transactionsFilterInput)) {
       return (
-        <tr className='transaction-row' key={ i }>
+        <tr className='transaction-row' key={ transaction.Symbol }>
           <td>{ transaction.Date }</td>
           <td>{ transaction.Symbol }</td>
           <td>{ transaction.TradeDropdown.slice(1) }</td>

@@ -16,8 +16,6 @@ const Portfolio = ( { transactions,
 
   let filteredTransactions = getFilteredTransactions( transactions, date )
 
-  //console.log('filteredTransactions ' + JSON.stringify(filteredTransactions))
-
   let costs = filteredTransactions.map(transaction => {
     return -transaction.Cost
   })
@@ -33,7 +31,6 @@ const Portfolio = ( { transactions,
     allStocksCostBasis = costs.reduce(reducer)
 
     currentStockValues = retrievedStocks.map( (symbol, i) => {
-      //console.log('transactions ' + JSON.stringify(transactions))
       return calculateCurrentShareValue( symbol, filteredTransactions, date, historicalStockData, i )
     })
 
@@ -68,12 +65,12 @@ const Portfolio = ( { transactions,
 
     stockSummaries = retrievedStocks.map( ( symbol, i ) => {
       let dateString = makeDateString(date)
-      //console.log(historicalStockData[i])
+      
       let currentPrice = historicalStockData[i].dataset_data.data.filter( entry => { return entry[0] === dateString })[0][1]
-      //console.log(costBasis.symbol)
+      
       if ( stockQuantities[i] != null){
         return (
-          <tr key={ i } >
+          <tr key={ symbol } >
             <td id={`${symbol}-Portfolio`}>{ symbol }</td>
             <td>{ stockQuantities[i] }</td>
             <td id={ `costBasis-${symbol}` }>${ -individualStocksCostBasis[i].symbol.toFixed(2) }</td>
@@ -88,17 +85,8 @@ const Portfolio = ( { transactions,
 
     stockSummaries = stockSummaries.filter( summary => { return summary !== '' })
 
-    console.log('individualStocksCostBasis ' + individualStocksCostBasis)
-
     reducedValues = currentStockValues.filter(value => { return value !== null }).reduce(reducer)
-    
-    console.log('reducedValues ' + reducedValues)
-
   }
-
-  console.log( 'currentStockValues ' + currentStockValues)
-
-
   
   return (
     <div className='Portfolio table-responsive'>
