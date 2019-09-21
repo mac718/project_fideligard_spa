@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm install && npm build && cd ..",
-    "deploy": "cp -a client/build/ . public/",
+    "deploy": "cp -a client/build/ public/",
     "postinstall": "npm run-script build && npm run-script deploy && echo 'Client built!'"
   },
   "repository": {
