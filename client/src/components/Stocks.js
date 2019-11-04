@@ -64,7 +64,7 @@ const Stocks = ( { stockData,
           <tr>
             <th>Symbol</th>
             <th>Price</th>
-            <th>1d</th>
+            <th>1 day</th>
             <th>7 day</th>
             <th>30 day</th>
             <th>Trade</th>
