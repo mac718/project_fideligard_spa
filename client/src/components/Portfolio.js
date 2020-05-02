@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 import {
   calculateCurrentShareValue,
-  getFilteredTransactions
-} from "../Helpers/PortfolioHelpers";
-import { makeDateString } from "../Helpers/dateHelpers";
-import { retrievedStocks } from "../retrievedStocks";
-import { Link } from "react-router-dom";
+  getFilteredTransactions,
+} from '../Helpers/PortfolioHelpers'
+import { makeDateString } from '../Helpers/dateHelpers'
+import { retrievedStocks } from '../retrievedStocks'
+import { Link } from 'react-router-dom'
 
 const Portfolio = ({
   transactions,
@@ -13,24 +13,24 @@ const Portfolio = ({
   historicalStockData,
   date,
   handleSortArrowClick,
-  handleTradeClick
+  handleTradeClick,
 }) => {
-  let filteredTransactions = getFilteredTransactions(transactions, date);
+  let filteredTransactions = getFilteredTransactions(transactions, date)
 
-  let costs = filteredTransactions.map(transaction => {
-    return -transaction.Cost;
-  });
+  let costs = filteredTransactions.map((transaction) => {
+    return -transaction.Cost
+  })
 
   let reducer = (accumulator, currentValue) =>
-    parseFloat(accumulator) + parseFloat(currentValue);
+    parseFloat(accumulator) + parseFloat(currentValue)
 
-  let allStocksCostBasis = 0;
-  let currentStockValues = 0;
-  let reducedValues = 0;
-  let stockSummaries;
+  let allStocksCostBasis = 0
+  let currentStockValues = 0
+  let reducedValues = 0
+  let stockSummaries
 
   if (costs.length > 0) {
-    allStocksCostBasis = costs.reduce(reducer);
+    allStocksCostBasis = costs.reduce(reducer)
 
     currentStockValues = retrievedStocks.map((symbol, i) => {
       return calculateCurrentShareValue(
@@ -38,56 +38,56 @@ const Portfolio = ({
         filteredTransactions,
         date,
         historicalStockData,
-        i
-      );
-    });
+        i,
+      )
+    })
 
-    let individualStocksCostBasis = retrievedStocks.map(symbol => {
-      let transactions = filteredTransactions.filter(transaction => {
-        return transaction.Symbol === symbol;
-      });
+    let individualStocksCostBasis = retrievedStocks.map((symbol) => {
+      let transactions = filteredTransactions.filter((transaction) => {
+        return transaction.Symbol === symbol
+      })
 
-      let stockCosts = transactions.map(transaction => {
-        return transaction.Cost;
-      });
+      let stockCosts = transactions.map((transaction) => {
+        return transaction.Cost
+      })
 
       if (stockCosts.length > 0) {
-        let individualStockCostBasis = stockCosts.reduce(reducer);
-        return { symbol: individualStockCostBasis };
+        let individualStockCostBasis = stockCosts.reduce(reducer)
+        return { symbol: individualStockCostBasis }
       } else {
-        return { symbol: 0 };
+        return { symbol: 0 }
       }
-    });
+    })
 
-    let stockQuantities = retrievedStocks.map(symbol => {
-      let transactions = filteredTransactions.filter(transaction => {
-        return transaction.Symbol === symbol;
-      });
+    let stockQuantities = retrievedStocks.map((symbol) => {
+      let transactions = filteredTransactions.filter((transaction) => {
+        return transaction.Symbol === symbol
+      })
 
-      let stockQuantities = transactions.map(transaction => {
-        return parseInt(transaction.Quantity);
-      });
+      let stockQuantities = transactions.map((transaction) => {
+        return parseInt(transaction.Quantity)
+      })
 
-      let reducedQuantities;
+      let reducedQuantities
 
       //what happens with empty list?
       if (stockQuantities.length > 0) {
-        reducedQuantities = stockQuantities.reduce(reducer);
+        reducedQuantities = stockQuantities.reduce(reducer)
       } else {
-        reducedQuantities = null;
+        reducedQuantities = null
       }
 
-      return reducedQuantities;
-    });
+      return reducedQuantities
+    })
 
     stockSummaries = retrievedStocks.map((symbol, i) => {
-      let dateString = makeDateString(date);
+      let dateString = makeDateString(date)
 
       let currentPrice = historicalStockData[i].dataset_data.data.filter(
-        entry => {
-          return entry[0] === dateString;
-        }
-      )[0][1];
+        (entry) => {
+          return entry[0] === dateString
+        },
+      )[0][1]
 
       if (stockQuantities[i] != null) {
         return (
@@ -111,19 +111,21 @@ const Portfolio = ({
               </Link>
             </td>
           </tr>
-        );
+        )
+      } else {
+        return null
       }
-    });
+    })
 
-    stockSummaries = stockSummaries.filter(summary => {
-      return summary !== "";
-    });
+    stockSummaries = stockSummaries.filter((summary) => {
+      return summary !== ''
+    })
 
     reducedValues = currentStockValues
-      .filter(value => {
-        return value !== null;
+      .filter((value) => {
+        return value !== null
       })
-      .reduce(reducer);
+      .reduce(reducer)
   }
 
   return (
@@ -149,7 +151,7 @@ const Portfolio = ({
         <thead>
           <tr>
             <th>
-              Symbol{" "}
+              Symbol{' '}
               <span className="sort-arrow" onClick={handleSortArrowClick}>
                 &#x25B4;
               </span>
@@ -165,7 +167,7 @@ const Portfolio = ({
         <tbody>{stockSummaries}</tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default Portfolio;
+export default Portfolio
