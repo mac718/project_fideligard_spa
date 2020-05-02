@@ -19,6 +19,8 @@ const Transactions = ({ transactions,
           <td>${ transaction.Price }</td>
         </tr>
       )
+    } else {
+      return "thing"
     }
   })
   return (
