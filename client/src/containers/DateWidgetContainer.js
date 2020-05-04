@@ -1,40 +1,38 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { onDateWidgetChange, getHistoricalStockData } from '../actions'
 import { makeUTCDate } from '../Helpers/dateHelpers'
-import DateWidget from '../components/DateWidget';
+import DateWidget from '../components/DateWidget'
 
 class DateWidgetContainer extends Component {
   componentDidMount() {
     this.props.getHistoricalStockData()
   }
   render() {
-    const {date, onChange} = this.props
-    return <DateWidget onChange={ onChange } date={ date } />
+    const { date, onChange } = this.props
+    let utcDate = makeUTCDate(date)
+    return <DateWidget onChange={onChange} date={utcDate} />
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    date: state.date
+    date: state.date,
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onChange: e => {
+    onChange: (e) => {
       let date = makeUTCDate(parseInt(e.target.value))
 
       dispatch(onDateWidgetChange(date))
-    }, 
+    },
 
     getHistoricalStockData: () => {
       dispatch(getHistoricalStockData())
-    }
+    },
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DateWidgetContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(DateWidgetContainer)

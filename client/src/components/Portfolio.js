@@ -106,7 +106,7 @@ const Portfolio = ({
             </td>
             <td>${currentPrice.toFixed(2)}</td>
             <td>
-              <Link to="/Trade" onClick={handleTradeClick(symbol)}>
+              <Link to="/Trade" onClick={() => handleTradeClick(symbol)}>
                 trade
               </Link>
             </td>

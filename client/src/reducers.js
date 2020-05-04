@@ -1,9 +1,9 @@
-import * as Actions from './actions';
+import * as Actions from './actions'
 import { makeDateString, makeUTCDate } from './Helpers/dateHelpers'
 import { JAN_1_2017 } from './dateMillisecondValues'
 
 const initialState = {
-  date: makeUTCDate(JAN_1_2017),
+  date: JAN_1_2017, //makeUTCDate(JAN_1_2017),
   dateString: '',
   historicalStockData: [],
   selectedStock: {},
@@ -12,8 +12,8 @@ const initialState = {
   currentTradeQuantity: 0,
   currentTradePrice: 0,
   validSymbol: true,
-  cashAvailable: 1000.00,
-  transactions:[],
+  cashAvailable: 1000.0,
+  transactions: [],
   portfolio: {},
   isFetchingHistoricalData: false,
   hasFormData: false,
@@ -24,16 +24,16 @@ const initialState = {
   filterInput: '',
   stocksFilterInput: '',
   transactionsFilterInput: '',
-  error: null
+  error: null,
 }
 
-export function fideligard (state = initialState, action) {
-  switch (action.type){
+export function fideligard(state = initialState, action) {
+  switch (action.type) {
     case Actions.ON_DATE_WIDGET_CHANGE:
       console.log('dateWidget ' + makeUTCDate(action.date))
       return {
         ...state,
-        date: makeUTCDate(action.date)
+        date: makeUTCDate(action.date),
       }
     case Actions.ON_TRADE_CLICK:
       return {
@@ -41,55 +41,55 @@ export function fideligard (state = initialState, action) {
         selectedStock: action.selectedStock,
         currentTradeSymbol: action.selectedStock.symbol,
         dateString: makeDateString(state.date),
-        readOnly: true
+        readOnly: true,
       }
     case Actions.UPDATE_QUANTITY:
       return {
         ...state,
-        currentTradeQuantity: action.quantity
+        currentTradeQuantity: action.quantity,
       }
     case Actions.UPDATE_COST:
       return {
         ...state,
-        currentTradeCost: state.currentTradePrice * action.quantity
+        currentTradeCost: state.currentTradePrice * action.quantity,
       }
     case Actions.ON_VALID_INPUT:
       return {
         ...state,
         validSymbol: true,
         currentTradeSymbol: action.tradeInfo.symbol,
-        currentTradePrice: action.tradeInfo.price
+        currentTradePrice: action.tradeInfo.price,
       }
     case Actions.ON_INVALID_INPUT:
       return {
         ...state,
         validSymbol: false,
-        currentTradeSymbol: ''
+        currentTradeSymbol: '',
       }
-    case Actions.RESET_FORM_VALUES: 
+    case Actions.RESET_FORM_VALUES:
       return {
         ...state,
         readOnly: false,
-        selectedStock: {...state.selectedStock, symbol: ''},
+        selectedStock: { ...state.selectedStock, symbol: '' },
         currentTradeSymbol: '',
         currentTradePrice: '',
         currentTradeCost: 0,
-        currentTradeQuantity: '' 
+        currentTradeQuantity: '',
       }
     case Actions.UPDATE_CASH_AVAILABLE:
       return {
         ...state,
-        cashAvailable: state.cashAvailable + parseFloat(action.trade.Cost)
+        cashAvailable: state.cashAvailable + parseFloat(action.trade.Cost),
       }
     case Actions.UPDATE_TRANSACTIONS:
       return {
         ...state,
-        transactions: [...state.transactions, action.trade]
+        transactions: [...state.transactions, action.trade],
       }
-    case Actions.SET_HAS_FORM_DATA: 
+    case Actions.SET_HAS_FORM_DATA:
       return {
         ...state,
-        hasFormData: true
+        hasFormData: true,
       }
     case Actions.INVALID_TRADE:
       return {
@@ -114,17 +114,17 @@ export function fideligard (state = initialState, action) {
     case Actions.SORT_TRANSACTIONS_DATES:
       return {
         ...state,
-        transactions: action.transactions
+        transactions: action.transactions,
       }
     case Actions.SET_FILTER_INPUT:
       return {
         ...state,
-        filterInput: action.input
+        filterInput: action.input,
       }
     case Actions.SET_TRANSACTIONS_FILTER_INPUT:
       return {
         ...state,
-        transactionsFilterInput: action.input
+        transactionsFilterInput: action.input,
       }
     case Actions.GET_DATA_REQUEST:
       return {
@@ -143,7 +143,7 @@ export function fideligard (state = initialState, action) {
         isFetchingHistoricalData: false,
         error: action.error,
       }
-    default: 
+    default:
       return state
   }
 }
