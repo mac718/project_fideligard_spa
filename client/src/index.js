@@ -7,16 +7,12 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { fideligard } from './reducers'
-import { PersistGate } from 'redux-persist/integration/react'
-import { persistor, store } from './config/configureStore'
 
-//const store = createStore(fideligard, applyMiddleware(thunk))
+const store = createStore(fideligard, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-    </PersistGate>
+    <App />
   </Provider>,
   document.getElementById('root'),
 )

@@ -1,8 +1,10 @@
 import React from 'react'
 import { JAN_1_2017, DEC_31_2017, dayLength } from '../dateMillisecondValues'
+import { makeUTCDate } from '../Helpers/dateHelpers'
 
 const DateWidget = ({ onChange, date }) => {
   console.log(date)
+  date = makeUTCDate(date)
   return (
     <div id="DateWidget" className="col-sm">
       <span id="start-date">1/1/2017</span>
