@@ -1,8 +1,8 @@
-import React from 'react'
-import { retrievedStocks } from '../retrievedStocks'
-import { getCurrentDateEntryIndex, makeUTCDate } from '../Helpers/dateHelpers'
-import { Link } from 'react-router-dom'
-import FilterField from './FilterField'
+import React from "react";
+import { retrievedStocks } from "../retrievedStocks";
+import { getCurrentDateEntryIndex, makeUTCDate } from "../Helpers/dateHelpers";
+import { Link } from "react-router-dom";
+import FilterField from "./FilterField";
 
 const Stocks = ({
   stockData,
@@ -14,46 +14,46 @@ const Stocks = ({
 }) => {
   //date = makeUTCDate(date)
   const data = stockData.map((stock) => {
-    console.log(stock)
-    let currentDateEntryIndex = getCurrentDateEntryIndex(stock, date)
+    console.log(stock);
+    let currentDateEntryIndex = getCurrentDateEntryIndex(stock, date);
 
-    let currentDateEntry = stock[currentDateEntryIndex]
+    let currentDateEntry = stock[currentDateEntryIndex];
 
     let yesterdayEntry =
-      currentDateEntry[1] - stock[currentDateEntryIndex - 1][1]
+      currentDateEntry[1] - stock[currentDateEntryIndex - 1][1];
 
     let lastWeekEntry =
-      currentDateEntry[1] - stock[currentDateEntryIndex - 7][1]
+      currentDateEntry[1] - stock[currentDateEntryIndex - 7][1];
 
     let lastMonthEntry =
-      currentDateEntry[1] - stock[currentDateEntryIndex - 30][1]
+      currentDateEntry[1] - stock[currentDateEntryIndex - 30][1];
 
-    return [currentDateEntry[1], yesterdayEntry, lastWeekEntry, lastMonthEntry]
-  })
+    return [currentDateEntry[1], yesterdayEntry, lastWeekEntry, lastMonthEntry];
+  });
 
   const stockDivs = data.map((entry, i) => {
     if (entry[0]) {
-      if (filterInput === '' || retrievedStocks[i].includes(filterInput)) {
+      if (filterInput === "" || retrievedStocks[i].includes(filterInput)) {
         return (
           <tr key={retrievedStocks[i]}>
             <td id={retrievedStocks[i]}>{retrievedStocks[i]}</td>
             <td id={`${retrievedStocks[i]}-price`}>
-              {'$' + entry[0].toFixed(2)}
+              {"$" + entry[0].toFixed(2)}
             </td>
             <td id={`${retrievedStocks[i]}-1d`}>
               {entry[1].toFixed(2) > 0
-                ? '+$' + entry[1].toFixed(2)
-                : '-$' + -entry[1].toFixed(2)}
+                ? "+$" + entry[1].toFixed(2)
+                : "-$" + -entry[1].toFixed(2)}
             </td>
             <td id={`${retrievedStocks[i]}-7d`}>
               {entry[2].toFixed(2) > 0
-                ? '+$' + entry[2].toFixed(2)
-                : '-$' + -entry[3].toFixed(2)}
+                ? "+$" + entry[2].toFixed(2)
+                : "-$" + -entry[3].toFixed(2)}
             </td>
             <td id={`${retrievedStocks[i]}-30d`}>
               {entry[3].toFixed(2) > 0
-                ? '+$' + entry[3].toFixed(2)
-                : '-$' + -entry[3].toFixed(2)}
+                ? "+$" + entry[3].toFixed(2)
+                : "-$" + -entry[3].toFixed(2)}
             </td>
             <td>
               <Link to="/Trade" onClick={onClick}>
@@ -61,7 +61,7 @@ const Stocks = ({
               </Link>
             </td>
           </tr>
-        )
+        );
       } else {
         return (
           <tr key={i}>
@@ -71,7 +71,7 @@ const Stocks = ({
             <td></td>
             <td></td>
           </tr>
-        )
+        );
       }
     } else {
       return (
@@ -82,12 +82,12 @@ const Stocks = ({
           <td></td>
           <td></td>
         </tr>
-      )
+      );
     }
-  })
+  });
 
   return (
-    <div className="Stocks col-4 table-responsive">
+    <div className="Stocks col-4-sm table-responsive">
       <h1>Stocks</h1>
       <FilterField onChange={handleFilter} />
 
@@ -113,7 +113,7 @@ const Stocks = ({
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default Stocks
+export default Stocks;
