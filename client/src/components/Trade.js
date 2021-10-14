@@ -1,8 +1,8 @@
-import React from 'react'
-import InputGroup from './elements/InputGroup'
-import TradeDropdown from './TradeDropdown'
-import { makeDateString } from '../Helpers/dateHelpers'
-import { Prompt } from 'react-router-dom'
+import React from "react";
+import InputGroup from "./elements/InputGroup";
+import TradeDropdown from "./TradeDropdown";
+import { makeDateString } from "../Helpers/dateHelpers";
+import { Prompt } from "react-router-dom";
 
 const Trade = ({
   date,
@@ -23,19 +23,19 @@ const Trade = ({
   return (
     <div id="Trade">
       <h2>Trade</h2>
-      <div className="TradeForm col-8">
+      <div className="TradeForm col-8-sm">
         <form id="buySell" onSubmit={onSubmit}>
           <InputGroup>
             <label htmlFor="Symbol">Symbol:</label>
             <input
-              className={validSymbol ? 'normal' : 'warning'}
+              className={validSymbol ? "normal" : "warning"}
               type="text"
               name="Symbol"
               value={selectedStock.symbol}
               onChange={handleSymbolChange}
               readOnly={readOnly}
-            />{' '}
-            {validSymbol ? '' : <p id="warning-message">Invalid Symbol</p>}
+            />{" "}
+            {validSymbol ? "" : <p id="warning-message">Invalid Symbol</p>}
           </InputGroup>
           <InputGroup>
             <label htmlFor="Buy/Sell">Buy/Sell:</label>
@@ -97,7 +97,7 @@ const Trade = ({
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Trade
+export default Trade;

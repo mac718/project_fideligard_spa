@@ -25,7 +25,7 @@ const App = () => {
         <Header />
         <div className="row">
           <StocksContainer />
-          {/* <div className='buffer col-1'></div> */}
+          {/* <div className="buffer col-1"></div> */}
           <div className="col-sm">
             <DateWidgetContainer />
             <div className="buffer col-5"></div>
