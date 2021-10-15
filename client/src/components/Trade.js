@@ -84,7 +84,11 @@ const Trade = ({
               className="form-control"
             />
           </InputGroup>
-          <input type="submit" disabled={submitDisabled} />
+          <input
+            className="btn btn-success btn-lg w-100"
+            type="submit"
+            disabled={submitDisabled}
+          />
           <Prompt
             when={hasFormData}
             message="Your form contains unsubmitted data. Are you sure you want to leave?"

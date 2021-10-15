@@ -13,13 +13,13 @@ code {
     monospace;
 }
 
-#Header {
+/* #Header {
   height: 100px;
   background-color: #def;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 #DateWidget {
   margin-top: 50px;

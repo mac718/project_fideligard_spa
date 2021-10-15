@@ -87,7 +87,7 @@ const Stocks = ({
   });
 
   return (
-    <div className="Stocks col-4-sm table-responsive">
+    <div className="Stocks col-4-sm table-responsive p-2">
       <h1>Stocks</h1>
       <FilterField onChange={handleFilter} />
 
