@@ -1,6 +1,6 @@
 # Fideligard Stock Trading Simulator
 
-The Fideligard Stock Trading Simulator leverages the Quandl API to fetch stock data from the year 2017 for five different popular stocks: Facebook (FB), Apple (AAPL), GM (GM), and Boeing (BA). You start out with $1,000 with which you can buy and sell shares of those five stocks at the price on the spsecified date. You can view your transactions and your portfolio and observe changes over the course of the year by sliding the date bar.
+The Fideligard Stock Trading Simulator leverages the Quandl API to fetch stock data from the year 2017 for five different stocks: Facebook (FB), Apple (AAPL), GM (GM), and Boeing (BA). You start out with $1,000 with which you can buy and sell shares of those five stocks at the price on the spsecified date. You can view your transactions and your portfolio and observe changes over the course of the year by sliding the date bar.
 
 ## To run locally:
 
