@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const ControlPanel = ({children, onChange}) => {
-  return (
-    <div className='ControlPanel col-sm'>
-      {children}
-    </div>
-  )
-}
+const ControlPanel = ({ children }) => {
+  return <div className="ControlPanel col-sm h-100">{children}</div>;
+};
 
 export default ControlPanel;

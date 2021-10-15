@@ -82,7 +82,9 @@ code {
   float: right;
 }
 
-#Price, #Cost, #Date {
+#Price,
+#Cost,
+#Date {
   border: none;
 }
 
@@ -90,7 +92,8 @@ code {
   display: flex;
 }
 
-.TradeForm, .cash {
+.TradeForm,
+.cash {
   margin-top: 60px;
 }
 
@@ -103,7 +106,6 @@ code {
 }
 
 .FilterField {
-  display: inline-block;
   float: right;
   margin-top: 7px;
 }

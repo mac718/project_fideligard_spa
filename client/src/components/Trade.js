@@ -25,28 +25,30 @@ const Trade = ({
       <h2>Trade</h2>
       <div className="TradeForm col-8-sm">
         <form id="buySell" onSubmit={onSubmit}>
-          <InputGroup>
-            <label htmlFor="Symbol">Symbol:</label>
+          <InputGroup name="Symbol" labelText="Symbol">
             <input
               className={validSymbol ? "normal" : "warning"}
               type="text"
               name="Symbol"
+              className="form-control"
               value={selectedStock.symbol}
               onChange={handleSymbolChange}
               readOnly={readOnly}
             />{" "}
             {validSymbol ? "" : <p id="warning-message">Invalid Symbol</p>}
           </InputGroup>
-          <InputGroup>
-            <label htmlFor="Buy/Sell">Buy/Sell:</label>
+          <InputGroup name="Buy/Sell" labelText="Buy/Sell">
             <TradeDropdown />
           </InputGroup>
-          <InputGroup>
-            <label htmlFor="Quantity">Quantity:</label>
-            <input type="text" name="Quantity" onBlur={onBlur} />
+          <InputGroup name="Quantity" labelText="Quantity">
+            <input
+              type="text"
+              name="Quantity"
+              className="form-control"
+              onBlur={onBlur}
+            />
           </InputGroup>
-          <InputGroup>
-            <label htmlFor="Date">Date:</label>
+          <InputGroup name="Date" labelText="Date">
             <input
               type="date"
               name="Date"
@@ -55,6 +57,7 @@ const Trade = ({
               max="2017-12-31"
               value={makeDateString(date)}
               readOnly={true}
+              className="form-control"
             />
           </InputGroup>
           <InputGroup>
@@ -67,6 +70,7 @@ const Trade = ({
               }
               id="Price"
               readOnly={true}
+              className="form-control"
             />
           </InputGroup>
           <InputGroup>
@@ -77,6 +81,7 @@ const Trade = ({
               value={cost}
               id="Cost"
               readOnly={true}
+              className="form-control"
             />
           </InputGroup>
           <input type="submit" disabled={submitDisabled} />
